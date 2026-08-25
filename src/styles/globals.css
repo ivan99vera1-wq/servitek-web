@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 11 35 66;
+    --primary-light: 18 58 104;
+    --accent: 227 6 19;
+    --background: 255 255 255;
+    --surface: 244 246 248;
+    --text: 27 31 36;
+    --text-muted: 107 114 128;
+    --border: 229 231 235;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-text antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  * {
+    @apply border-border;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .heading-primary {
+    @apply text-h2 md:text-display font-bold text-primary;
+  }
+
+  .heading-secondary {
+    @apply text-h3 md:text-h2 font-bold text-primary;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  .bg-primary {
+    background-color: rgb(var(--primary));
+  }
+
+  .bg-primary-light {
+    background-color: rgb(var(--primary-light));
+  }
+
+  .bg-accent {
+    background-color: rgb(var(--accent));
+  }
+
+  .bg-surface {
+    background-color: rgb(var(--surface));
+  }
+
+  .text-primary {
+    color: rgb(var(--primary));
+  }
+
+  .text-accent {
+    color: rgb(var(--accent));
+  }
+
+  .border-primary {
+    border-color: rgb(var(--primary));
+  }
+
+  .border-accent {
+    border-color: rgb(var(--accent));
+  }
+}

@@ -1,0 +1,641 @@
+# SERVITEK — Guía de Edición de Contenido
+
+## Resumen
+
+Esta guía explica dónde y cómo modificar el contenido del sitio web sin tocar código de componentes.
+
+**Regla general:** Todo el contenido está en `/src/data/`. Solo edita archivos `.ts` en esa carpeta.
+
+---
+
+## 1. Información de la Empresa
+
+**Archivo:** `src/data/company.ts`
+
+### Cambiar nombre, eslogan o descripción
+
+```typescript
+export const company = {
+  name: "SERVITEK",
+  slogan: "PROVISIÓN DE MATERIALES Y SERVICIOS",
+  description: "Soluciones de ingeniería eléctrica...",
+  // ...
+}
+```
+
+### Cambiar misión, visión, valores
+
+```typescript
+export const company = {
+  mission: "Proveer soluciones integrales...",
+  vision: "Ser la empresa referente...",
+  values: [
+    { title: "Confiabilidad", description: "..." },
+    // ...
+  ]
+}
+```
+
+### Cambiar teléfono
+
+```typescript
+export const company = {
+  contact: {
+    phone: "+595XXXXXXXX",
+    phoneFormatted: "(021) XXX-XXXX",
+    // ...
+  }
+}
+```
+
+### Cambiar WhatsApp
+
+```typescript
+export const company = {
+  contact: {
+    whatsapp: "+595XXXXXXXX",
+    whatsappMessage: "Hola, me interesa información sobre sus servicios.",
+    // ...
+  }
+}
+```
+
+**NOTA:** El número de WhatsApp solo se cambia AQUÍ. No tocar `src/lib/whatsapp.ts`.
+
+### Cambiar email
+
+```typescript
+export const company = {
+  contact: {
+    email: "info@servitek.com.py",
+    // ...
+  }
+}
+```
+
+### Cambiar dirección
+
+```typescript
+export const company = {
+  contact: {
+    address: "Asunción, Paraguay",
+    // ...
+  }
+}
+```
+
+### Cambiar redes sociales
+
+```typescript
+export const company = {
+  social: {
+    facebook: "https://facebook.com/servitek",
+    instagram: "https://instagram.com/servitek",
+    linkedin: "https://linkedin.com/company/servitek",
+    // ...
+  }
+}
+```
+
+---
+
+## 2. Navegación
+
+**Archivo:** `src/data/navigation.ts`
+
+### Cambiar orden del menú
+
+```typescript
+export const navigation = [
+  { label: "Inicio", href: "/" },
+  { label: "Servicios", href: "/servicios" },
+  // Reordenar, agregar o eliminar items
+]
+```
+
+### Cambiar texto del CTA
+
+```typescript
+export const navigation = [
+  // ...
+  {
+    label: "SOLICITAR PRESUPUESTO",
+    href: "/contacto",
+    isCta: true
+  }
+]
+```
+
+---
+
+## 3. Servicios
+
+**Archivo:** `src/data/services.ts`
+
+### Cambiar un servicio existente
+
+```typescript
+export const services = [
+  {
+    id: "iluminacion",
+    title: "ILUMINACIÓN INDUSTRIAL",
+    slug: "iluminacion-e-ingenieria-ex",
+    description: "Diseño, cálculo lumínico...",
+    icon: "Lightbulb",
+    solutions: [
+      "Iluminación de plantas industriales",
+      // Editar, agregar o eliminar soluciones
+    ],
+    image: "/images/services/iluminacion.webp",
+    // ...
+  }
+]
+```
+
+### Agregar un nuevo servicio
+
+Agregar un nuevo objeto al array `services`:
+
+```typescript
+{
+  id: "nuevo-servicio",
+  title: "NUEVO SERVICIO",
+  slug: "nuevo-servicio",
+  description: "Descripción del servicio...",
+  icon: "IconName", // Ver lucide-react para iconos
+  solutions: ["Solución 1", "Solución 2"],
+  image: "/images/services/nuevo-servicio.webp",
+  cta: "Conocer servicio",
+  clients: ["Cliente 1", "Cliente 2"]
+}
+```
+
+### Cambiar iconos
+
+Los iconos son de Lucide React. Verificar nombres en: https://lucide.dev/icons/
+
+Ejemplos: `Lightbulb`, `Zap`, `Wrench`, `Cog`, `Battery`, `Plug`
+
+---
+
+## 4. Sectores
+
+**Archivo:** `src/data/sectors.ts`
+
+### Cambiar un sector
+
+```typescript
+export const sectors = [
+  {
+    id: "agroindustria",
+    title: "AGROINDUSTRIA Y SILOS",
+    slug: "agroindustria-y-silos",
+    description: "Soluciones eléctricas...",
+    problems: ["Problema 1", "Problema 2"],
+    solutions: ["Solución SERVITEK 1", "Solución SERVITEK 2"],
+    image: "/images/sectors/agroindustria.webp",
+    // ...
+  }
+]
+```
+
+### Agregar un sector
+
+Agregar un nuevo objeto al array `sectors`:
+
+```typescript
+{
+  id: "nuevo-sector",
+  title: "NUEVO SECTOR",
+  slug: "nuevo-sector",
+  description: "Descripción del sector...",
+  problems: ["Problema común 1", "Problema común 2"],
+  solutions: ["Solución SERVITEK 1", "Solución SERVITEK 2"],
+  image: "/images/sectors/nuevo-sector.webp",
+  cta: "Conocer soluciones"
+}
+```
+
+---
+
+## 5. Proyectos
+
+**Archivo:** `src/data/projects.ts`
+
+### Agregar un proyecto real
+
+```typescript
+export const projects = [
+  {
+    id: "proyecto-1",
+    title: "Nombre del Proyecto",
+    sector: "Frigoríficos",
+    location: "Asunción, Paraguay",
+    year: "2024",
+    services: ["Auditoría y Automatización"],
+    description: "Descripción del proyecto ejecutado...",
+    images: ["/images/projects/proyecto-1.webp"],
+    featured: true
+  }
+]
+```
+
+### Proyectos demo (placeholders)
+
+Los proyectos actuales son DEMO. Cuando tengas proyectos reales:
+
+1. Eliminar o modificar los objetos existentes en `projects.ts`
+2. Agregar los datos reales
+3. Agregar imágenes reales en `/public/images/projects/`
+
+**IMPORTANTE:** No afirmar que los proyectos demo son proyectos reales de SERVITEK.
+
+---
+
+## 6. Datos de Contacto
+
+**Archivo:** `src/data/contact.ts`
+
+### Cambiar opciones del formulario
+
+```typescript
+export const serviceOptions = [
+  "Iluminación e Ingeniería Ex",
+  "Auditoría y Automatización",
+  "Motores, Bombas y HVAC",
+  "Infraestructura Eléctrica y Respaldo",
+  "Otro"
+]
+```
+
+### Cambiar mensaje de WhatsApp generado
+
+El formulario genera un mensaje de WhatsApp con los datos introducidos. Para modificar el formato del mensaje, editar en `src/data/contact.ts`:
+
+```typescript
+export const whatsappMessageTemplate = (data: FormData) => {
+  return `Hola, soy ${data.name} de ${data.company}...`;
+}
+```
+
+---
+
+## 7. Imágenes
+
+### Estructura de carpetas
+
+```
+/public/images/
+├── logo/          # Logo1.png, Logo2.png, Logo3.png, Logo-variantes.png
+├── hero/          # Imágenes del hero principal
+├── services/      # Imágenes por servicio
+├── sectors/       # Imágenes por sector
+├── projects/      # Imágenes por proyecto
+└── company/       # Imágenes institucionales
+```
+
+### Cambiar imagen del hero
+
+1. Colocar imagen en `/public/images/hero/`
+2. Actualizar referencia en `src/app/page.tsx` o en el componente Hero
+
+### Cambiar imagen de un servicio
+
+1. Colocar imagen en `/public/images/services/`
+2. Actualizar el campo `image` en `src/data/services.ts`
+
+### Cambiar imagen de un sector
+
+1. Colocar imagen en `/public/images/sectors/`
+2. Actualizar el campo `image` en `src/data/sectors.ts`
+
+### Formatos recomendados
+
+- WebP preferido
+- JPG para fotos
+- PNG para logos con transparencia
+- Tamaño recomendado: 1200x800px (hero), 800x600px (cards)
+
+---
+
+## 8. Logos
+
+### Ubicación
+
+```
+/public/images/logo/
+├── logo1.png          # Símbolo "S" solo
+├── logo2.png          # Logo vertical completo
+├── logo3.png          # Logo horizontal completo
+└── logo-variantes.png # Todas las variantes
+```
+
+### Variantes disponibles (en logo-variantes.png)
+
+1. **Logo vertical** - Fondo blanco (navbar desktop, header)
+2. **Logo horizontal** - Fondo blanco (footer, espacios reducidos)
+3. **Logo vertical** - Fondo azul oscuro (secciones oscuras)
+4. **Logo vertical** - Fondo blanco (sobre oscuro, inverso)
+5. **Logo vertical** - Fondo negro (secciones negras)
+6. **Logo vertical** - Fondo gris (secciones grises)
+
+### Cuándo usar cada variante
+
+| Ubicación | Variante |
+|-----------|----------|
+| Navbar (desktop) | Logo horizontal, fondo blanco |
+| Navbar (scroll/oscuro) | Logo horizontal, fondo inverso |
+| Footer | Logo horizontal, fondo blanco |
+| Hero (fondo oscuro) | Logo vertical, fondo inverso |
+| Secciones claras | Logo vertical, fondo blanco |
+| Favicon | Símbolo "S" solo |
+
+---
+
+## 9. Colores
+
+### Cambiar colores principales
+
+**Archivo:** `tailwind.config.ts`
+
+```typescript
+theme: {
+  extend: {
+    colors: {
+      primary: "#0B2342",      // Azul corporativo
+      "primary-light": "#123A68", // Azul secundario
+      accent: "#E30613",       // Rojo
+      // ...
+    }
+  }
+}
+```
+
+**Archivo:** `src/styles/globals.css`
+
+```css
+:root {
+  --primary: 11 35 66;      /* #0B2342 */
+  --primary-light: 18 58 104; /* #123A68 */
+  --accent: 227 6 19;        /* #E30613 */
+}
+```
+
+### Cambiar fuentes
+
+**Archivo:** `tailwind.config.ts`
+
+```typescript
+fontFamily: {
+  sans: ['Inter', 'system-ui', 'sans-serif'],
+}
+```
+
+**Archivo:** `src/app/layout.tsx`
+
+Cambiar la importación de Google Fonts.
+
+---
+
+## 10. Estilos Generales
+
+### Cambiar border radius global
+
+**Archivo:** `tailwind.config.ts`
+
+```typescript
+borderRadius: {
+  'sm': '0.25rem',
+  'md': '0.5rem',
+  'lg': '0.75rem',
+  // ...
+}
+```
+
+### Cambiar sombras
+
+**Archivo:** `tailwind.config.ts`
+
+```typescript
+boxShadow: {
+  'sm': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+  'md': '0 4px 6px -1px rgb(0 0 0 / 0.1)',
+  // ...
+}
+```
+
+---
+
+## 11. SEO
+
+### Cambiar título del sitio
+
+**Archivo:** `src/app/layout.tsx`
+
+```typescript
+export const metadata: Metadata = {
+  title: "SERVITEK | Soluciones Eléctricas...",
+  // ...
+}
+```
+
+### Cambiar meta description
+
+**Archivo:** `src/app/layout.tsx`
+
+```typescript
+export const metadata: Metadata = {
+  description: "SERVITEK ofrece soluciones...",
+  // ...
+}
+```
+
+### Cambiar palabras clave
+
+**Archivo:** `src/app/layout.tsx`
+
+```typescript
+keywords: ["empresa eléctrica Paraguay", ...],
+```
+
+---
+
+## 12. Formulario de Contacto
+
+### Cambiar campos del formulario
+
+**Archivo:** `src/components/contact/ContactForm.tsx`
+
+Los campos están definidos como componentes. Para agregar un campo:
+
+1. Agregar el campo al tipo `FormData` en `src/types/`
+2. Agregar el campo al formulario JSX
+3. Agregar el campo al manejo de envío
+
+### Cambiar destino del formulario
+
+Actualmente envía por WhatsApp. Para cambiar a email/API:
+
+1. Modificar la función `handleSubmit` en `ContactForm.tsx`
+2. Implementar la integración deseada
+
+---
+
+## 13. WhatsApp
+
+### Cambiar número
+
+**Solo cambiar en:** `src/data/company.ts`
+
+```typescript
+contact: {
+  whatsapp: "+595XXXXXXXX",  // ← Cambiar aquí
+}
+```
+
+No es necesario tocar ningún otro archivo.
+
+### Cambiar mensaje predeterminado
+
+**Archivo:** `src/data/company.ts`
+
+```typescript
+contact: {
+  whatsappMessage: "Hola, me interesa información sobre sus servicios industriales.",
+}
+```
+
+---
+
+## 14. Páginas Internas
+
+### Modificar contenido de una página
+
+Cada página está en `src/app/[pagina]/page.tsx`.
+
+Para modificar el contenido específico de una página:
+
+1. Buscar el componente de la página
+2. Modificar los textos directamente O
+3. Mover los textos a `src/data/` para mantener consistencia
+
+### Agregar una nueva página
+
+1. Crear carpeta en `src/app/nueva-pagina/`
+2. Crear `page.tsx` dentro
+3. Agregar enlace en `src/data/navigation.ts`
+
+---
+
+## 15. Errores Comunes
+
+### "No encuentro dónde cambiar el texto X"
+
+1. Buscar el texto en `src/data/`
+2. Si no está ahí, buscar en el componente específico
+3. Si es un componente de UI, puede estar hardcodeado
+
+### "La imagen no aparece"
+
+1. Verificar que esté en `/public/images/...`
+2. Verificar la ruta en el archivo de datos correspondiente
+3. Verificar el formato (webp, jpg, png)
+
+### "El WhatsApp no funciona"
+
+1. Verificar que el número esté en `src/data/company.ts`
+2. Verificar que el formato sea correcto: `+595XXXXXXXX`
+3. Verificar que `src/lib/whatsapp.ts` esté importado correctamente
+
+---
+
+## Checklist de Cambios
+
+Antes de cada cambio:
+
+- [ ] Identificar el archivo a modificar en `src/data/`
+- [ ] No tocar componentes de UI
+- [ ] Verificar que las imágenes existan
+- [ ] Probar en móvil y desktop
+- [ ] Verificar que los links funcionen
+- [ ] No inventar información no confirmada
+
+---
+
+## 16. Contenido de Páginas Internas
+
+### Página Nosotros
+
+**Archivo:** `src/data/company-content.ts`
+
+Contiene:
+- Título y subtítulo de la página
+- Estadísticas de confianza
+- Diferenciales de la empresa
+- Propuesta de valor
+- Pilares "Por qué SERVITEK"
+
+```typescript
+export const aboutContent = {
+  title: "Ingeniería para operaciones que exigen confiabilidad.",
+  subtitle: "...",
+  stats: [...],
+  differentials: [...]
+};
+
+export const valueProposition = {
+  headline: "Continuidad operativa.\nEficiencia energética.\nSeguridad crítica.",
+  description: "..."
+};
+
+export const whyServitek = {
+  title: "Cuando tu operación no puede parar, la ingeniería importa.",
+  pillars: [...]
+};
+```
+
+### Política de Privacidad
+
+**Archivo:** `src/app/politica-de-privacidad/page.tsx`
+
+Contenido pendiente de redacción por el cliente.
+
+### Términos y Condiciones
+
+**Archivo:** `src/app/terminos-y-condiciones/page.tsx`
+
+Contenido pendiente de redacción por el cliente.
+
+---
+
+## 17. Contactos de la Empresa
+
+Los datos de contacto actualizados son:
+
+| Campo | Valor |
+|-------|-------|
+| Razón social | SERVITEK E.A.S. |
+| RUC | 80176311-8 |
+| Teléfono | 0981 118743 |
+| WhatsApp | +595981118743 |
+| Email | servitek.py@gmail.com |
+| Ubicación | Asunción, Paraguay |
+
+Para cambiar estos datos, editar `src/data/company.ts`.
+
+---
+
+## 18. Navegación del Footer
+
+**Archivo:** `src/data/navigation.ts`
+
+El footer tiene su propia navegación con enlaces legales:
+
+```typescript
+export const footerNavigation: NavigationItem[] = [
+  { label: "Política de Privacidad", href: "/politica-de-privacidad" },
+  { label: "Términos y Condiciones", href: "/terminos-y-condiciones" }
+];
+```
+
+Para agregar más enlaces al footer, agregar objetos al array `footerNavigation`.
