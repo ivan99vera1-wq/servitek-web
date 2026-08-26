@@ -9,7 +9,7 @@ interface SectorCardProps {
 export function SectorCard({ sector }: SectorCardProps) {
   return (
     <Link
-      href={`/sectores#${sector.slug}`}
+      href={`/sectores/${sector.slug}`}
       className="card-industrial block p-8 h-full group"
     >
       <span className="label-engineering text-accent">SECTOR</span>

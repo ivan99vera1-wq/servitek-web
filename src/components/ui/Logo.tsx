@@ -21,15 +21,14 @@ const logoConfig = {
     height: 120,
   },
   horizontal: {
-    src: '/images/logo/logo3.png',
-    width: 180,
-    height: 40,
+    src: '/images/logo/logo-principal.png',
+    width: 140,
+    height: 47,
   },
 };
 
 export function Logo({ variant = 'horizontal', className = '', light = false }: LogoProps) {
   const config = logoConfig[variant];
-  const logoSrc = light ? config.src.replace('.png', '-white.png') : config.src;
 
   return (
     <Link href="/" className={`inline-flex items-center ${className}`}>
@@ -38,7 +37,7 @@ export function Logo({ variant = 'horizontal', className = '', light = false }: 
         alt="SERVITEK"
         width={config.width}
         height={config.height}
-        className="h-auto w-auto"
+        className="h-20 w-auto"
         priority
       />
     </Link>

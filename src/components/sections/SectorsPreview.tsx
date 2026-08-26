@@ -21,7 +21,7 @@ export function SectorsPreview() {
           {featuredSectors.map((sector, index) => (
             <ScrollReveal key={sector.id} delay={index * 100}>
               <Link
-                href={`/sectores#${sector.slug}`}
+                href={`/sectores/${sector.slug}`}
                 className="card-industrial block p-6 h-full group"
               >
                 <span className="label-engineering text-accent">

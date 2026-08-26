@@ -9,6 +9,13 @@ export const aboutContent = {
     { value: "Paraguay", label: "Cobertura nacional" }
   ],
 
+  trustBarStats: [
+    { value: '+4', label: 'Unidades de negocio' },
+    { value: '24/7', label: 'Soporte técnico' },
+    { value: '100%', label: 'Compromiso técnico' },
+    { value: 'PY', label: 'Cobertura nacional' },
+  ],
+
   differentials: [
     {
       title: "Diagnóstico preciso",

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Lightbulb, Cog, Wrench, Zap, CheckCircle } from 'lucide-react';
+import { Lightbulb, Cog, Wrench, Zap, CheckCircle, AlertTriangle, Settings } from 'lucide-react';
 import { services } from '@/data/services';
 import { PageHero } from '@/components/ui/PageHero';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
@@ -91,6 +91,26 @@ export default function ServicePage({ params }: ServicePageProps) {
                   </p>
                 )}
 
+                {/* Problemas que resuelve */}
+                {service.problemsSolved && service.problemsSolved.length > 0 && (
+                  <div className="mt-8">
+                    <div className="flex items-center gap-2 mb-4">
+                      <AlertTriangle className="h-5 w-5 text-accent" />
+                      <h3 className="text-h4 font-semibold text-primary">
+                        Problemas que resolvemos
+                      </h3>
+                    </div>
+                    <ul className="space-y-3">
+                      {service.problemsSolved.map((problem) => (
+                        <li key={problem} className="flex items-start gap-3">
+                          <span className="text-accent mt-1">•</span>
+                          <span className="text-text-muted">{problem}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
                 <div className="mt-8">
                   <Button href="/contacto" size="lg">
                     SOLICITAR PRESUPUESTO
@@ -99,22 +119,47 @@ export default function ServicePage({ params }: ServicePageProps) {
               </div>
             </ScrollReveal>
 
-            {/* Soluciones */}
-            <ScrollReveal delay={200}>
-              <div className="bg-surface rounded-lg p-8">
-                <h3 className="text-h4 font-semibold text-primary mb-6">
-                  Soluciones que ofrecemos
-                </h3>
-                <ul className="space-y-4">
-                  {service.solutions.map((solution) => (
-                    <li key={solution} className="flex items-start gap-3">
-                      <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                      <span className="text-text-muted">{solution}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </ScrollReveal>
+            {/* Soluciones y alcance técnico */}
+            <div className="space-y-8">
+              {/* Soluciones */}
+              <ScrollReveal delay={200}>
+                <div className="bg-surface rounded-lg p-8">
+                  <h3 className="text-h4 font-semibold text-primary mb-6">
+                    Soluciones que ofrecemos
+                  </h3>
+                  <ul className="space-y-4">
+                    {service.solutions.map((solution) => (
+                      <li key={solution} className="flex items-start gap-3">
+                        <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+                        <span className="text-text-muted">{solution}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </ScrollReveal>
+
+              {/* Alcance técnico */}
+              {service.technicalScope && service.technicalScope.length > 0 && (
+                <ScrollReveal delay={300}>
+                  <div className="bg-primary text-white rounded-lg p-8">
+                    <div className="flex items-center gap-2 mb-6">
+                      <Settings className="h-5 w-5 text-accent" />
+                      <h3 className="text-h4 font-semibold">
+                        Alcance técnico
+                      </h3>
+                    </div>
+                    <ul className="space-y-3">
+                      {service.technicalScope.map((item) => (
+                        <li key={item} className="flex items-start gap-3">
+                          <span className="text-accent font-mono text-sm mt-0.5">→</span>
+                          <span className="text-white/80">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </ScrollReveal>
+              )}
+            </div>
           </div>
 
           {/* Clientes */}

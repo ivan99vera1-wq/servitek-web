@@ -1,4 +1,5 @@
-import { MapPin, Calendar, Tag } from 'lucide-react';
+import Link from 'next/link';
+import { MapPin, Calendar, Tag, ArrowRight } from 'lucide-react';
 import { Project } from '@/types/project';
 
 interface ProjectCardProps {
@@ -7,7 +8,10 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className="card-industrial overflow-hidden">
+    <Link
+      href={`/proyectos/${project.id}`}
+      className="card-industrial overflow-hidden block group h-full"
+    >
       {/* Placeholder para imagen */}
       <div className="h-48 bg-gradient-to-br from-primary to-primary-light flex items-center justify-center">
         <div className="text-center text-white">
@@ -17,7 +21,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       <div className="p-6">
-        <h3 className="text-lg font-bold text-primary">{project.title}</h3>
+        <h3 className="text-lg font-bold text-primary group-hover:text-accent transition-colors">
+          {project.title}
+        </h3>
 
         <div className="mt-3 flex flex-wrap gap-4 text-sm text-text-muted">
           <div className="flex items-center gap-1">
@@ -30,7 +36,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </div>
 
-        <p className="mt-4 text-text-muted text-sm">
+        <p className="mt-4 text-text-muted text-sm line-clamp-2">
           {project.description}
         </p>
 
@@ -45,7 +51,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </span>
           ))}
         </div>
+
+        <div className="mt-4 inline-flex items-center text-sm font-medium text-primary group-hover:text-accent transition-colors">
+          Ver proyecto
+          <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }

@@ -6,6 +6,8 @@ export interface Service {
   fullDescription?: string;
   icon: string;
   solutions: string[];
+  problemsSolved?: string[];
+  technicalScope?: string[];
   clients?: string[];
   image: string;
   cta: string;

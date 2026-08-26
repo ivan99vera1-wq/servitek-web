@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import { generateOrganizationSchema, generateLocalBusinessSchema } from '@/lib/schema';
 import { Providers } from '@/components/layout/Providers';
+import { Navbar } from '@/components/layout/Navbar';
+import { Footer } from '@/components/layout/Footer';
 import '@/styles/globals.css';
 
 const inter = Inter({
@@ -90,7 +92,6 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#0B2342" />
-        <link rel="canonical" href="https://servitek.com.py" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -105,7 +106,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-background font-sans">
-        <Providers>{children}</Providers>
+        <Providers>
+          <Navbar />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

@@ -45,8 +45,8 @@ export function Navbar() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           isScrolled
-            ? 'bg-white/95 backdrop-blur-sm shadow-md py-3'
-            : 'bg-white py-4'
+            ? 'bg-white/95 backdrop-blur-sm shadow-md py-2'
+            : 'bg-white py-3'
         )}
       >
         <div className="container-custom flex items-center justify-between">
@@ -150,7 +150,7 @@ export function Navbar() {
       </div>
 
       {/* Spacer for fixed navbar */}
-      <div className="h-16 md:h-20" />
+      <div className="h-14 md:h-16" />
     </>
   );
 }
