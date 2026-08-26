@@ -2,7 +2,7 @@
 
 ## Resumen
 
-Sitio web corporativo profesional para SERVITEK, empresa paraguasa de ingeniería eléctrica, electromecánica y servicios industriales.
+Sitio web corporativo profesional para SERVITEK, empresa paraguaya de ingeniería eléctrica, electromecánica y servicios industriales.
 
 ---
 
@@ -41,7 +41,6 @@ servitek-web/
 │   │   ├── proyectos/page.tsx
 │   │   ├── contacto/page.tsx
 │   │   ├── politica-de-privacidad/page.tsx
-│   │   ├── terminos-y-condiciones/page.tsx
 │   │   ├── loading.tsx         # Loading global
 │   │   ├── error.tsx           # Error boundary global
 │   │   └── not-found.tsx       # 404 personalizada
@@ -59,7 +58,6 @@ servitek-web/
 │   │
 │   ├── data/                   # CONTENIDO CENTRALIZADO
 │   │   ├── company.ts          # Datos de la empresa
-│   │   ├── company-content.ts  # Contenido Nosotros, propuesta de valor
 │   │   ├── navigation.ts       # Menú de navegación
 │   │   ├── services.ts         # Servicios
 │   │   ├── sectors.ts          # Sectores
@@ -100,7 +98,6 @@ servitek-web/
 ├── ARCHITECTURE.md             # Este archivo
 ├── CONTENT_GUIDE.md            # Guía de edición de contenido
 ├── README.md                   # Documentación del proyecto
-├── next-sitemap.config.js      # Configuración de sitemap
 ├── next.config.ts
 ├── tailwind.config.ts
 ├── tsconfig.json
@@ -194,7 +191,6 @@ servitek-web/
 | `/proyectos` | Proyectos | Portafolio de proyectos |
 | `/contacto` | Contacto | Formulario de contacto |
 | `/politica-de-privacidad` | Política de Privacidad | Política de privacidad y datos |
-| `/terminos-y-condiciones` | Términos y Condiciones | Términos y condiciones de uso |
 
 ---
 
@@ -551,7 +547,7 @@ Se inyecta en `src/app/layout.tsx` condicionalmente:
 
 ### Eventos Trackeados
 
-| Evento | Descripción | Disparador |
+| Evento | Descripción |触发 |
 |--------|-------------|------|
 | `page_view` | Vista de página | Automático |
 | `whatsapp_click` | Clic en botón WhatsApp | `WhatsAppButton` |
@@ -764,24 +760,50 @@ Esto permite mostrar loaders específicos por sección sin afectar al resto de l
 
 ---
 
-## Compatibilidad con Vercel
+## Despliegue en Cloudflare Pages
+
+### Decisión de arquitectura
+
+**Cloudflare Pages** en vez de Vercel o GitHub Pages.
+
+**Motivo:** Tanto el plan gratuito de Vercel (Hobby) como GitHub Pages restringen en sus propios términos de uso el alojamiento de sitios comerciales/de empresa. Vercel Hobby es "solo proyectos personales no comerciales" y GitHub Pages dice explícitamente que no está permitido para alojar el sitio de un negocio. Cloudflare Pages sí permite uso comercial en su plan gratuito, con ancho de banda ilimitado.
+
+### Configuración técnica
+
+- **output: 'export'** en `next.config.ts` — genera el sitio 100% estático en build
+- **images: { unoptimized: true }** — Cloudflare Pages free no tiene servicio de optimización on-demand
+- **CERO route handlers** — con export estático no funcionan endpoints de servidor
+- **generateStaticParams()** — páginas de detalle generadas en build time
 
 ### Checklist de despliegue
 
-- [ ] Sin backend propio (todo es estático/SSR en edge)
-- [ ] Sin dependencias que requieran servidor persistente
-- [ ] Variables de entorno compatibles con Vercel
-- [ ] `next.config.ts` optimizado para Vercel
-- [ ] Imágenes optimizadas con Next.js Image
-- [ ] Sitemap generado con next-sitemap (compatible con Vercel)
-- [ ] Analytics con variables de entorno `NEXT_PUBLIC_*`
-- [ ] Formulario funciona sin backend (WhatsApp)
+- [x] Output estático (`output: 'export'`)
+- [x] Imágenes sin optimización on-demand
+- [x] Sin endpoints de servidor (sin carpetas `src/app/api/`)
+- [x] `generateStaticParams()` en páginas dinámicas
+- [x] Variables de entorno `NEXT_PUBLIC_*`
+- [x] Formulario 100% cliente (WhatsApp)
+- [x] Sitemap generado con next-sitemap (compatible)
 
-### Variables de entorno para Vercel
+### Instrucciones de despliegue
+
+1. Conectar repositorio de GitHub en el dashboard de Cloudflare Pages
+2. Configurar build:
+   - **Build command:** `npm run build`
+   - **Build output directory:** `out`
+   - **Node.js version:** 18+
+3. Variables de entorno en Cloudflare Dashboard:
 
 ```env
 NEXT_PUBLIC_SITE_URL=https://servitek.com.py
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
 
-Todas las variables son `NEXT_PUBLIC_*` o se usan en tiempo de build, compatibles con Vercel Edge.
+4. Dominio personalizado vía Cloudflare DNS (recomendado si el dominio ya está en Cloudflare)
+
+### Limitaciones del plan gratuito
+
+- Ancho de banda: **ilimitado**
+- Builds: 500 por mes
+- Functions: No disponibles en plan gratuito (no las necesitamos)
+- Imágenes: Sin optimización on-demand (optimizar manualmente antes de subir)

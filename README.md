@@ -8,6 +8,8 @@ Sitio web profesional para SERVITEK, empresa paraguaya de ingeniería eléctrica
 - **TypeScript** - Type safety
 - **Tailwind CSS** - Utility-first CSS
 - **Lucide React** - Iconografía
+- **React Hook Form + Zod** - Formularios y validación
+- **next-sitemap** - Generación de sitemap
 
 ## Instalación
 
@@ -30,11 +32,12 @@ Abrir [http://localhost:3000](http://localhost:3000)
 ## Scripts Disponibles
 
 ```bash
-npm run dev      # Desarrollo local
-npm run build    # Build de producción
-npm run start    # Iniciar servidor de producción
-npm run lint     # Verificar código
-npm run format   # Formatear código
+npm run dev        # Desarrollo local
+npm run build      # Build estático (export)
+npm run start      # Servir build localmente
+npm run lint       # Verificar código
+npm run format     # Formatear código
+npm run postbuild  # Generar sitemap
 ```
 
 ## Estructura del Proyecto
@@ -58,10 +61,12 @@ Editar `src/data/company.ts`:
 ```typescript
 export const company = {
   name: "SERVITEK",
+  legalName: "SERVITEK E.A.S.",
+  ruc: "80176311-8",
   contact: {
-    phone: "+595XXXXXXXX",
-    whatsapp: "+595XXXXXXXX",
-    email: "info@servitek.com.py",
+    phone: "+595981118743",
+    whatsapp: "+595981118743",
+    email: "servitek.py@gmail.com",
   }
 }
 ```
@@ -82,6 +87,10 @@ Editar `src/data/projects.ts`
 
 Editar `src/data/navigation.ts`
 
+### Cambiar contenido de "Nosotros"
+
+Editar `src/data/company-content.ts`
+
 **Nota:** Todo el contenido está en `src/data/`. No es necesario tocar componentes.
 
 ## Cómo Cambiar Imágenes
@@ -93,7 +102,7 @@ Editar `src/data/navigation.ts`
 
 ```
 /public/images/
-├── logo/       # Logos
+├── logo/       # Logos optimizados
 ├── hero/       # Hero principal
 ├── services/   # Servicios
 ├── sectors/    # Sectores
@@ -101,34 +110,59 @@ Editar `src/data/navigation.ts`
 └── company/    # Institucional
 ```
 
+**Importante:** Las imágenes se optimizan manualmente antes de subir (WebP, tamaño correcto) ya que Cloudflare Pages free no tiene optimización on-demand.
+
 ## Cómo Cambiar el WhatsApp
 
 Editar **solo** en `src/data/company.ts`:
 
 ```typescript
 contact: {
-  whatsapp: "+595XXXXXXXX",  // ← Cambiar aquí
+  whatsapp: "+595981118743",  // ← Cambiar aquí
 }
 ```
 
 No tocar ningún otro archivo.
 
-## Despliegue en Vercel
+## Despliegue en Cloudflare Pages
+
+### Por qué Cloudflare Pages
+
+El plan gratuito de Vercel (Hobby) restringe sitios comerciales. Cloudflare Pages permite uso comercial con ancho de banda ilimitado.
+
+### Pasos
 
 1. Subir repositorio a GitHub
-2. Conectar repositorio en Vercel
-3. Deploy automático
+2. Conectar repositorio en [Cloudflare Pages](https://dash.cloudflare.com/)
+3. Configurar build:
+   - **Build command:** `npm run build`
+   - **Build output directory:** `out`
+   - **Node.js version:** 18+
+4. Variables de entorno en Cloudflare Dashboard:
 
-### Variables de entorno (opcional)
+```env
+NEXT_PUBLIC_SITE_URL=https://servitek.com.py
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
 
-Copiar `.env.example` a `.env` y configurar si es necesario.
+5. Dominio personalizado vía Cloudflare DNS
+
+### Variables de entorno
+
+Copiar `.env.example` a `.env` para desarrollo local:
+
+```env
+NEXT_PUBLIC_SITE_URL=https://servitek.com.py
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX  # Opcional
+```
 
 ## SEO
 
 - Título: Editar en `src/app/layout.tsx`
 - Meta description: Editar en `src/app/layout.tsx`
-- Sitemap: `public/sitemap.xml`
-- Robots: `public/robots.txt`
+- Sitemap: Generado automáticamente con `next-sitemap`
+- Robots: Generado automáticamente con `next-sitemap`
+- Schema.org: Configurado en `src/lib/schema.ts`
 
 ## Accesibilidad
 
@@ -136,6 +170,7 @@ Copiar `.env.example` a `.env` y configurar si es necesario.
 - Alt text en imágenes
 - Focus states visibles
 - Navegación por teclado
+- Respeto a `prefers-reduced-motion`
 
 ## Soporte
 

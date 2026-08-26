@@ -26,6 +26,11 @@
   * {
     @apply border-border;
   }
+
+  /* Focus visible para accesibilidad */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
 }
 
 @layer components {
@@ -34,19 +39,94 @@
   }
 
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-16 md:py-24 lg:py-32;
   }
 
   .heading-primary {
-    @apply text-h2 md:text-display font-bold text-primary;
+    @apply text-h2 lg:text-h1 font-bold text-primary tracking-tight;
   }
 
   .heading-secondary {
-    @apply text-h3 md:text-h2 font-bold text-primary;
+    @apply text-h3 lg:text-h2 font-bold text-primary;
   }
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Firma visual SERVITEK - Línea de referencia de ingeniería */
+  .signature-line {
+    @apply relative;
+  }
+
+  .signature-line::before {
+    content: '';
+    @apply absolute left-0 top-0 h-full w-px bg-gradient-to-b from-accent via-primary to-transparent;
+  }
+
+  /* Estilo para datos técnicos / specs */
+  .data-technical {
+    @apply font-mono text-sm tracking-wide;
+  }
+
+  /* Estilo para labels de ingeniería */
+  .label-engineering {
+    @apply font-mono text-xs uppercase tracking-widest text-text-muted;
+  }
+
+  /* Tarjeta industrial */
+  .card-industrial {
+    @apply bg-white border border-border rounded-lg shadow-card transition-all duration-300 hover:shadow-card-hover hover:border-border-dark;
+  }
+
+  /* Botón primario */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-accent text-white font-medium rounded-md transition-all duration-200 hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
+  }
+
+  /* Botón secundario */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-medium rounded-md transition-all duration-200 hover:bg-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  /* Botón outline */
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-primary text-primary font-medium rounded-md transition-all duration-200 hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  /* Indicador de confianza */
+  .trust-indicator {
+    @apply flex flex-col items-center text-center p-4;
+  }
+
+  .trust-indicator-value {
+    @apply text-stat font-bold text-primary;
+  }
+
+  .trust-indicator-label {
+    @apply label-engineering mt-1;
+  }
+
+  /* Scroll reveal animation */
+  .scroll-reveal {
+    @apply opacity-0;
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .scroll-reveal-delay-1 {
+    animation-delay: 0.1s;
+  }
+
+  .scroll-reveal-delay-2 {
+    animation-delay: 0.2s;
+  }
+
+  .scroll-reveal-delay-3 {
+    animation-delay: 0.3s;
+  }
+
+  .scroll-reveal-delay-4 {
+    animation-delay: 0.4s;
   }
 }
 
@@ -81,5 +161,22 @@
 
   .border-accent {
     border-color: rgb(var(--accent));
+  }
+}
+
+/* Respetar prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .scroll-reveal {
+    @apply opacity-100;
+    animation: none;
   }
 }

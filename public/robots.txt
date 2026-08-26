@@ -1,4 +1,9 @@
+# *
 User-agent: *
 Allow: /
 
+# Host
+Host: https://servitek.com.py
+
+# Sitemaps
 Sitemap: https://servitek.com.py/sitemap.xml
