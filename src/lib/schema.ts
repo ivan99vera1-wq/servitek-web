@@ -26,7 +26,8 @@ export function generateOrganizationSchema() {
       addressLocality: 'Asunción',
       addressCountry: 'PY',
     },
-    sameAs: Object.values(company.social).filter(Boolean),
+    // TODO: Confirmar URLs reales de redes sociales antes de publicar
+    sameAs: [],
   };
 }
 
@@ -49,6 +50,7 @@ export function generateLocalBusinessSchema() {
       addressLocality: 'Asunción',
       addressCountry: 'PY',
     },
+    // TODO: Reemplazar con coordenadas reales de la oficina de SERVITEK
     geo: {
       '@type': 'GeoCoordinates',
       latitude: -25.2637,
