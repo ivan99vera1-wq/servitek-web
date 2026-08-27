@@ -187,8 +187,10 @@ servitek-web/
 | `/servicios/motores-bombas-hvac` | Servicio 3 | Motores, Bombas y HVAC |
 | `/servicios/infraestructura-electrica-respaldo` | Servicio 4 | Infraestructura y Respaldo |
 | `/sectores` | Sectores | Sectores industriales |
+| `/sectores/[slug]` | Sector individual | Detalle de sector: problemas, soluciones y servicios relacionados |
 | `/nosotros` | Nosotros | Página institucional |
 | `/proyectos` | Proyectos | Portafolio de proyectos |
+| `/proyectos/[slug]` | Proyecto individual | Detalle de proyecto con sidebar de información |
 | `/contacto` | Contacto | Formulario de contacto |
 | `/politica-de-privacidad` | Política de Privacidad | Política de privacidad y datos |
 

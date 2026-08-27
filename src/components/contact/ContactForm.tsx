@@ -15,6 +15,7 @@ const contactFormSchema = z.object({
   city: z.string().min(2, 'Ciudad requerida'),
   serviceType: z.string().min(1, 'Seleccione un servicio'),
   message: z.string().min(10, 'Mensaje requerido'),
+  privacy: z.boolean().refine((val) => val === true, 'Debes aceptar la Política de Privacidad'),
   honeypot: z.string().max(0, 'Campo honeypot detectado'),
 });
 
@@ -29,6 +30,7 @@ export function ContactForm() {
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
       honeypot: '',
+      privacy: false,
     },
   });
 
@@ -171,16 +173,20 @@ ${data.message}`;
         <input
           type="checkbox"
           id="privacy"
-          required
+          {...register('privacy')}
           className="mt-1"
         />
         <label htmlFor="privacy">
           Al enviar aceptas la{' '}
           <a href="/politica-de-privacidad" className="text-primary hover:underline">
             Política de Privacidad
-          </a>
+          </a>{' '}
+          *
         </label>
       </div>
+      {errors.privacy && (
+        <p className="text-sm text-accent">{errors.privacy.message}</p>
+      )}
 
       <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
         {isSubmitting ? 'Enviando...' : 'ENVIAR POR WHATSAPP'}

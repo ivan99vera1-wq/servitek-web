@@ -13,12 +13,23 @@ export function ScrollReveal({ children, className, delay = 0 }: ScrollRevealPro
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    let fired = false;
+
+    const show = () => {
+      if (fired) return;
+      fired = true;
+      element.classList.add('opacity-100');
+      element.classList.remove('opacity-0', 'translate-y-6');
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('opacity-100');
-            entry.target.classList.remove('opacity-0', 'translate-y-6');
+            show();
             observer.unobserve(entry.target);
           }
         });
@@ -26,11 +37,15 @@ export function ScrollReveal({ children, className, delay = 0 }: ScrollRevealPro
       { threshold: 0.1 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    observer.observe(element);
 
-    return () => observer.disconnect();
+    // Fallback: si IntersectionObserver no dispara en 1.5s, mostrar contenido
+    const fallback = setTimeout(show, 1500);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallback);
+    };
   }, []);
 
   return (
