@@ -38,7 +38,6 @@ export default function SectorPage({ params }: SectorPageProps) {
     notFound();
   }
 
-  // Servicios relacionados (tomamos los primeros 3)
   const relatedServices = services.slice(0, 3);
 
   return (
@@ -55,31 +54,31 @@ export default function SectorPage({ params }: SectorPageProps) {
         ]}
       />
 
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-[#061321]">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contenido principal */}
             <ScrollReveal>
               <div>
-                <span className="label-engineering text-accent">SECTOR INDUSTRIAL</span>
-                <h2 className="mt-2 text-h3 font-bold text-primary">{sector.title}</h2>
-                <p className="mt-4 text-lg text-text-muted leading-relaxed">
+                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">SECTOR INDUSTRIAL</span>
+                <h2 className="mt-2 text-h3 font-bold text-white">{sector.title}</h2>
+                <p className="mt-4 text-lg text-white/55 leading-relaxed">
                   {sector.description}
                 </p>
 
                 {/* Problemas comunes */}
                 <div className="mt-8">
                   <div className="flex items-center gap-2 mb-4">
-                    <AlertTriangle className="h-5 w-5 text-accent" />
-                    <h3 className="text-h4 font-semibold text-primary">
+                    <AlertTriangle className="h-5 w-5 text-blue" />
+                    <h3 className="text-h4 font-semibold text-white">
                       Problemas comunes en este sector
                     </h3>
                   </div>
                   <ul className="space-y-3">
                     {sector.problems.map((problem) => (
                       <li key={problem} className="flex items-start gap-3">
-                        <span className="text-accent mt-1">•</span>
-                        <span className="text-text-muted">{problem}</span>
+                        <span className="text-blue mt-1">•</span>
+                        <span className="text-white/50">{problem}</span>
                       </li>
                     ))}
                   </ul>
@@ -95,15 +94,15 @@ export default function SectorPage({ params }: SectorPageProps) {
 
             {/* Soluciones */}
             <ScrollReveal delay={200}>
-              <div className="bg-surface rounded-lg p-8">
-                <h3 className="text-h4 font-semibold text-primary mb-6">
+              <div className="card-dark p-8">
+                <h3 className="text-h4 font-semibold text-white mb-6">
                   Soluciones SERVITEK para este sector
                 </h3>
                 <ul className="space-y-4">
                   {sector.solutions.map((solution) => (
                     <li key={solution} className="flex items-start gap-3">
-                      <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                      <span className="text-text-muted">{solution}</span>
+                      <CheckCircle className="h-5 w-5 text-blue shrink-0 mt-0.5" />
+                      <span className="text-white/50">{solution}</span>
                     </li>
                   ))}
                 </ul>
@@ -113,8 +112,8 @@ export default function SectorPage({ params }: SectorPageProps) {
 
           {/* Servicios relacionados */}
           <ScrollReveal>
-            <div className="mt-16 pt-12 border-t border-border">
-              <h3 className="text-h4 font-semibold text-primary mb-8">
+            <div className="mt-16 pt-12 border-t border-white/[0.06]">
+              <h3 className="text-h4 font-semibold text-white mb-8">
                 Servicios relacionados
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -122,17 +121,17 @@ export default function SectorPage({ params }: SectorPageProps) {
                   <Link
                     key={service.id}
                     href={`/servicios/${service.slug}`}
-                    className="card-industrial block p-6 group"
+                    className="card-dark block p-6 group"
                   >
-                    <h4 className="text-lg font-semibold text-primary group-hover:text-accent transition-colors">
+                    <h4 className="text-lg font-semibold text-white group-hover:text-blue transition-colors">
                       {service.title}
                     </h4>
-                    <p className="mt-2 text-sm text-text-muted line-clamp-2">
+                    <p className="mt-2 text-sm text-white/40 line-clamp-2">
                       {service.description}
                     </p>
-                    <div className="mt-4 inline-flex items-center text-sm font-medium text-primary group-hover:text-accent transition-colors">
+                    <div className="mt-4 inline-flex items-center text-sm font-medium text-white/60 group-hover:text-blue transition-colors">
                       Conocer servicio
-                      <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="ml-1.5 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </Link>
                 ))}
@@ -143,19 +142,29 @@ export default function SectorPage({ params }: SectorPageProps) {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-primary text-white">
-        <div className="container-custom">
+      <section className="section-padding bg-[#061321] relative">
+        <div className="absolute inset-0 opacity-[0.02]">
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+              <pattern id="sector-cta-grid" width="8" height="8" patternUnits="userSpaceOnUse">
+                <path d="M 8 0 L 0 0 0 8" fill="none" stroke="white" strokeWidth="0.3"/>
+              </pattern>
+            </defs>
+            <rect width="100" height="100" fill="url(#sector-cta-grid)" />
+          </svg>
+        </div>
+        <div className="container-custom relative z-10">
           <ScrollReveal>
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-h2 lg:text-h1 font-bold text-white">
                 ¿Necesita una solución para su sector?
               </h2>
-              <p className="mt-6 text-lg text-white/80">
+              <p className="mt-6 text-lg text-white/50">
                 Cuéntanos sobre las necesidades de su operación y le propondremos
                 la solución técnica adecuada.
               </p>
               <div className="mt-8">
-                <Button href="/contacto" size="lg" className="bg-white text-primary hover:bg-white/90">
+                <Button href="/contacto" size="lg" className="bg-white text-navy hover:bg-white/90">
                   SOLICITAR EVALUACIÓN
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>

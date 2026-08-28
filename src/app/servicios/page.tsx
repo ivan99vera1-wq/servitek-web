@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import { PageHero } from '@/components/ui/PageHero';
 import { ServiceCard } from '@/components/services/ServiceCard';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { SectionHeader } from '@/components/ui/SectionHeader';
 import { services } from '@/data/services';
 import { generatePageMetadata } from '@/lib/seo';
 
@@ -21,12 +20,16 @@ export default function ServiciosPage() {
       />
 
       {/* Introducción */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-[#061321]">
         <div className="container-custom">
           <ScrollReveal>
             <div className="max-w-3xl mx-auto text-center mb-16">
-              <span className="label-engineering text-accent">ENFOQUE TÉCNICO</span>
-              <p className="mt-4 text-lg text-text-muted leading-relaxed">
+              <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">
+                <span className="w-8 h-[1px] bg-blue" />
+                ENFOQUE TÉCNICO
+                <span className="w-8 h-[1px] bg-blue" />
+              </span>
+              <p className="mt-6 text-lg text-white/50 leading-relaxed">
                 Cada servicio está diseñado para resolver problemas reales de la industria paraguaya.
                 Desde diagnóstico preciso hasta puesta en marcha, nuestro equipo especializado
                 garantiza la continuidad operativa de su planta industrial.
@@ -35,7 +38,7 @@ export default function ServiciosPage() {
           </ScrollReveal>
 
           {/* Servicios */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {services.map((service) => (
               <ServiceCard key={service.id} service={service} />
             ))}
@@ -44,13 +47,22 @@ export default function ServiciosPage() {
       </section>
 
       {/* Proceso de trabajo */}
-      <section className="section-padding bg-surface">
+      <section className="section-padding bg-[#0A1F35]">
         <div className="container-custom">
           <ScrollReveal>
-            <SectionHeader
-              title="Nuestro proceso de trabajo"
-              subtitle="Cada proyecto sigue un proceso estructurado que garantiza resultados confiables."
-            />
+            <div className="mb-12 md:mb-16 text-center">
+              <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">
+                <span className="w-8 h-[1px] bg-blue" />
+                PROCESO
+                <span className="w-8 h-[1px] bg-blue" />
+              </span>
+              <h2 className="mt-6 text-h2 lg:text-h1 font-bold text-white text-balance">
+                Nuestro proceso de trabajo
+              </h2>
+              <p className="mt-4 text-lg text-white/50 max-w-3xl mx-auto">
+                Cada proyecto sigue un proceso estructurado que garantiza resultados confiables.
+              </p>
+            </div>
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -62,11 +74,11 @@ export default function ServiciosPage() {
             ].map((item) => (
               <ScrollReveal key={item.step} delay={parseInt(item.step) * 100}>
                 <div className="text-center md:text-left">
-                  <span className="font-mono text-4xl font-bold text-accent">
+                  <span className="font-mono text-4xl font-bold text-blue/25">
                     {item.step}
                   </span>
-                  <h3 className="mt-4 text-lg font-semibold text-primary">{item.title}</h3>
-                  <p className="mt-2 text-sm text-text-muted">{item.description}</p>
+                  <h3 className="mt-4 text-lg font-semibold text-white">{item.title}</h3>
+                  <p className="mt-2 text-sm text-white/45 leading-relaxed">{item.description}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -75,21 +87,31 @@ export default function ServiciosPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-primary text-white">
-        <div className="container-custom">
+      <section className="section-padding bg-[#061321] relative">
+        <div className="absolute inset-0 opacity-[0.02]">
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+              <pattern id="svc-cta-grid" width="8" height="8" patternUnits="userSpaceOnUse">
+                <path d="M 8 0 L 0 0 0 8" fill="none" stroke="white" strokeWidth="0.3"/>
+              </pattern>
+            </defs>
+            <rect width="100" height="100" fill="url(#svc-cta-grid)" />
+          </svg>
+        </div>
+        <div className="container-custom relative z-10">
           <ScrollReveal>
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-h2 lg:text-h1 font-bold text-white">
                 ¿Necesita una solución técnica?
               </h2>
-              <p className="mt-6 text-lg text-white/80">
+              <p className="mt-6 text-lg text-white/50">
                 Cuéntanos qué necesita su operación y nuestro equipo podrá evaluar
                 la solución adecuada.
               </p>
               <div className="mt-8">
                 <a
                   href="/contacto"
-                  className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-md bg-accent text-white hover:bg-accent-hover transition-all duration-200"
+                  className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-md bg-blue text-white hover:bg-blue-bright transition-all duration-200 hover:shadow-[0_0_30px_rgba(8,120,249,0.25)]"
                 >
                   SOLICITAR PRESUPUESTO
                 </a>

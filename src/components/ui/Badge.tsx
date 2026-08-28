@@ -9,9 +9,9 @@ interface BadgeProps {
 }
 
 const variantStyles: Record<BadgeVariant, string> = {
-  default: 'bg-surface text-text',
-  primary: 'bg-primary/10 text-primary',
-  accent: 'bg-accent/10 text-accent',
+  default: 'bg-white/5 text-white/60',
+  primary: 'bg-blue/10 text-blue',
+  accent: 'bg-blue/10 text-blue',
 };
 
 export function Badge({ children, variant = 'default', className }: BadgeProps) {

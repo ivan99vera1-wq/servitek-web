@@ -57,105 +57,105 @@ ${data.message}`;
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-text mb-2">
+        <label htmlFor="name" className="block text-sm font-medium text-white/70 mb-2">
           Nombre completo *
         </label>
         <input
           type="text"
           id="name"
           {...register('name')}
-          className="w-full px-4 py-3 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition-colors"
           placeholder="Su nombre"
         />
         {errors.name && (
-          <p className="mt-1 text-sm text-accent">{errors.name.message}</p>
+          <p className="mt-1 text-sm text-blue">{errors.name.message}</p>
         )}
       </div>
 
       <div>
-        <label htmlFor="company" className="block text-sm font-medium text-text mb-2">
+        <label htmlFor="company" className="block text-sm font-medium text-white/70 mb-2">
           Empresa *
         </label>
         <input
           type="text"
           id="company"
           {...register('company')}
-          className="w-full px-4 py-3 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition-colors"
           placeholder="Nombre de la empresa"
         />
         {errors.company && (
-          <p className="mt-1 text-sm text-accent">{errors.company.message}</p>
+          <p className="mt-1 text-sm text-blue">{errors.company.message}</p>
         )}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-text mb-2">
+          <label htmlFor="phone" className="block text-sm font-medium text-white/70 mb-2">
             Teléfono *
           </label>
           <input
             type="tel"
             id="phone"
             {...register('phone')}
-            className="w-full px-4 py-3 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition-colors"
             placeholder="0981 118743"
           />
           {errors.phone && (
-            <p className="mt-1 text-sm text-accent">{errors.phone.message}</p>
+            <p className="mt-1 text-sm text-blue">{errors.phone.message}</p>
           )}
         </div>
 
         <div>
-          <label htmlFor="city" className="block text-sm font-medium text-text mb-2">
+          <label htmlFor="city" className="block text-sm font-medium text-white/70 mb-2">
             Ciudad *
           </label>
           <input
             type="text"
             id="city"
             {...register('city')}
-            className="w-full px-4 py-3 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition-colors"
             placeholder="Asunción"
           />
           {errors.city && (
-            <p className="mt-1 text-sm text-accent">{errors.city.message}</p>
+            <p className="mt-1 text-sm text-blue">{errors.city.message}</p>
           )}
         </div>
       </div>
 
       <div>
-        <label htmlFor="serviceType" className="block text-sm font-medium text-text mb-2">
+        <label htmlFor="serviceType" className="block text-sm font-medium text-white/70 mb-2">
           Tipo de servicio *
         </label>
         <select
           id="serviceType"
           {...register('serviceType')}
-          className="w-full px-4 py-3 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition-colors"
         >
-          <option value="">Seleccione un servicio</option>
+          <option value="" className="bg-navy">Seleccione un servicio</option>
           {serviceOptions.map((option) => (
-            <option key={option} value={option}>
+            <option key={option} value={option} className="bg-navy">
               {option}
             </option>
           ))}
         </select>
         {errors.serviceType && (
-          <p className="mt-1 text-sm text-accent">{errors.serviceType.message}</p>
+          <p className="mt-1 text-sm text-blue">{errors.serviceType.message}</p>
         )}
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-text mb-2">
+        <label htmlFor="message" className="block text-sm font-medium text-white/70 mb-2">
           Mensaje *
         </label>
         <textarea
           id="message"
           {...register('message')}
           rows={4}
-          className="w-full px-4 py-3 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition-colors resize-none"
           placeholder="Describa su necesidad técnica..."
         />
         {errors.message && (
-          <p className="mt-1 text-sm text-accent">{errors.message.message}</p>
+          <p className="mt-1 text-sm text-blue">{errors.message.message}</p>
         )}
       </div>
 
@@ -169,30 +169,30 @@ ${data.message}`;
         aria-hidden="true"
       />
 
-      <div className="flex items-start gap-2 text-sm text-text-muted">
+      <div className="flex items-start gap-2 text-sm text-white/45">
         <input
           type="checkbox"
           id="privacy"
           {...register('privacy')}
-          className="mt-1"
+          className="mt-1 accent-blue"
         />
         <label htmlFor="privacy">
           Al enviar aceptas la{' '}
-          <a href="/politica-de-privacidad" className="text-primary hover:underline">
+          <a href="/politica-de-privacidad" className="text-blue hover:underline">
             Política de Privacidad
           </a>{' '}
           *
         </label>
       </div>
       {errors.privacy && (
-        <p className="text-sm text-accent">{errors.privacy.message}</p>
+        <p className="text-sm text-blue">{errors.privacy.message}</p>
       )}
 
       <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
         {isSubmitting ? 'Enviando...' : 'ENVIAR POR WHATSAPP'}
       </Button>
 
-      <p className="text-xs text-text-muted text-center">
+      <p className="text-xs text-white/30 text-center">
         El formulario enviará los datos por WhatsApp a nuestro equipo técnico.
       </p>
     </form>

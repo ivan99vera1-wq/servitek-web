@@ -4,18 +4,18 @@
   "description": "Soluciones de ingeniería eléctrica y electromecánica en Paraguay",
   "icons": [
     {
-      "src": "/icon-192x192.png",
+      "src": "/logo-s.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/icon-512x512.png",
+      "src": "/logo-s.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
-  "theme_color": "#0B2342",
-  "background_color": "#FFFFFF",
+  "theme_color": "#061321",
+  "background_color": "#061321",
   "display": "standalone",
   "scope": "/",
   "start_url": "/"

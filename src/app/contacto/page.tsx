@@ -18,7 +18,7 @@ export default function ContactoPage() {
         subtitle="Cuéntanos qué necesita tu operación y nuestro equipo podrá evaluar la solución adecuada."
       />
 
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-[#061321]">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <ContactForm />

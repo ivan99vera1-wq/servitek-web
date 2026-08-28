@@ -69,24 +69,24 @@ export default function ServicePage({ params }: ServicePageProps) {
         ]}
       />
 
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-[#061321]">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contenido principal */}
             <ScrollReveal>
               <div>
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="p-4 bg-primary/10 text-primary rounded-lg">
+                  <div className="p-4 bg-blue/10 text-blue rounded-lg">
                     {iconMap[service.icon] || <Zap className="h-12 w-12" />}
                   </div>
                   <div>
-                    <span className="label-engineering text-accent">UNIDAD DE NEGOCIO</span>
-                    <h2 className="text-h3 font-bold text-primary">{service.title}</h2>
+                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">UNIDAD DE NEGOCIO</span>
+                    <h2 className="text-h3 font-bold text-white">{service.title}</h2>
                   </div>
                 </div>
 
                 {service.fullDescription && (
-                  <p className="text-lg text-text-muted leading-relaxed">
+                  <p className="text-lg text-white/55 leading-relaxed">
                     {service.fullDescription}
                   </p>
                 )}
@@ -95,16 +95,16 @@ export default function ServicePage({ params }: ServicePageProps) {
                 {service.problemsSolved && service.problemsSolved.length > 0 && (
                   <div className="mt-8">
                     <div className="flex items-center gap-2 mb-4">
-                      <AlertTriangle className="h-5 w-5 text-accent" />
-                      <h3 className="text-h4 font-semibold text-primary">
+                      <AlertTriangle className="h-5 w-5 text-blue" />
+                      <h3 className="text-h4 font-semibold text-white">
                         Problemas que resolvemos
                       </h3>
                     </div>
                     <ul className="space-y-3">
                       {service.problemsSolved.map((problem) => (
                         <li key={problem} className="flex items-start gap-3">
-                          <span className="text-accent mt-1">•</span>
-                          <span className="text-text-muted">{problem}</span>
+                          <span className="text-blue mt-1">•</span>
+                          <span className="text-white/50">{problem}</span>
                         </li>
                       ))}
                     </ul>
@@ -123,15 +123,15 @@ export default function ServicePage({ params }: ServicePageProps) {
             <div className="space-y-8">
               {/* Soluciones */}
               <ScrollReveal delay={200}>
-                <div className="bg-surface rounded-lg p-8">
-                  <h3 className="text-h4 font-semibold text-primary mb-6">
+                <div className="card-dark p-8">
+                  <h3 className="text-h4 font-semibold text-white mb-6">
                     Soluciones que ofrecemos
                   </h3>
                   <ul className="space-y-4">
                     {service.solutions.map((solution) => (
                       <li key={solution} className="flex items-start gap-3">
-                        <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                        <span className="text-text-muted">{solution}</span>
+                        <CheckCircle className="h-5 w-5 text-blue shrink-0 mt-0.5" />
+                        <span className="text-white/50">{solution}</span>
                       </li>
                     ))}
                   </ul>
@@ -141,9 +141,9 @@ export default function ServicePage({ params }: ServicePageProps) {
               {/* Alcance técnico */}
               {service.technicalScope && service.technicalScope.length > 0 && (
                 <ScrollReveal delay={300}>
-                  <div className="bg-primary text-white rounded-lg p-8">
+                  <div className="bg-[#0A1F35] text-white rounded-[14px] p-8 border border-white/[0.08]">
                     <div className="flex items-center gap-2 mb-6">
-                      <Settings className="h-5 w-5 text-accent" />
+                      <Settings className="h-5 w-5 text-blue" />
                       <h3 className="text-h4 font-semibold">
                         Alcance técnico
                       </h3>
@@ -151,8 +151,8 @@ export default function ServicePage({ params }: ServicePageProps) {
                     <ul className="space-y-3">
                       {service.technicalScope.map((item) => (
                         <li key={item} className="flex items-start gap-3">
-                          <span className="text-accent font-mono text-sm mt-0.5">→</span>
-                          <span className="text-white/80">{item}</span>
+                          <span className="text-blue font-mono text-sm mt-0.5">→</span>
+                          <span className="text-white/65">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -165,15 +165,15 @@ export default function ServicePage({ params }: ServicePageProps) {
           {/* Clientes */}
           {service.clients && service.clients.length > 0 && (
             <ScrollReveal>
-              <div className="mt-16 pt-12 border-t border-border">
-                <h3 className="text-h4 font-semibold text-primary mb-6">
+              <div className="mt-16 pt-12 border-t border-white/[0.06]">
+                <h3 className="text-h4 font-semibold text-white mb-6">
                   Sectores que atendemos
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   {service.clients.map((client) => (
                     <span
                       key={client}
-                      className="px-4 py-2 bg-surface text-text rounded-full text-sm"
+                      className="px-4 py-2 bg-white/5 text-white/60 rounded-full text-sm"
                     >
                       {client}
                     </span>

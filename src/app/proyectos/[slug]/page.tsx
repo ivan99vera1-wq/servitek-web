@@ -51,12 +51,12 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         ]}
       />
 
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-[#061321]">
         <div className="container-custom">
           {/* Nota sobre proyecto demo */}
-          <div className="bg-surface border border-border rounded-lg p-6 mb-8">
-            <p className="text-sm text-text-muted">
-              <strong className="text-text">Nota:</strong> Este es un proyecto de ejemplo.
+          <div className="card-dark p-6 mb-8">
+            <p className="text-sm text-white/40">
+              <strong className="text-white/60">Nota:</strong> Este es un proyecto de ejemplo.
               SERVITEK está preparando su portafolio de proyectos reales.
             </p>
           </div>
@@ -65,29 +65,30 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             {/* Contenido principal */}
             <div className="lg:col-span-2">
               <ScrollReveal>
-                <span className="label-engineering text-accent">PROYECTO</span>
-                <h2 className="mt-2 text-h3 font-bold text-primary">{project.title}</h2>
+                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">PROYECTO</span>
+                <h2 className="mt-2 text-h3 font-bold text-white">{project.title}</h2>
 
-                <div className="mt-4 flex flex-wrap gap-4 text-sm text-text-muted">
+                <div className="mt-4 flex flex-wrap gap-4 text-sm text-white/40">
                   <div className="flex items-center gap-1">
-                    <MapPin className="h-4 w-4" />
+                    <MapPin className="h-4 w-4 text-blue/50" />
                     {project.location}
                   </div>
                   <div className="flex items-center gap-1">
-                    <Calendar className="h-4 w-4" />
+                    <Calendar className="h-4 w-4 text-blue/50" />
                     {project.year}
                   </div>
                 </div>
 
-                <p className="mt-6 text-lg text-text-muted leading-relaxed">
+                <p className="mt-6 text-lg text-white/50 leading-relaxed">
                   {project.description}
                 </p>
 
                 {/* Placeholder para imagen */}
-                <div className="mt-8 h-64 bg-gradient-to-br from-primary to-primary-light rounded-lg flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <span className="label-engineering text-white/60">IMAGEN DEL PROYECTO</span>
-                    <p className="mt-2 text-sm font-semibold">{project.title}</p>
+                <div className="mt-8 h-64 bg-gradient-to-br from-[#0A1F35] to-[#0B2A47] rounded-[14px] flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D30] to-transparent opacity-60" />
+                  <div className="relative text-center">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-blue/60">IMAGEN DEL PROYECTO</span>
+                    <p className="mt-2 text-sm font-semibold text-white/80">{project.title}</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -96,31 +97,31 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             {/* Sidebar */}
             <div>
               <ScrollReveal delay={200}>
-                <div className="bg-surface rounded-lg p-6 sticky top-24">
-                  <h3 className="text-h4 font-semibold text-primary mb-4">
+                <div className="card-dark p-6 sticky top-24">
+                  <h3 className="text-h4 font-semibold text-white mb-4">
                     Detalles del proyecto
                   </h3>
 
                   <div className="space-y-4">
                     <div>
-                      <span className="text-sm font-medium text-text">Sector</span>
-                      <p className="text-text-muted">{project.sector}</p>
+                      <span className="text-sm font-medium text-white/60">Sector</span>
+                      <p className="text-white/45">{project.sector}</p>
                     </div>
                     <div>
-                      <span className="text-sm font-medium text-text">Ubicación</span>
-                      <p className="text-text-muted">{project.location}</p>
+                      <span className="text-sm font-medium text-white/60">Ubicación</span>
+                      <p className="text-white/45">{project.location}</p>
                     </div>
                     <div>
-                      <span className="text-sm font-medium text-text">Año</span>
-                      <p className="text-text-muted">{project.year}</p>
+                      <span className="text-sm font-medium text-white/60">Año</span>
+                      <p className="text-white/45">{project.year}</p>
                     </div>
                     <div>
-                      <span className="text-sm font-medium text-text">Servicios</span>
+                      <span className="text-sm font-medium text-white/60">Servicios</span>
                       <div className="mt-2 flex flex-wrap gap-2">
                         {project.services.map((service) => (
                           <span
                             key={service}
-                            className="inline-flex items-center gap-1 px-3 py-1 bg-white text-text rounded-full text-xs border border-border"
+                            className="inline-flex items-center gap-1 px-3 py-1 bg-white/5 text-white/50 rounded-full text-xs"
                           >
                             <Tag className="h-3 w-3" />
                             {service}
@@ -130,7 +131,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     </div>
                   </div>
 
-                  <div className="mt-6 pt-6 border-t border-border">
+                  <div className="mt-6 pt-6 border-t border-white/[0.06]">
                     <Button href="/contacto" className="w-full">
                       SOLICITAR EVALUACIÓN
                     </Button>
@@ -142,8 +143,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
           {/* Proyectos relacionados */}
           <ScrollReveal>
-            <div className="mt-16 pt-12 border-t border-border">
-              <h3 className="text-h4 font-semibold text-primary mb-8">
+            <div className="mt-16 pt-12 border-t border-white/[0.06]">
+              <h3 className="text-h4 font-semibold text-white mb-8">
                 Otros proyectos
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -154,24 +155,24 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     <Link
                       key={p.id}
                       href={`/proyectos/${p.id}`}
-                      className="card-industrial block p-6 group"
+                      className="card-dark block p-6 group"
                     >
-                      <h4 className="text-lg font-semibold text-primary group-hover:text-accent transition-colors">
+                      <h4 className="text-lg font-semibold text-white group-hover:text-blue transition-colors">
                         {p.title}
                       </h4>
-                      <div className="mt-2 flex items-center gap-2 text-xs text-text-muted">
+                      <div className="mt-2 flex items-center gap-2 text-xs text-white/35">
                         <MapPin className="h-3 w-3" />
                         {p.location}
                         <span>•</span>
                         <Calendar className="h-3 w-3" />
                         {p.year}
                       </div>
-                      <p className="mt-2 text-sm text-text-muted line-clamp-2">
+                      <p className="mt-2 text-sm text-white/40 line-clamp-2">
                         {p.description}
                       </p>
-                      <div className="mt-4 inline-flex items-center text-sm font-medium text-primary group-hover:text-accent transition-colors">
+                      <div className="mt-4 inline-flex items-center text-sm font-medium text-white/60 group-hover:text-blue transition-colors">
                         Ver proyecto
-                        <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="ml-1.5 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </Link>
                   ))}

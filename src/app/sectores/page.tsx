@@ -18,9 +18,9 @@ export default function SectoresPage() {
         subtitle="Soluciones especializadas para los sectores más exigentes de la industria paraguaya."
       />
 
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-[#061321]">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {sectors.map((sector) => (
               <SectorCard key={sector.id} sector={sector} />
             ))}

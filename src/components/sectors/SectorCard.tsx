@@ -10,32 +10,32 @@ export function SectorCard({ sector }: SectorCardProps) {
   return (
     <Link
       href={`/sectores/${sector.slug}`}
-      className="card-industrial block p-8 h-full group"
+      className="card-dark block p-8 h-full group"
     >
-      <span className="label-engineering text-accent">SECTOR</span>
-      <h2 className="mt-2 text-xl font-bold text-primary group-hover:text-accent transition-colors">
+      <span className="font-mono text-xs text-blue/70">SECTOR</span>
+      <h2 className="mt-2 text-xl font-bold text-white group-hover:text-blue transition-colors">
         {sector.title}
       </h2>
-      <p className="mt-3 text-text-muted">
+      <p className="mt-3 text-white/45">
         {sector.description}
       </p>
 
       {/* Problemas comunes */}
       <div className="mt-6">
-        <h3 className="text-sm font-semibold text-text mb-2">Problemas comunes:</h3>
-        <ul className="space-y-1">
+        <h3 className="text-sm font-semibold text-white/70 mb-2">Problemas comunes:</h3>
+        <ul className="space-y-1.5">
           {sector.problems.slice(0, 3).map((problem) => (
-            <li key={problem} className="text-sm text-text-muted flex items-start gap-2">
-              <span className="text-accent">•</span>
+            <li key={problem} className="text-sm text-white/40 flex items-start gap-2">
+              <span className="text-blue/50 mt-0.5">•</span>
               {problem}
             </li>
           ))}
         </ul>
       </div>
 
-      <div className="mt-6 inline-flex items-center text-sm font-medium text-primary group-hover:text-accent transition-colors">
+      <div className="mt-6 inline-flex items-center text-sm font-medium text-white/60 group-hover:text-blue transition-colors">
         {sector.cta}
-        <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+        <ArrowRight className="ml-1.5 h-4 w-4 group-hover:translate-x-1 transition-transform" />
       </div>
     </Link>
   );

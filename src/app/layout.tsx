@@ -88,10 +88,10 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/logo-s.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/logo-s.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#0B2342" />
+        <meta name="theme-color" content="#061321" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -105,7 +105,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen bg-background font-sans">
+      <body className="min-h-screen font-sans">
         <Providers>
           <Navbar />
           {children}

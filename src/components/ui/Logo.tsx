@@ -11,19 +11,19 @@ interface LogoProps {
 
 const logoConfig = {
   symbol: {
-    src: '/images/logo/logo1.png',
+    src: '/logo-s.png',
     width: 40,
     height: 40,
   },
   vertical: {
-    src: '/images/logo/logo2.png',
+    src: '/images/logo/logo-pricipal.png',
     width: 60,
     height: 120,
   },
   horizontal: {
-    src: '/images/logo/logo-principal.png',
-    width: 140,
-    height: 47,
+    src: '/images/logo/logo-pricipal.png',
+    width: 180,
+    height: 60,
   },
 };
 
@@ -37,7 +37,8 @@ export function Logo({ variant = 'horizontal', className = '', light = false }: 
         alt="SERVITEK"
         width={config.width}
         height={config.height}
-        className="h-20 w-auto"
+        className="h-auto w-auto"
+        style={{ maxHeight: variant === 'horizontal' ? '48px' : variant === 'symbol' ? '40px' : '120px' }}
         priority
       />
     </Link>

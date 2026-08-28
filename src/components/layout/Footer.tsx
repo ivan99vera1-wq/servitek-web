@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
-import { Logo } from '@/components/ui/Logo';
+import Image from 'next/image';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import { navigation, footerNavigation } from '@/data/navigation';
 import { company } from '@/data/company';
 
@@ -8,55 +8,28 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary text-white">
+    <footer className="bg-[#030B14] text-white">
       <div className="container-custom py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Logo and Description */}
           <div className="lg:col-span-2">
-            <Logo variant="horizontal" className="mb-4" />
-            <p className="text-white/70 max-w-md">
+            <Link href="/" className="inline-flex items-center mb-5">
+              <Image
+                src="/images/logo/logo-pricipal.png"
+                alt="SERVITEK"
+                width={180}
+                height={60}
+                className="h-12 w-auto"
+              />
+            </Link>
+            <p className="text-white/45 max-w-md leading-relaxed">
               {company.description}
             </p>
-            <div className="mt-6 flex gap-4">
-              {company.social.facebook && (
-                <a
-                  href={company.social.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="h-5 w-5" />
-                </a>
-              )}
-              {company.social.instagram && (
-                <a
-                  href={company.social.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="h-5 w-5" />
-                </a>
-              )}
-              {company.social.linkedin && (
-                <a
-                  href={company.social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="h-5 w-5" />
-                </a>
-              )}
-            </div>
           </div>
 
           {/* Navigation */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">
+            <h3 className="text-[11px] font-mono font-semibold uppercase tracking-[0.15em] text-white/30 mb-5">
               Navegación
             </h3>
             <ul className="space-y-3">
@@ -64,7 +37,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-white/70 hover:text-white transition-colors"
+                    className="text-sm text-white/45 hover:text-blue transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -75,25 +48,25 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">
+            <h3 className="text-[11px] font-mono font-semibold uppercase tracking-[0.15em] text-white/30 mb-5">
               Contacto
             </h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3 text-white/70">
-                <Phone className="h-5 w-5 shrink-0 mt-0.5" />
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 text-sm text-white/45">
+                <Phone className="h-4 w-4 shrink-0 mt-0.5 text-blue/50" />
                 <span>{company.contact.phoneFormatted}</span>
               </li>
-              <li className="flex items-start gap-3 text-white/70">
-                <Mail className="h-5 w-5 shrink-0 mt-0.5" />
+              <li className="flex items-start gap-3 text-sm text-white/45">
+                <Mail className="h-4 w-4 shrink-0 mt-0.5 text-blue/50" />
                 <a
                   href={`mailto:${company.contact.email}`}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-blue transition-colors"
                 >
                   {company.contact.email}
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-white/70">
-                <MapPin className="h-5 w-5 shrink-0 mt-0.5" />
+              <li className="flex items-start gap-3 text-sm text-white/45">
+                <MapPin className="h-4 w-4 shrink-0 mt-0.5 text-blue/50" />
                 <span>{company.contact.address}</span>
               </li>
             </ul>
@@ -101,9 +74,9 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-white/10">
+        <div className="mt-12 pt-8 border-t border-white/[0.06]">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-white/50">
+            <p className="text-xs text-white/25">
               &copy; {currentYear} {company.name}. Todos los derechos reservados.
             </p>
             <div className="flex gap-6">
@@ -111,7 +84,7 @@ export function Footer() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-sm text-white/50 hover:text-white transition-colors"
+                  className="text-xs text-white/25 hover:text-white/60 transition-colors"
                 >
                   {item.label}
                 </Link>

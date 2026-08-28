@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { sectors } from '@/data/sectors';
 
@@ -8,34 +7,48 @@ export function SectorsPreview() {
   const featuredSectors = sectors.slice(0, 4);
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-[#0A1F35]">
       <div className="container-custom">
         <ScrollReveal>
-          <SectionHeader
-            title="Sectores que atendemos"
-            subtitle="Soluciones especializadas para los sectores industriales más exigentes de Paraguay."
-          />
+          <div className="mb-12 md:mb-16 text-center">
+            <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">
+              <span className="w-8 h-[1px] bg-blue" />
+              SECTORES
+              <span className="w-8 h-[1px] bg-blue" />
+            </span>
+            <h2 className="mt-6 text-h2 lg:text-h1 font-bold text-white text-balance">
+              Sectores que atendemos
+            </h2>
+            <p className="mt-4 text-lg text-white/55 max-w-3xl mx-auto">
+              Soluciones especializadas para los sectores industriales más exigentes de Paraguay.
+            </p>
+          </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {featuredSectors.map((sector, index) => (
             <ScrollReveal key={sector.id} delay={index * 100}>
               <Link
                 href={`/sectores/${sector.slug}`}
-                className="card-industrial block p-6 h-full group"
+                className="card-dark block p-6 h-full group relative overflow-hidden"
               >
-                <span className="label-engineering text-accent">
+                {/* Número de fondo */}
+                <span className="absolute -top-2 -right-2 font-mono text-[80px] font-bold text-white/[0.02] leading-none select-none">
                   0{index + 1}
                 </span>
-                <h3 className="mt-2 text-lg font-semibold text-primary group-hover:text-accent transition-colors">
+
+                <span className="relative font-mono text-xs text-blue/70">
+                  0{index + 1}
+                </span>
+                <h3 className="relative mt-2 text-lg font-semibold text-white group-hover:text-blue transition-colors duration-300">
                   {sector.title}
                 </h3>
-                <p className="mt-2 text-sm text-text-muted line-clamp-2">
+                <p className="relative mt-2 text-sm text-white/45 line-clamp-2 leading-relaxed">
                   {sector.description}
                 </p>
-                <div className="mt-4 inline-flex items-center text-sm font-medium text-primary group-hover:text-accent transition-colors">
+                <div className="relative mt-4 inline-flex items-center text-sm font-medium text-white/60 group-hover:text-blue transition-colors duration-300">
                   Ver soluciones
-                  <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="ml-1.5 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </Link>
             </ScrollReveal>
@@ -46,10 +59,10 @@ export function SectorsPreview() {
           <div className="mt-10 text-center">
             <Link
               href="/sectores"
-              className="inline-flex items-center text-sm font-medium text-primary hover:text-accent transition-colors"
+              className="inline-flex items-center text-sm font-medium text-white/60 hover:text-blue transition-colors"
             >
               Ver todos los sectores
-              <ArrowRight className="ml-1 h-4 w-4" />
+              <ArrowRight className="ml-1.5 h-4 w-4" />
             </Link>
           </div>
         </ScrollReveal>

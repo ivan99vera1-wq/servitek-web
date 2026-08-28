@@ -14,18 +14,18 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-[#061321] px-4">
       <div className="text-center">
-        <h1 className="text-h2 font-bold text-primary">Error</h1>
-        <h2 className="text-h3 mt-4 font-semibold text-primary">
+        <h1 className="text-h2 font-bold text-white">Error</h1>
+        <h2 className="text-h3 mt-4 font-semibold text-white">
           Algo salió mal
         </h2>
-        <p className="text-body mt-2 text-text-muted">
+        <p className="text-body mt-2 text-white/45">
           Lo sentimos, ha ocurrido un error inesperado. Por favor, intenta de nuevo.
         </p>
         <button
           onClick={() => reset()}
-          className="mt-8 inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+          className="mt-8 inline-flex items-center justify-center rounded-md bg-blue px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-bright"
         >
           Intentar de nuevo
         </button>

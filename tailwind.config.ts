@@ -9,28 +9,43 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        navy: {
+          DEFAULT: '#061321',
+          light: '#0A1F35',
+          lighter: '#0B2A47',
+          dark: '#030B14',
+        },
+        blue: {
+          DEFAULT: '#0878F9',
+          bright: '#1683FF',
+          hover: '#1689FF',
+          glow: '#0878F933',
+        },
         primary: {
-          DEFAULT: '#0B2342',
-          light: '#123A68',
-          dark: '#061224',
+          DEFAULT: '#061321',
+          light: '#0A1F35',
+          dark: '#030B14',
         },
         accent: {
-          DEFAULT: '#E30613',
-          hover: '#C50510',
+          DEFAULT: '#0878F9',
+          hover: '#1689FF',
         },
-        background: '#FFFFFF',
+        background: '#061321',
         surface: {
-          DEFAULT: '#F4F6F8',
-          dark: '#E8EBF0',
+          DEFAULT: '#0A1F35',
+          dark: '#0B1D30',
+          darker: '#071827',
         },
         text: {
-          DEFAULT: '#1B1F24',
-          muted: '#6B7280',
-          light: '#9CA3AF',
+          DEFAULT: '#FFFFFF',
+          muted: '#CBD5E1',
+          light: '#94A3B8',
+          dark: '#64748B',
         },
         border: {
-          DEFAULT: '#E5E7EB',
-          dark: '#D1D5DB',
+          DEFAULT: 'rgba(255,255,255,0.08)',
+          light: 'rgba(255,255,255,0.12)',
+          dark: 'rgba(255,255,255,0.04)',
         },
       },
       fontFamily: {
@@ -69,8 +84,9 @@ const config: Config = {
         'sm': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
         'md': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
         'lg': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
-        'card': '0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.04)',
-        'card-hover': '0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05)',
+        'card': '0 1px 3px 0 rgb(0 0 0 / 0.2), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+        'card-hover': '0 8px 25px -5px rgb(0 0 0 / 0.3), 0 4px 10px -5px rgb(0 0 0 / 0.15)',
+        'glow': '0 0 40px 8px rgba(8,120,249,0.15)',
       },
       screens: {
         'sm': '640px',

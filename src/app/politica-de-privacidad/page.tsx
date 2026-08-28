@@ -7,21 +7,21 @@ export const metadata: Metadata = {
 
 export default function PoliticaDePrivacidad() {
   return (
-    <main className="min-h-screen bg-background py-16 md:py-24">
+    <main className="min-h-screen bg-[#061321] py-16 md:py-24">
       <div className="container-custom">
-        <h1 className="text-h2 md:text-display font-bold text-primary">
+        <h1 className="text-h2 md:text-display font-bold text-white">
           Política de Privacidad
         </h1>
 
-        <div className="prose prose-lg mt-8 max-w-none">
-          <p className="text-text-muted">
+        <div className="mt-8 max-w-none">
+          <p className="text-white/45">
             <em>
               Esta política de privacidad está pendiente de redacción por parte
               del cliente. El contenido completo deberá incluir:
             </em>
           </p>
 
-          <ul className="mt-4 list-inside list-disc space-y-2 text-text-muted">
+          <ul className="mt-4 list-inside list-disc space-y-2 text-white/45">
             <li>Datos recopilados del usuario</li>
             <li>Finalidad del tratamiento de datos</li>
             <li>Base legal para el tratamiento</li>
@@ -34,8 +34,8 @@ export default function PoliticaDePrivacidad() {
             <li>Contacto para consultas</li>
           </ul>
 
-          <p className="mt-6 text-text-muted">
-            <strong>SERVITEK E.A.S.</strong>
+          <p className="mt-6 text-white/45">
+            <strong className="text-white/70">SERVITEK E.A.S.</strong>
             <br />
             RUC: 80176311-8
             <br />

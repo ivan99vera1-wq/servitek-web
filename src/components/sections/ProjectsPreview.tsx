@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { ArrowRight, MapPin, Calendar } from 'lucide-react';
-import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { projects } from '@/data/projects';
 
@@ -10,42 +9,53 @@ export function ProjectsPreview() {
   if (featuredProjects.length === 0) return null;
 
   return (
-    <section className="section-padding bg-surface">
+    <section className="section-padding bg-[#061321]">
       <div className="container-custom">
         <ScrollReveal>
-          <SectionHeader
-            title="Proyectos destacados"
-            subtitle="Soluciones ejecutadas para la industria paraguaya."
-          />
+          <div className="mb-12 md:mb-16 text-center">
+            <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">
+              <span className="w-8 h-[1px] bg-blue" />
+              PROYECTOS
+              <span className="w-8 h-[1px] bg-blue" />
+            </span>
+            <h2 className="mt-6 text-h2 lg:text-h1 font-bold text-white text-balance">
+              Proyectos destacados
+            </h2>
+            <p className="mt-4 text-lg text-white/55 max-w-3xl mx-auto">
+              Soluciones ejecutadas para la industria paraguaya.
+            </p>
+          </div>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {featuredProjects.map((project, index) => (
             <ScrollReveal key={project.id} delay={index * 100}>
-              <div className="card-industrial overflow-hidden h-full flex flex-col">
+              <div className="card-dark overflow-hidden h-full flex flex-col group">
                 {/* Placeholder para imagen */}
-                <div className="h-40 bg-gradient-to-br from-primary to-primary-light flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <span className="label-engineering text-white/60">PROYECTO</span>
-                    <p className="mt-1 text-sm font-semibold">{project.sector}</p>
+                <div className="h-44 bg-gradient-to-br from-[#0A1F35] to-[#0B2A47] flex items-center justify-center relative overflow-hidden">
+                  {/* Overlay sutil */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D30] to-transparent opacity-60" />
+                  <div className="relative text-center">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-blue/60">PROYECTO</span>
+                    <p className="mt-1 text-sm font-semibold text-white/80">{project.sector}</p>
                   </div>
                 </div>
 
-                <div className="p-5 flex-1 flex flex-col">
-                  <h3 className="text-lg font-bold text-primary">{project.title}</h3>
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-lg font-bold text-white group-hover:text-blue transition-colors">{project.title}</h3>
 
-                  <div className="mt-2 flex flex-wrap gap-3 text-xs text-text-muted">
-                    <div className="flex items-center gap-1">
-                      <MapPin className="h-3 w-3" />
+                  <div className="mt-3 flex flex-wrap gap-3 text-xs text-white/40">
+                    <div className="flex items-center gap-1.5">
+                      <MapPin className="h-3 w-3 text-blue/50" />
                       {project.location}
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3" />
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="h-3 w-3 text-blue/50" />
                       {project.year}
                     </div>
                   </div>
 
-                  <p className="mt-3 text-sm text-text-muted line-clamp-2 flex-1">
+                  <p className="mt-3 text-sm text-white/40 line-clamp-2 flex-1 leading-relaxed">
                     {project.description}
                   </p>
                 </div>
@@ -58,10 +68,10 @@ export function ProjectsPreview() {
           <div className="mt-10 text-center">
             <Link
               href="/proyectos"
-              className="inline-flex items-center text-sm font-medium text-primary hover:text-accent transition-colors"
+              className="inline-flex items-center text-sm font-medium text-white/60 hover:text-blue transition-colors"
             >
               Ver todos los proyectos
-              <ArrowRight className="ml-1 h-4 w-4" />
+              <ArrowRight className="ml-1.5 h-4 w-4" />
             </Link>
           </div>
         </ScrollReveal>

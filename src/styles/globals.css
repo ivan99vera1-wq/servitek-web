@@ -4,14 +4,21 @@
 
 @layer base {
   :root {
-    --primary: 11 35 66;
-    --primary-light: 18 58 104;
-    --accent: 227 6 19;
-    --background: 255 255 255;
-    --surface: 244 246 248;
-    --text: 27 31 36;
-    --text-muted: 107 114 128;
-    --border: 229 231 235;
+    --navy: 6 19 33;
+    --navy-light: 10 31 53;
+    --navy-lighter: 11 42 71;
+    --navy-dark: 3 11 20;
+    --blue: 8 120 249;
+    --blue-bright: 22 131 255;
+    --background: 6 19 33;
+    --surface: 10 31 53;
+    --surface-dark: 11 29 48;
+    --text: 255 255 255;
+    --text-muted: 203 213 225;
+    --text-light: 148 163 184;
+    --text-dark: 100 116 139;
+    --border: 255 255 255 0.08;
+    --border-light: 255 255 255 0.12;
   }
 
   html {
@@ -19,17 +26,18 @@
   }
 
   body {
-    @apply bg-background text-text antialiased;
+    @apply antialiased;
     font-feature-settings: 'cv11', 'ss01';
+    background-color: #0a2441;
+    color: #FFFFFF;
   }
 
   * {
-    @apply border-border;
+    border-color: rgba(255,255,255,0.08);
   }
 
-  /* Focus visible para accesibilidad */
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-primary;
+    @apply outline-2 outline-offset-2 outline-blue;
   }
 }
 
@@ -43,71 +51,81 @@
   }
 
   .heading-primary {
-    @apply text-h2 lg:text-h1 font-bold text-primary tracking-tight;
+    @apply text-h2 lg:text-h1 font-bold text-white tracking-tight;
   }
 
   .heading-secondary {
-    @apply text-h3 lg:text-h2 font-bold text-primary;
+    @apply text-h3 lg:text-h2 font-bold text-white;
   }
 
   .text-balance {
     text-wrap: balance;
   }
 
-  /* Firma visual SERVITEK - Línea de referencia de ingeniería */
   .signature-line {
     @apply relative;
   }
 
   .signature-line::before {
     content: '';
-    @apply absolute left-0 top-0 h-full w-px bg-gradient-to-b from-accent via-primary to-transparent;
+    @apply absolute left-0 top-0 h-full w-px bg-gradient-to-b from-blue via-primary to-transparent;
   }
 
-  /* Estilo para datos técnicos / specs */
   .data-technical {
     @apply font-mono text-sm tracking-wide;
   }
 
-  /* Estilo para labels de ingeniería */
   .label-engineering {
-    @apply font-mono text-xs uppercase tracking-widest text-text-muted;
+    @apply font-mono text-xs uppercase tracking-widest text-text-dark;
   }
 
-  /* Tarjeta industrial */
+  .card-dark {
+    background: #0b253f;
+    border: 1px solid rgba(255,255,255,0.08);
+    @apply rounded-[14px] transition-all duration-300;
+  }
+
+  .card-dark:hover {
+    border-color: rgba(8,120,249,0.45);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px -5px rgba(0,0,0,0.3), 0 0 40px 8px rgba(8,120,249,0.08);
+  }
+
   .card-industrial {
-    @apply bg-white border border-border rounded-lg shadow-card transition-all duration-300 hover:shadow-card-hover hover:border-border-dark;
+    background: #0B1D30;
+    border: 1px solid rgba(255,255,255,0.08);
+    @apply rounded-[14px] shadow-card transition-all duration-300;
   }
 
-  /* Botón primario */
+  .card-industrial:hover {
+    border-color: rgba(8,120,249,0.45);
+    box-shadow: 0 8px 25px -5px rgba(0,0,0,0.3);
+  }
+
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-accent text-white font-medium rounded-md transition-all duration-200 hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center px-6 py-3 bg-blue text-white font-medium rounded-md transition-all duration-200 hover:bg-blue-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2;
   }
 
-  /* Botón secundario */
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-medium rounded-md transition-all duration-200 hover:bg-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center px-6 py-3 bg-navy-light text-white font-medium rounded-md transition-all duration-200 hover:bg-navy-lighter focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2;
   }
 
-  /* Botón outline */
   .btn-outline {
-    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-primary text-primary font-medium rounded-md transition-all duration-200 hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-white/25 text-white font-medium rounded-md transition-all duration-200 hover:bg-white hover:text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2;
   }
 
-  /* Indicador de confianza */
   .trust-indicator {
     @apply flex flex-col items-center text-center p-4;
   }
 
   .trust-indicator-value {
-    @apply text-stat font-bold text-primary;
+    @apply text-stat font-bold text-blue;
   }
 
   .trust-indicator-label {
-    @apply label-engineering mt-1;
+    @apply label-engineering mt-1 text-text-dark;
   }
 
-  /* Scroll reveal animation */
   .scroll-reveal {
     @apply opacity-0;
     animation: slideUp 0.6s ease-out forwards;
@@ -131,40 +149,47 @@
 }
 
 @layer utilities {
-  .bg-primary {
-    background-color: rgb(var(--primary));
+  .bg-navy {
+    background-color: #061321;
   }
 
-  .bg-primary-light {
-    background-color: rgb(var(--primary-light));
+  .bg-navy-light {
+    background-color: #0A1F35;
   }
 
-  .bg-accent {
-    background-color: rgb(var(--accent));
+  .bg-navy-dark {
+    background-color: #030B14;
   }
 
-  .bg-surface {
-    background-color: rgb(var(--surface));
+  .bg-surface-dark {
+    background-color: #0B1D30;
   }
 
-  .text-primary {
-    color: rgb(var(--primary));
+  .bg-blue {
+    background-color: #0878F9;
   }
 
-  .text-accent {
-    color: rgb(var(--accent));
+  .bg-blue-bright {
+    background-color: #1683FF;
   }
 
-  .border-primary {
-    border-color: rgb(var(--primary));
+  .text-blue {
+    color: #0878F9;
   }
 
-  .border-accent {
-    border-color: rgb(var(--accent));
+  .text-blue-bright {
+    color: #1683FF;
+  }
+
+  .border-blue {
+    border-color: #0878F9;
+  }
+
+  .border-white\/8 {
+    border-color: rgba(255,255,255,0.08);
   }
 }
 
-/* Respetar prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
