@@ -99,6 +99,7 @@ const config: Config = {
         'fade-in': 'fadeIn 0.6s ease-out forwards',
         'slide-up': 'slideUp 0.6s ease-out forwards',
         'slide-in-left': 'slideInLeft 0.6s ease-out forwards',
+        'pulse-green': 'pulseGreen 2s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -112,6 +113,10 @@ const config: Config = {
         slideInLeft: {
           '0%': { opacity: '0', transform: 'translateX(-24px)' },
           '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        pulseGreen: {
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(37, 211, 102, 0.4)' },
+          '50%': { boxShadow: '0 0 0 12px rgba(37, 211, 102, 0)' },
         },
       },
     },
