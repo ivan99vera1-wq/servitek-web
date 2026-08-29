@@ -286,7 +286,7 @@ export const whatsappMessageTemplate = (data: FormData) => {
 
 ```
 /public/images/
-├── logo/          # Logo1.png, Logo2.png, Logo3.png, Logo-variantes.png
+├── logo/          # logo-pricipal.webp (logo horizontal)
 ├── hero/          # Imágenes del hero principal
 ├── services/      # Imágenes por servicio
 ├── sectors/       # Imágenes por sector
@@ -324,50 +324,63 @@ export const whatsappMessageTemplate = (data: FormData) => {
 
 ```
 /public/images/logo/
-├── logo1.png          # Símbolo "S" solo
-├── logo2.png          # Logo vertical completo
-├── logo3.png          # Logo horizontal completo
-└── logo-variantes.png # Todas las variantes
+└── logo-pricipal.webp    # Logo horizontal completo (usado en Navbar, Hero, Footer)
+
+/public/
+└── logo-s.png            # Símbolo "S" (fuente original, disponible para regenerar íconos)
 ```
 
-### Variantes disponibles (en logo-variantes.png)
+### Favicon e íconos (generados desde logo-s.png)
 
-1. **Logo vertical** - Fondo blanco (navbar desktop, header)
-2. **Logo horizontal** - Fondo blanco (footer, espacios reducidos)
-3. **Logo vertical** - Fondo azul oscuro (secciones oscuras)
-4. **Logo vertical** - Fondo blanco (sobre oscuro, inverso)
-5. **Logo vertical** - Fondo negro (secciones negras)
-6. **Logo vertical** - Fondo gris (secciones grises)
+```
+/public/
+├── favicon.png              # 48x48px — ícono de pestaña del navegador
+├── apple-touch-icon.png     # 180x180px — ícono para iOS
+├── icon-192x192.png         # 192x192px — manifest PWA
+└── icon-512x512.png         # 512x512px — manifest PWA
+```
 
-### Cuándo usar cada variante
+Estos archivos se generan a partir de `logo-s.png` con `sharp-cli`. Para regenerarlos, ejecutar:
 
-| Ubicación | Variante |
-|-----------|----------|
-| Navbar (desktop) | Logo horizontal, fondo blanco |
-| Navbar (scroll/oscuro) | Logo horizontal, fondo inverso |
-| Footer | Logo horizontal, fondo blanco |
-| Hero (fondo oscuro) | Logo vertical, fondo inverso |
-| Secciones claras | Logo vertical, fondo blanco |
-| Favicon | Símbolo "S" solo |
+```bash
+cd public
+npx sharp-cli -i logo-s.png -o favicon.png resize 48 48 --fit cover --position centre
+npx sharp-cli -i logo-s.png -o apple-touch-icon.png resize 180 180 --fit cover --position centre
+npx sharp-cli -i logo-s.png -o icon-192x192.png resize 192 192 --fit cover --position centre
+npx sharp-cli -i logo-s.png -o icon-512x512.png resize 512 512 --fit cover --position centre
+```
+
+### Uso actual
+
+| Ubicación | Archivo |
+|-----------|---------|
+| Navbar (desktop) | `logo-pricipal.webp` |
+| Navbar (móvil) | `logo-pricipal.webp` |
+| Hero | `logo-pricipal.webp` |
+| Footer | `logo-pricipal.webp` |
+| Favicon | `favicon.png` |
+| Manifest | `icon-192x192.png`, `icon-512x512.png` |
 
 ---
 
 ## 9. Colores
 
-### Cambiar colores principales
+### Paleta actual (rediseño visual navy/azul corporativo)
 
 **Archivo:** `tailwind.config.ts`
 
 ```typescript
-theme: {
-  extend: {
-    colors: {
-      primary: "#0B2342",      // Azul corporativo
-      "primary-light": "#123A68", // Azul secundario
-      accent: "#E30613",       // Rojo
-      // ...
-    }
-  }
+colors: {
+  navy: {
+    DEFAULT: '#061321',    // Fondo principal
+    light: '#0A1F35',      // Fondo alternativo
+    lighter: '#0B2A47',    // Gradientes
+    dark: '#030B14',       // Footer
+  },
+  blue: {
+    DEFAULT: '#0878F9',    // Accent principal, CTAs, hover
+    bright: '#1683FF',     // Hover states
+  },
 }
 ```
 
@@ -375,11 +388,16 @@ theme: {
 
 ```css
 :root {
-  --primary: 11 35 66;      /* #0B2342 */
-  --primary-light: 18 58 104; /* #123A68 */
-  --accent: 227 6 19;        /* #E30613 */
+  --navy: 6 19 33;          /* #061321 */
+  --navy-light: 10 31 53;   /* #0A1F35 */
+  --blue: 8 120 249;        /* #0878F9 */
+  --blue-bright: 22 131 255;/* #1683FF */
 }
 ```
+
+### Nota sobre la paleta anterior
+
+La paleta anterior (primary: `#0B2342`, accent/rojo: `#E30613`) fue reemplazada en el commit de rediseño visual. Los colores actuales son navy y azul eléctrico.
 
 ### Cambiar fuentes
 

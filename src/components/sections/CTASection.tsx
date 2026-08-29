@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { ArrowRight, Phone } from 'lucide-react';
+import { generateWhatsAppUrl } from '@/lib/whatsapp';
 
 export function CTASection() {
   return (
@@ -44,7 +45,7 @@ export function CTASection() {
                 <ArrowRight className="h-5 w-5" />
               </Link>
               <a
-                href="https://wa.me/595981118743"
+                href={generateWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-md border border-white/25 text-white hover:bg-white hover:text-[#061321] transition-all duration-200"

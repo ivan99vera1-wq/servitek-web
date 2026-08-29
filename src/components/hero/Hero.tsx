@@ -120,7 +120,7 @@ export function Hero() {
               {/* Logo grande */}
               <div className="relative">
                 <Image
-                  src="/images/logo/logo-pricipal.png"
+                  src="/images/logo/logo-pricipal.webp"
                   alt="SERVITEK"
                   width={400}
                   height={133}

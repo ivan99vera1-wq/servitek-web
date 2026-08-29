@@ -52,7 +52,7 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="shrink-0 flex items-center">
             <Image
-              src="/images/logo/logo-pricipal.png"
+              src="/images/logo/logo-pricipal.webp"
               alt="SERVITEK"
               width={180}
               height={60}
@@ -126,7 +126,7 @@ export function Navbar() {
           <div className="flex items-center justify-between p-4 border-b border-white/10">
             <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
               <Image
-                src="/images/logo/logo-pricipal.png"
+                src="/images/logo/logo-pricipal.webp"
                 alt="SERVITEK"
                 width={140}
                 height={47}

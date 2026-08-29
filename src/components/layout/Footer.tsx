@@ -15,7 +15,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center mb-5">
               <Image
-                src="/images/logo/logo-pricipal.png"
+                src="/images/logo/logo-pricipal.webp"
                 alt="SERVITEK"
                 width={180}
                 height={60}

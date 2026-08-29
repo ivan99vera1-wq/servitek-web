@@ -3,17 +3,10 @@ export const aboutContent = {
   subtitle: "SERVITEK E.A.S. es una empresa paraguaya especializada en soluciones de ingeniería eléctrica y electromecánica industrial.",
 
   stats: [
-    { value: "+", label: "Unidades de negocio" },
+    { value: "+XX", label: "Unidades de negocio" }, // PENDIENTE: reemplazar XX con la cifra real que indique el cliente (años de experiencia, proyectos realizados, etc.)
     { value: "24/7", label: "Soporte técnico" },
     { value: "100%", label: "Compromiso técnico" },
     { value: "Paraguay", label: "Cobertura nacional" }
-  ],
-
-  trustBarStats: [
-    { value: '+', label: 'Unidades de negocio' },
-    { value: '24/7', label: 'Soporte técnico' },
-    { value: '100%', label: 'Compromiso técnico' },
-    { value: 'PY', label: 'Cobertura nacional' },
   ],
 
   differentials: [
