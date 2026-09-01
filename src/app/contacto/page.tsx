@@ -6,7 +6,7 @@ import { generatePageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'Contacto',
-  description: 'Contacte con SERVITEK para solicitar presupuesto o consultas sobre servicios de ingeniería eléctrica y electromecánica.',
+  description: 'Contacte con SERVITEK para solicitar presupuesto o consultas sobre servicios electromecánicos industriales.',
   path: '/contacto',
 });
 

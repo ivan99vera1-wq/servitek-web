@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Lightbulb, Cog, Wrench, Zap, ArrowRight } from 'lucide-react';
+import { Lightbulb, Cog, Wrench, Zap, PackageCheck, ArrowRight } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { services } from '@/data/services';
 
@@ -8,6 +8,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Cog: <Cog className="h-7 w-7" />,
   Wrench: <Wrench className="h-7 w-7" />,
   Zap: <Zap className="h-7 w-7" />,
+  PackageCheck: <PackageCheck className="h-7 w-7" />,
 };
 
 export function BusinessUnits() {
@@ -34,10 +35,10 @@ export function BusinessUnits() {
               <span className="w-8 h-[1px] bg-blue" />
             </span>
             <h2 className="mt-6 text-h2 lg:text-h1 font-bold text-white text-balance">
-              Cuatro unidades de negocio
+              Cinco unidades de negocio
             </h2>
             <p className="mt-4 text-lg text-white/65 max-w-3xl mx-auto">
-              Cubrimos toda la cadena de soluciones eléctricas e industriales para operaciones que no pueden parar.
+              Del diagnóstico y el montaje al mantenimiento y la provisión de materiales certificados.
             </p>
           </div>
         </ScrollReveal>

@@ -39,8 +39,7 @@ export default function TerminosYCondiciones() {
 
           <h2 className="text-h4 mt-10 font-semibold text-white/90">Objeto del sitio</h2>
           <p className="mt-3 text-white/70">
-            Este sitio web tiene carácter informativo. Presenta los servicios de ingeniería
-            eléctrica y electromecánica de {company.name} y facilita el contacto con la empresa. No
+            Este sitio web tiene carácter informativo. Presenta los servicios electromecánicos de {company.name} y facilita el contacto con la empresa. No
             se comercializan productos ni servicios a través del sitio, y su contenido no
             constituye una oferta contractual: cualquier trabajo se rige por el presupuesto y las
             condiciones que se acuerden por escrito en cada caso.

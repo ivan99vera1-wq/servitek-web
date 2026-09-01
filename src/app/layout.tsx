@@ -21,14 +21,14 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'SERVITEK | Soluciones Eléctricas y Electromecánicas en Paraguay',
+    default: 'SERVITEK | Electromecánica Industrial y Servicios Eléctricos en Paraguay',
     template: '%s | SERVITEK',
   },
   description:
-    'SERVITEK ofrece soluciones de ingeniería eléctrica, electromecánica, automatización, mantenimiento, infraestructura y respaldo energético para industrias en Paraguay.',
+    'SERVITEK ofrece electromecánica industrial, automatización, mantenimiento, infraestructura y respaldo energético para plantas industriales en Paraguay.',
   keywords: [
     'empresa eléctrica Paraguay',
-    'ingeniería eléctrica Paraguay',
+    'electromecánica industrial Paraguay',
     'mantenimiento industrial Paraguay',
     'automatización industrial Paraguay',
     'electromecánica Paraguay',
@@ -58,23 +58,23 @@ export const metadata: Metadata = {
     locale: 'es_PY',
     url: SITE_URL,
     siteName: 'SERVITEK',
-    title: 'SERVITEK | Soluciones Eléctricas y Electromecánicas en Paraguay',
+    title: 'SERVITEK | Electromecánica Industrial y Servicios Eléctricos en Paraguay',
     description:
-      'Soluciones de ingeniería eléctrica, electromecánica, automatización, mantenimiento, infraestructura y respaldo energético para industrias en Paraguay.',
+      'Electromecánica industrial, automatización, mantenimiento, infraestructura y respaldo energético para plantas industriales en Paraguay.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'SERVITEK - Soluciones Eléctricas Industriales',
+        alt: 'SERVITEK - Electromecánica industrial en Paraguay',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SERVITEK | Soluciones Eléctricas y Electromecánicas en Paraguay',
+    title: 'SERVITEK | Electromecánica Industrial y Servicios Eléctricos en Paraguay',
     description:
-      'Soluciones de ingeniería eléctrica, electromecánica, automatización, mantenimiento, infraestructura y respaldo energético para industrias en Paraguay.',
+      'Electromecánica industrial, automatización, mantenimiento, infraestructura y respaldo energético para plantas industriales en Paraguay.',
     images: ['/og-image.jpg'],
   },
   // Mientras no haya dominio propio el sitio no debe indexarse (ver lib/site.ts).

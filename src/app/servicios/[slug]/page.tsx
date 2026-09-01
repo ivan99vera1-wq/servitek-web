@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Lightbulb, Cog, Wrench, Zap, CheckCircle, AlertTriangle, Settings } from 'lucide-react';
+import { Lightbulb, Cog, Wrench, Zap, PackageCheck, CheckCircle, AlertTriangle, Settings } from 'lucide-react';
 import { services } from '@/data/services';
 import { PageHero } from '@/components/ui/PageHero';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
@@ -14,6 +14,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Cog: <Cog className="h-12 w-12" />,
   Wrench: <Wrench className="h-12 w-12" />,
   Zap: <Zap className="h-12 w-12" />,
+  PackageCheck: <PackageCheck className="h-12 w-12" />,
 };
 
 interface ServicePageProps {

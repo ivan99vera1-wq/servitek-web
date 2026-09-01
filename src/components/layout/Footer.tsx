@@ -54,7 +54,21 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-white/60">
                 <Phone className="h-4 w-4 shrink-0 mt-0.5 text-blue-text/70" />
-                <span>{company.contact.phoneFormatted}</span>
+                <span>
+                  <a
+                    href={`tel:${company.contact.phone}`}
+                    className="transition-colors hover:text-blue-text"
+                  >
+                    {company.contact.phoneFormatted}
+                  </a>
+                  <br />
+                  <a
+                    href={`tel:${company.contact.phone}`}
+                    className="transition-colors hover:text-blue-text"
+                  >
+                    {company.contact.phoneInternational}
+                  </a>
+                </span>
               </li>
               <li className="flex items-start gap-3 text-sm text-white/60">
                 <Mail className="h-4 w-4 shrink-0 mt-0.5 text-blue-text/70" />

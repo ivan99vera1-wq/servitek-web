@@ -15,12 +15,15 @@ export function ContactInfo() {
           </div>
           <div>
             <p className="font-medium text-white/70">Teléfono</p>
-            <a
-              href={`tel:${company.contact.phone}`}
-              className="text-blue-text hover:underline"
-            >
+            <a href={`tel:${company.contact.phone}`} className="text-blue-text hover:underline">
               {company.contact.phoneFormatted}
             </a>
+            <p className="mt-1 text-sm text-white/65">
+              Desde el exterior:{' '}
+              <a href={`tel:${company.contact.phone}`} className="text-blue-text hover:underline">
+                {company.contact.phoneInternational}
+              </a>
+            </p>
           </div>
         </div>
 

@@ -48,7 +48,16 @@ export function ScrollReveal({ children, className, delay = 0 }: ScrollRevealPro
       { threshold: 0.1 }
     );
     observer.observe(element);
-    return () => observer.disconnect();
+
+    // Red de seguridad: si el observer no llega a dispararse (pestaña en
+    // segundo plano, captura de página completa, navegador raro), el
+    // contenido se muestra igualmente. Nunca debe quedarse oculto.
+    const fallback = window.setTimeout(() => setShown(true), 3000);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, []);
 
   const hidden = armed && !shown;

@@ -188,5 +188,53 @@ export const services: Service[] = [
     ],
     image: "/images/services/infraestructura.webp",
     cta: "Conocer servicio"
+  },
+  {
+    /**
+     * Unidad de negocio de provisión, solicitada por la empresa.
+     * PENDIENTE (empresa): confirmar marcas representadas, condiciones de
+     * stock y si existe representación oficial de algún fabricante.
+     */
+    id: "materiales",
+    title: "MATERIALES ELÉCTRICOS Y LÍNEA ATEX",
+    shortTitle: "Materiales Eléctricos y Línea ATEX",
+    slug: "materiales-electricos-atex",
+    description: "Suministro de componentes industriales bajo normas ANDE y certificación antiexplosiva (ATEX/IECEx), con stock local de alta resistencia climática para silos, puertos y fábricas.",
+    fullDescription: "Proveemos los materiales que la obra necesita cuando los necesita. Trabajamos con componentes que cumplen las normas ANDE y, para áreas clasificadas, con línea certificada ATEX/IECEx. El stock local evita los plazos de importación que suelen detener un montaje, y la selección prioriza resistencia a la humedad, el polvo y la salinidad propias de silos, terminales portuarias y plantas de proceso.",
+    icon: "PackageCheck",
+    problemsSolved: [
+      "Obras detenidas esperando materiales importados",
+      "Componentes sin certificación válida para áreas clasificadas",
+      "Material de baja resistencia climática que falla en pocos meses",
+      "Compras dispersas entre varios proveedores sin criterio técnico",
+      "Dificultad para reponer repuestos de equipos ya instalados"
+    ],
+    solutions: [
+      "Luminarias y equipamiento antiexplosivo ATEX/IECEx",
+      "Tableros, gabinetes y celdas bajo norma ANDE",
+      "Cables de potencia y control para intemperie",
+      "Bandejas portacables y canalizaciones",
+      "Protecciones, contactores y variadores de frecuencia",
+      "Puesta a tierra: jabalinas, conductores y conectores",
+      "Repuestos de motores, bombas y equipos de frío"
+    ],
+    technicalScope: [
+      "Relevamiento técnico de la necesidad en planta",
+      "Selección de componentes según norma aplicable",
+      "Verificación de certificación para áreas clasificadas",
+      "Cotización con alternativas técnicas equivalentes",
+      "Entrega con documentación y certificados",
+      "Reposición programada de consumibles y repuestos"
+    ],
+    clients: [
+      "Silos",
+      "Terminales portuarias",
+      "Frigoríficos",
+      "Plantas industriales",
+      "Contratistas eléctricos",
+      "Data centers"
+    ],
+    image: "/images/services/materiales.webp",
+    cta: "Conocer servicio"
   }
 ];

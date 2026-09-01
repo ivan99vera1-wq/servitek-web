@@ -4,12 +4,12 @@ export const company: Company = {
   name: "SERVITEK",
   legalName: "SERVITEK E.A.S.",
   slogan: "PROVISIÓN DE MATERIALES Y SERVICIOS",
-  description: "Soluciones de ingeniería eléctrica, electromecánica, automatización, mantenimiento, infraestructura y respaldo energético para industrias en Paraguay.",
+  description: "Electromecánica industrial, automatización, mantenimiento, infraestructura y respaldo energético para plantas industriales en Paraguay.",
   ruc: "80176311-8",
 
-  mission: "Proveer soluciones integrales de electromecánica industrial y servicios eléctricos de alta ingeniería, garantizando la continuidad operativa, la eficiencia energética y la seguridad crítica de nuestros clientes en Paraguay. Nos comprometemos a mitigar los riesgos por fluctuaciones energéticas y a optimizar la infraestructura eléctrica mediante diagnósticos precisos, innovación tecnológica y un soporte técnico ágil y confiable.",
+  mission: "Proveer soluciones integrales de electromecánica industrial y servicios eléctricos de alta exigencia, garantizando la continuidad operativa, la eficiencia energética y la seguridad crítica de nuestros clientes en Paraguay. Nos comprometemos a mitigar los riesgos por fluctuaciones energéticas y a optimizar la infraestructura eléctrica mediante diagnósticos precisos, innovación tecnológica y un soporte técnico ágil y confiable.",
 
-  vision: "Ser la empresa referente en ingeniería electromecánica y soluciones eléctricas industriales en el mercado paraguayo, reconocida por nuestra excelencia técnica en entornos de alta exigencia, la implementación de tecnologías de automatización eficientes y nuestro firme compromiso con la seguridad en atmósferas explosivas e infraestructura crítica.",
+  vision: "Ser la empresa referente en electromecánica industrial y soluciones eléctricas industriales en el mercado paraguayo, reconocida por nuestra excelencia técnica en entornos de alta exigencia, la implementación de tecnologías de automatización eficientes y nuestro firme compromiso con la seguridad en atmósferas explosivas e infraestructura crítica.",
 
   values: [
     {
@@ -37,6 +37,9 @@ export const company: Company = {
   contact: {
     phone: "+595981118743",
     phoneFormatted: "0981 118743",
+    // Formato internacional: permite que un contacto del exterior marque o
+    // escriba directamente sin tener que deducir el prefijo de país.
+    phoneInternational: "+595-981-118-743",
     whatsapp: "+595981118743",
     whatsappMessage: "Hola, me interesa información sobre sus servicios industriales.",
     email: "servitek.py@gmail.com",

@@ -3,11 +3,12 @@ import { PageHero } from '@/components/ui/PageHero';
 import { ServiceCard } from '@/components/services/ServiceCard';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { services } from '@/data/services';
+import { servicesIntro } from '@/data/company-content';
 import { generatePageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'Servicios',
-  description: 'SERVITEK ofrece soluciones de ingeniería eléctrica, electromecánica, automatización, mantenimiento, infraestructura y respaldo energético.',
+  description: 'SERVITEK ofrece electromecánica integral: diseño, montaje, automatización, mantenimiento y provisión de materiales certificados.',
   path: '/servicios',
 });
 
@@ -16,23 +17,24 @@ export default function ServiciosPage() {
     <>
       <PageHero
         title="Nuestros Servicios"
-        subtitle="Cuatro áreas especializadas que cubren toda la cadena de soluciones eléctricas e industriales para operaciones que no pueden parar."
+        subtitle="Cinco unidades de negocio que cubren toda la cadena electromecánica: del diagnóstico y el montaje al mantenimiento y la provisión de materiales certificados."
       />
 
       {/* Introducción */}
       <section className="section-padding bg-[#061321]">
         <div className="container-custom">
           <ScrollReveal>
-            <div className="max-w-3xl mx-auto text-center mb-16">
+            <div className="mx-auto mb-16 max-w-3xl text-center">
               <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
-                <span className="w-8 h-[1px] bg-blue" />
-                ENFOQUE TÉCNICO
-                <span className="w-8 h-[1px] bg-blue" />
+                <span className="h-[1px] w-8 bg-blue" />
+                {servicesIntro.eyebrow}
+                <span className="h-[1px] w-8 bg-blue" />
               </span>
-              <p className="mt-6 text-lg text-white/65 leading-relaxed">
-                Cada servicio está diseñado para resolver problemas reales de la industria paraguaya.
-                Desde diagnóstico preciso hasta puesta en marcha, nuestro equipo especializado
-                garantiza la continuidad operativa de su planta industrial.
+              <h2 className="text-h2 lg:text-h1 mt-6 font-bold text-white text-balance">
+                {servicesIntro.title}
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-white/70">
+                {servicesIntro.body}
               </p>
             </div>
           </ScrollReveal>

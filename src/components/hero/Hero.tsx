@@ -60,15 +60,14 @@ export function Hero() {
 
             {/* Headline */}
             <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-white md:text-5xl lg:text-[3.4rem] xl:text-[3.8rem]">
-              Ingeniería eléctrica y{' '}
-              <span className="text-blue-text">electromecánica</span> industrial en Paraguay
+              Electromecánica{' '}
+              <span className="text-blue-text">industrial</span> para plantas que no pueden parar
             </h1>
 
             {/* Descripción */}
             <p className="mt-6 text-lg md:text-xl text-white/70 max-w-xl leading-relaxed">
-              Soluciones de ingeniería eléctrica, electromecánica, automatización,
-              mantenimiento, infraestructura y respaldo energético para industrias
-              en Paraguay.
+              Electromecánica industrial, automatización, mantenimiento, infraestructura
+              y respaldo energético para plantas que no pueden detenerse.
             </p>
 
             {/* CTAs */}

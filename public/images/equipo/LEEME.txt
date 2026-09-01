@@ -1,0 +1,24 @@
+FOTOGRAFÍA DEL FUNDADOR
+=======================
+
+Guardar aquí la foto de Walter Miguel Vera Román como:
+
+    walter-vera.webp
+
+Recomendaciones:
+  - Recorte vertical, proporción 3:4 (por ejemplo 900 x 1200 px)
+  - Peso final por debajo de 150 KB, formato WebP
+  - Fondo neutro o entorno de planta; encuadre de medio cuerpo
+
+Después, abrir  src/data/company-content.ts  y en el objeto `founder`
+cambiar:
+
+    photo: ""
+
+por:
+
+    photo: "/images/equipo/walter-vera.webp"
+
+Con eso la ficha sustituye automáticamente el marcador por la foto.
+El espacio ya está reservado con la proporción final, así que el diseño
+no se moverá.

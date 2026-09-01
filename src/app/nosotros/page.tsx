@@ -4,12 +4,13 @@ import { StatCard } from '@/components/ui/StatCard';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { company } from '@/data/company';
 import { aboutContent, whyServitek } from '@/data/company-content';
+import { FounderCard } from '@/components/about/FounderCard';
 import { CTASection } from '@/components/sections/CTASection';
 import { generatePageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'Nosotros',
-  description: 'Conozca a SERVITEK E.A.S., empresa paraguaya de ingeniería eléctrica y electromecánica industrial.',
+  description: 'Conozca a SERVITEK E.A.S., empresa paraguaya de electromecánica industrial y servicios eléctricos de alta exigencia.',
   path: '/nosotros',
 });
 
@@ -59,6 +60,27 @@ export default function NosotrosPage() {
               </div>
             </ScrollReveal>
           </div>
+        </div>
+      </section>
+
+      {/* Fundador */}
+      <section className="section-padding bg-[#071827] border-y border-white/[0.06]">
+        <div className="container-custom">
+          <ScrollReveal>
+            <div className="mb-12 text-center md:mb-16">
+              <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
+                <span className="h-[1px] w-8 bg-blue" />
+                QUIÉN LIDERA SERVITEK
+                <span className="h-[1px] w-8 bg-blue" />
+              </span>
+              <h2 className="text-h2 lg:text-h1 mt-6 font-bold text-white text-balance">
+                Dirección
+              </h2>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={150}>
+            <FounderCard />
+          </ScrollReveal>
         </div>
       </section>
 

@@ -7,7 +7,7 @@ import { generatePageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'Sectores',
-  description: 'SERVITEK atiende los sectores industriales más exigentes de Paraguay con soluciones de ingeniería eléctrica y electromecánica.',
+  description: 'SERVITEK atiende los sectores industriales más exigentes de Paraguay con soluciones electromecánicas de alta confiabilidad.',
   path: '/sectores',
 });
 

@@ -3,6 +3,7 @@ export const serviceOptions = [
   "Auditoría y Automatización",
   "Motores, Bombas y HVAC",
   "Infraestructura Eléctrica y Respaldo",
+  "Materiales Eléctricos y Línea ATEX",
   "Otro"
 ];
 

@@ -1,6 +1,8 @@
 export interface CompanyContact {
   phone: string;
   phoneFormatted: string;
+  /** Mismo número en formato internacional, para contactos del exterior. */
+  phoneInternational: string;
   whatsapp: string;
   whatsappMessage: string;
   email: string;

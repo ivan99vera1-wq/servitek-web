@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Lightbulb, Cog, Wrench, Zap, ArrowRight } from 'lucide-react';
+import { Lightbulb, Cog, Wrench, Zap, PackageCheck, ArrowRight } from 'lucide-react';
 import { Service } from '@/types/service';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -7,6 +7,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Cog: <Cog className="h-8 w-8" />,
   Wrench: <Wrench className="h-8 w-8" />,
   Zap: <Zap className="h-8 w-8" />,
+  PackageCheck: <PackageCheck className="h-8 w-8" />,
 };
 
 interface ServiceCardProps {
