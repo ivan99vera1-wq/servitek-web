@@ -123,8 +123,9 @@ Antes de subir cambios, `npm run check`.
 │   │   ├── equipo/             Fotos del equipo — ver LEEME.txt
 │   │   ├── hero/               Imagen principal
 │   │   ├── logo/               Logotipos
-│   │   ├── sectors/            Una imagen por sector
-│   │   └── services/           Una imagen por unidad de negocio
+│   │   ├── sectors/            Una imagen por sector (fondo de tarjeta y cabecera)
+│   │   ├── services/           Una imagen por unidad de negocio (fondo de tarjeta y cabecera)
+│   │   └── projects/           Una imagen de portada por proyecto (fondo de tarjeta y cabecera)
 │   └── favicon.ico, og-image.jpg, site.webmanifest
 ├── src/
 │   ├── app/                    Rutas (App Router). Un directorio por página
@@ -246,9 +247,14 @@ mano antes de subirlas**:
 | Fundador | WebP | 900 × 1200 (3:4) | < 150 kB |
 | Compartir en redes | JPEG | 1200 × 630 | < 150 kB |
 
-Las imágenes de servicios y sectores que no son fotografías son marcadores
-generados: ilustraciones técnicas sobre fondo navy, pensadas para sustituirse
-por fotos reales de SERVITEK.
+Las imágenes de servicios, sectores y proyectos que no son fotografías son
+marcadores generados: ilustraciones técnicas sobre fondo navy, pensadas para
+sustituirse por fotos reales de SERVITEK. Se usan como fondo de las tarjetas
+(`SectorCard`, `ServiceCard`, `ProjectCard` y las tarjetas de portada) y de la
+cabecera (`PageHero`) de cada ficha de detalle. Para reemplazar una,
+solo hace falta subir la foto real con el mismo nombre de archivo (o cambiar
+la ruta en `image` dentro de `src/data/sectors.ts`, `services.ts` o
+`projects.ts`) — ningún componente necesita tocarse.
 </details>
 
 ## Sistema de diseño

@@ -589,7 +589,7 @@ El JSON-LD se define en `src/lib/schema.ts` y se inyecta en el `<head>` desde `s
   "alternateName": "SERVITEK",
   "description": "...",
   "url": "https://servitek.com.py",
-  "logo": "https://servitek.com.py/images/logo/logo2.png",
+  "logo": "https://servitek.com.py/images/logo/logo-principal.webp",
   "identifier": {
     "@type": "PropertyValue",
     "propertyID": "RUC",

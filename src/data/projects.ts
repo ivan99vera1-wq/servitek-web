@@ -10,6 +10,8 @@ import { Project } from '@/types/project';
  *
  * Marcados con isDemo: true -> quedan fuera del sitemap y emiten noindex.
  * PENDIENTE (empresa): faltan las fotografias reales de cada proyecto.
+ * El campo `image` usa un marcador gráfico generado (public/images/projects/) -> sustituir por
+ * la fotografía real de cada obra en cuanto esté disponible.
  */
 
 export const projects: Project[] = [
@@ -21,6 +23,7 @@ export const projects: Project[] = [
     year: "2024",
     services: ["Auditoría y Automatización", "Termografía Infrarroja"],
     description: "Auditoría técnica completa de infraestructura eléctrica con diagnóstico termográfico y propuesta de optimización para planta procesadora.",
+    image: "/images/projects/auditoria-electrica.webp",
     images: [],
     featured: true,
     isDemo: true
@@ -33,6 +36,7 @@ export const projects: Project[] = [
     year: "2024",
     services: ["Iluminación e Ingeniería Ex", "Eficiencia Energética"],
     description: "Diseño e implementación de sistema de iluminación LED de alta eficiencia para naves de procesamiento y almacenamiento.",
+    image: "/images/projects/iluminacion-industrial.webp",
     images: [],
     featured: true,
     isDemo: true
@@ -45,6 +49,7 @@ export const projects: Project[] = [
     year: "2024",
     services: ["Motores, Bombas y HVAC", "Mantenimiento Preventivo"],
     description: "Programa de mantenimiento preventivo para sistema de climatización central y motores eléctricos de infraestructura hospitalaria.",
+    image: "/images/projects/motores-hvac.webp",
     images: [],
     featured: false,
     isDemo: true
@@ -57,6 +62,7 @@ export const projects: Project[] = [
     year: "2024",
     services: ["Infraestructura Eléctrica y Respaldo", "Grupos Electrógenos"],
     description: "Implementación de sistema de respaldo energético con grupos electrógenos y transferencia automática para centro de datos.",
+    image: "/images/projects/infraestructura-respaldo.webp",
     images: [],
     featured: true,
     isDemo: true

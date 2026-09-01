@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { MapPin, Calendar, Tag, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { projects } from '@/data/projects';
 import { PageHero } from '@/components/ui/PageHero';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
@@ -44,6 +45,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       <PageHero
         title={project.title}
         subtitle={`${project.sector} — ${project.location}`}
+        image={project.image}
       />
 
       <Breadcrumbs
@@ -85,10 +87,17 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                   {project.description}
                 </p>
 
-                {/* Placeholder para imagen */}
+                {/* Imagen de portada: marcador generado, reemplazable en src/data/projects.ts (campo `image`) */}
                 <div className="mt-8 h-64 bg-gradient-to-br from-navy-light to-navy-lighter rounded-[14px] flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-surface-muted to-transparent opacity-60" />
-                  <div className="relative text-center">
+                  <Image
+                    src={project.image}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 66vw, 100vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface-muted via-surface-muted/30 to-transparent" />
+                  <div className="relative text-center px-4">
                     <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-blue-text/90">IMAGEN DEL PROYECTO</span>
                     <p className="mt-2 text-sm font-semibold text-white/80">{project.title}</p>
                   </div>

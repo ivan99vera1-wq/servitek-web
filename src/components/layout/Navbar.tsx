@@ -82,7 +82,7 @@ export function Navbar() {
             <Image
               src="/images/logo/logo-principal.webp"
               alt="SERVITEK"
-              width={180}
+              width={321}
               height={60}
               className="h-10 md:h-12 w-auto"
               priority
@@ -176,7 +176,7 @@ export function Navbar() {
               <Image
                 src="/images/logo/logo-principal.webp"
                 alt="SERVITEK"
-                width={140}
+                width={251}
                 height={47}
                 className="h-10 w-auto"
               />

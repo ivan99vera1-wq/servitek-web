@@ -1,12 +1,15 @@
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
 interface PageHeroProps {
   title: string;
   subtitle?: string;
   className?: string;
+  /** Imagen de fondo opcional (portada de sector, servicio o proyecto). */
+  image?: string;
 }
 
-export function PageHero({ title, subtitle, className }: PageHeroProps) {
+export function PageHero({ title, subtitle, className, image }: PageHeroProps) {
   return (
     <section
       className={cn(
@@ -14,6 +17,21 @@ export function PageHero({ title, subtitle, className }: PageHeroProps) {
         className
       )}
     >
+      {/* Imagen de fondo opcional */}
+      {image && (
+        <div className="absolute inset-0">
+          <Image
+            src={image}
+            alt=""
+            fill
+            className="object-cover opacity-25"
+            sizes="100vw"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/90 to-surface/70" />
+        </div>
+      )}
+
       {/* Grid pattern sutil */}
       <div className="absolute inset-0 opacity-[0.02]">
         <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">

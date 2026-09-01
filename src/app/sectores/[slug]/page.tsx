@@ -45,6 +45,7 @@ export default function SectorPage({ params }: SectorPageProps) {
       <PageHero
         title={sector.shortTitle}
         subtitle={sector.description}
+        image={sector.image}
       />
 
       <Breadcrumbs

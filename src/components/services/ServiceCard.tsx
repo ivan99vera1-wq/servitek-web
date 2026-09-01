@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Service } from '@/types/service';
 import { ServiceIcon } from '@/lib/icons';
@@ -11,9 +12,21 @@ export function ServiceCard({ service }: ServiceCardProps) {
   return (
     <Link
       href={`/servicios/${service.slug}`}
-      className="card-dark block p-5 sm:p-8 h-full group"
+      className="card-dark relative block p-5 sm:p-8 h-full group overflow-hidden"
     >
-      <div className="flex items-start gap-4 sm:gap-6">
+      {/* Imagen de fondo: reemplazable en src/data/services.ts (campo `image`) */}
+      <div className="absolute inset-0">
+        <Image
+          src={service.image}
+          alt=""
+          fill
+          className="object-cover opacity-40 transition-opacity duration-300 group-hover:opacity-55"
+          sizes="(min-width: 1024px) 25vw, 50vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-surface-card via-surface-card/80 to-surface-card/40" />
+      </div>
+
+      <div className="relative flex items-start gap-4 sm:gap-6">
         <div className="flex-shrink-0 p-3 sm:p-4 bg-blue/10 text-blue-text rounded-lg group-hover:bg-blue-solid group-hover:text-white transition-all duration-300">
           <ServiceIcon name={service.icon} className="h-8 w-8" />
         </div>

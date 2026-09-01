@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { services } from '@/data/services';
@@ -41,9 +42,21 @@ export function BusinessUnits() {
             <ScrollReveal key={service.id} delay={index * 100} fullHeight>
               <Link
                 href={`/servicios/${service.slug}`}
-                className="block p-6 h-full group card-dark"
+                className="relative block p-6 h-full group card-dark overflow-hidden"
               >
-                <div className="flex items-start gap-5">
+                {/* Imagen de fondo: reemplazable en src/data/services.ts (campo `image`) */}
+                <div className="absolute inset-0">
+                  <Image
+                    src={service.image}
+                    alt=""
+                    fill
+                    className="object-cover opacity-40 transition-opacity duration-300 group-hover:opacity-55"
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-surface-card via-surface-card/80 to-surface-card/40" />
+                </div>
+
+                <div className="relative flex items-start gap-5">
                   <div className="flex-shrink-0 p-3 bg-blue/10 text-blue-text rounded-lg group-hover:bg-blue-solid group-hover:text-white transition-all duration-300">
                     <ServiceIcon name={service.icon} className="h-7 w-7" />
                   </div>

@@ -54,6 +54,7 @@ export default function ServicePage({ params }: ServicePageProps) {
       <PageHero
         title={service.shortTitle}
         subtitle={service.description}
+        image={service.image}
       />
 
       <Breadcrumbs

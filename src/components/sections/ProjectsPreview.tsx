@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, MapPin, Calendar } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { projects } from '@/data/projects';
@@ -31,11 +32,18 @@ export function ProjectsPreview() {
           {featuredProjects.map((project, index) => (
             <ScrollReveal key={project.id} delay={index * 100} fullHeight>
               <div className="card-dark overflow-hidden h-full flex flex-col group">
-                {/* Placeholder para imagen */}
+                {/* Imagen de portada: marcador generado, reemplazable en src/data/projects.ts (campo `image`) */}
                 <div className="h-44 bg-gradient-to-br from-navy-light to-navy-lighter flex items-center justify-center relative overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                  />
                   {/* Overlay sutil */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-surface-muted to-transparent opacity-60" />
-                  <div className="relative text-center">
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface-muted via-surface-muted/40 to-transparent" />
+                  <div className="relative text-center px-4">
                     <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-blue-text/90">PROYECTO</span>
                     <p className="mt-1 text-sm font-semibold text-white/80">{project.sector}</p>
                   </div>

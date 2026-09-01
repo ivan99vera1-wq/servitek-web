@@ -3,7 +3,7 @@ import { Company } from '@/types/company';
 export const company: Company = {
   name: "SERVITEK",
   legalName: "SERVITEK E.A.S.",
-  slogan: "PROVISIÓN DE MATERIALES Y SERVICIOS",
+  slogan: "ELECTROMECÁNICA, MATERIALES ELÉCTRICOS",
   description: "Electromecánica industrial, automatización, mantenimiento, infraestructura y respaldo energético para plantas industriales en Paraguay.",
   ruc: "80176311-8",
 

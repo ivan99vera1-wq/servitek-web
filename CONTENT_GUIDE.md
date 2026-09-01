@@ -17,7 +17,7 @@ Esta guía explica dónde y cómo modificar el contenido del sitio web sin tocar
 ```typescript
 export const company = {
   name: "SERVITEK",
-  slogan: "PROVISIÓN DE MATERIALES Y SERVICIOS",
+  slogan: "ELECTROMECÁNICA, MATERIALES ELÉCTRICOS",
   description: "Soluciones de ingeniería eléctrica...",
   // ...
 }
@@ -242,11 +242,16 @@ export const projects = [
 
 ### Proyectos demo (placeholders)
 
-Los proyectos actuales son DEMO. Cuando tengas proyectos reales:
+Los proyectos actuales son DEMO. Cada uno ya tiene una imagen de portada
+generada (ilustración técnica sobre fondo navy) en `/public/images/projects/`,
+referenciada desde el campo `image` de cada proyecto — se usa como fondo en
+la tarjeta de proyecto y en la cabecera de su página de detalle. Cuando tengas
+proyectos reales:
 
 1. Eliminar o modificar los objetos existentes en `projects.ts`
 2. Agregar los datos reales
-3. Agregar imágenes reales en `/public/images/projects/`
+3. Subir la fotografía real del proyecto a `/public/images/projects/` y
+   actualizar el campo `image` (formato recomendado: WebP, 800×600px)
 
 **IMPORTANTE:** No afirmar que los proyectos demo son proyectos reales de SERVITEK.
 
@@ -286,7 +291,7 @@ export const whatsappMessageTemplate = (data: FormData) => {
 
 ```
 /public/images/
-├── logo/          # logo-pricipal.webp (logo horizontal)
+├── logo/          # logo-principal.webp (logo horizontal)
 ├── hero/          # Imágenes del hero principal
 ├── services/      # Imágenes por servicio
 ├── sectors/       # Imágenes por sector
@@ -324,11 +329,19 @@ export const whatsappMessageTemplate = (data: FormData) => {
 
 ```
 /public/images/logo/
-└── logo-pricipal.webp    # Logo horizontal completo (usado en Navbar, Hero, Footer)
+├── logo-principal.webp    # Logo horizontal (usado en Navbar, Hero, Footer)
+└── logo2.png              # Variante cuadrada sobre fondo blanco (no usada en el sitio)
 
 /public/
 └── logo-s.png            # Símbolo "S" (fuente original, disponible para regenerar íconos)
 ```
+
+`logo-principal.webp` se recortó para quitar el eslogan anterior
+("PROVISIÓN DE MATERIALES Y SERVICIOS") que venía incluido como texto dentro
+de la propia imagen — el eslogan actual (`company.slogan`) ahora se escribe
+siempre como texto real en cada página, nunca dentro del archivo del logo.
+`logo2.png` conserva el eslogan anterior porque no se usa en ningún
+componente; si se retoma, aplicarle el mismo recorte.
 
 ### Favicon e íconos (generados desde logo-s.png)
 
@@ -354,10 +367,10 @@ npx sharp-cli -i logo-s.png -o icon-512x512.png resize 512 512 --fit cover --pos
 
 | Ubicación | Archivo |
 |-----------|---------|
-| Navbar (desktop) | `logo-pricipal.webp` |
-| Navbar (móvil) | `logo-pricipal.webp` |
-| Hero | `logo-pricipal.webp` |
-| Footer | `logo-pricipal.webp` |
+| Navbar (desktop) | `logo-principal.webp` |
+| Navbar (móvil) | `logo-principal.webp` |
+| Hero | `logo-principal.webp` |
+| Footer | `logo-principal.webp` |
 | Favicon | `favicon.png` |
 | Manifest | `icon-192x192.png`, `icon-512x512.png` |
 

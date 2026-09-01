@@ -47,7 +47,7 @@ export function Hero() {
             <div className="mb-6">
               <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
                 <span className="w-8 h-[1px] bg-blue" />
-                PROVISIÓN DE MATERIALES Y SERVICIOS
+                ELECTROMECÁNICA, MATERIALES ELÉCTRICOS
               </span>
             </div>
 
@@ -112,7 +112,7 @@ export function Hero() {
                   src="/images/logo/logo-principal.webp"
                   alt="SERVITEK"
                   width={400}
-                  height={133}
+                  height={75}
                   className="w-full max-w-[340px] h-auto drop-shadow-[0_0_40px_rgb(8_120_249_/_0.15)]"
                   priority
                 />
