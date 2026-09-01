@@ -4,6 +4,7 @@ export const sectors: Sector[] = [
   {
     id: "agroindustria",
     title: "AGROINDUSTRIA Y SILOS",
+    shortTitle: "Agroindustria y Silos",
     slug: "agroindustria-y-silos",
     description: "Soluciones eléctricas para plantas de procesamiento agroindustrial, silos de almacenamiento y centros de acopio que requieren alta disponibilidad energética.",
     problems: [
@@ -25,6 +26,7 @@ export const sectors: Sector[] = [
   {
     id: "frigorificos",
     title: "FRIGORÍFICOS Y LOGÍSTICA",
+    shortTitle: "Frigoríficos y Logística",
     slug: "frigorificos-y-logistica",
     description: "Infraestructura eléctrica crítica para frigoríficos, centros de distribución y operaciones logísticas donde la temperatura controlada es esencial.",
     problems: [
@@ -44,8 +46,33 @@ export const sectors: Sector[] = [
     cta: "Ver soluciones"
   },
   {
+    // Sector señalado por la empresa en su referencia visual como "ALCOOLERA".
+    // Se usa la grafía castellana ("alcoholera"), que es la habitual en Paraguay.
+    id: "alcoholeras",
+    title: "ALCOHOLERAS Y DESTILERÍAS",
+    shortTitle: "Alcoholeras y Destilerías",
+    slug: "alcoholeras-y-destilerias",
+    description: "Ingeniería eléctrica para plantas de alcohol y etanol, donde conviven atmósferas explosivas, operación continua de zafra y equipos de proceso que no admiten parada.",
+    problems: [
+      "Áreas clasificadas por vapores de alcohol sin instalaciones certificadas",
+      "Paradas en plena zafra con pérdida directa de producción",
+      "Corrosión y humedad degradando tableros y motores",
+      "Falta de automatización en fermentación y destilación"
+    ],
+    solutions: [
+      "Iluminación y equipamiento para áreas clasificadas",
+      "Automatización de procesos con PLC y variadores",
+      "Mantenimiento de bombas, centrífugas y motores de proceso",
+      "Tableros para ambientes corrosivos y húmedos",
+      "Respaldo energético y transferencia automática"
+    ],
+    image: "/images/sectors/alcoholeras.webp",
+    cta: "Ver soluciones"
+  },
+  {
     id: "maquilas",
     title: "MAQUILAS Y FÁBRICAS",
+    shortTitle: "Maquilas y Fábricas",
     slug: "maquilas-y-fabricas",
     description: "Soluciones integrales para plantas manufactureras, maquiladoras y fábricas que demandan alta eficiencia operativa y continuidad de producción.",
     problems: [
@@ -67,6 +94,7 @@ export const sectors: Sector[] = [
   {
     id: "edificios",
     title: "EDIFICIOS COMERCIALES Y SANATORIOS",
+    shortTitle: "Edificios Comerciales y Sanatorios",
     slug: "edificios-comerciales-y-sanatorios",
     description: "Infraestructura eléctrica para edificios comerciales, centros médicos, sanatorios y espacios que requieren sistemas confiables y seguros.",
     problems: [

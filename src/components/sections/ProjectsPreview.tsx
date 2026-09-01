@@ -13,7 +13,7 @@ export function ProjectsPreview() {
       <div className="container-custom">
         <ScrollReveal>
           <div className="mb-12 md:mb-16 text-center">
-            <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">
+            <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
               <span className="w-8 h-[1px] bg-blue" />
               PROYECTOS
               <span className="w-8 h-[1px] bg-blue" />
@@ -21,7 +21,7 @@ export function ProjectsPreview() {
             <h2 className="mt-6 text-h2 lg:text-h1 font-bold text-white text-balance">
               Proyectos destacados
             </h2>
-            <p className="mt-4 text-lg text-white/55 max-w-3xl mx-auto">
+            <p className="mt-4 text-lg text-white/65 max-w-3xl mx-auto">
               Soluciones ejecutadas para la industria paraguaya.
             </p>
           </div>
@@ -36,26 +36,26 @@ export function ProjectsPreview() {
                   {/* Overlay sutil */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D30] to-transparent opacity-60" />
                   <div className="relative text-center">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-blue/60">PROYECTO</span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-blue-text/90">PROYECTO</span>
                     <p className="mt-1 text-sm font-semibold text-white/80">{project.sector}</p>
                   </div>
                 </div>
 
                 <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-lg font-bold text-white group-hover:text-blue transition-colors">{project.title}</h3>
+                  <h3 className="text-lg font-bold text-white group-hover:text-blue-text transition-colors">{project.title}</h3>
 
-                  <div className="mt-3 flex flex-wrap gap-3 text-xs text-white/40">
+                  <div className="mt-3 flex flex-wrap gap-3 text-xs text-white/60">
                     <div className="flex items-center gap-1.5">
-                      <MapPin className="h-3 w-3 text-blue/50" />
+                      <MapPin className="h-3 w-3 text-blue-text/70" />
                       {project.location}
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <Calendar className="h-3 w-3 text-blue/50" />
+                      <Calendar className="h-3 w-3 text-blue-text/70" />
                       {project.year}
                     </div>
                   </div>
 
-                  <p className="mt-3 text-sm text-white/40 line-clamp-2 flex-1 leading-relaxed">
+                  <p className="mt-3 text-sm text-white/60 line-clamp-2 flex-1 leading-relaxed">
                     {project.description}
                   </p>
                 </div>
@@ -68,7 +68,7 @@ export function ProjectsPreview() {
           <div className="mt-10 text-center">
             <Link
               href="/proyectos"
-              className="inline-flex items-center text-sm font-medium text-white/60 hover:text-blue transition-colors"
+              className="inline-flex items-center text-sm font-medium text-white/70 hover:text-blue-text transition-colors"
             >
               Ver todos los proyectos
               <ArrowRight className="ml-1.5 h-4 w-4" />

@@ -52,23 +52,20 @@ export function Hero() {
           <div className="lg:col-span-7">
             {/* Label superior */}
             <div className="mb-6">
-              <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">
+              <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
                 <span className="w-8 h-[1px] bg-blue" />
                 PROVISIÓN DE MATERIALES Y SERVICIOS
               </span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold text-white leading-[1.05] tracking-tight">
-              SOLUCIONES QUE
-              <br />
-              <span className="text-blue">CONSTRUYEN</span>
-              <br />
-              CONFIANZA
+            <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-white md:text-5xl lg:text-[3.4rem] xl:text-[3.8rem]">
+              Ingeniería eléctrica y{' '}
+              <span className="text-blue-text">electromecánica</span> industrial en Paraguay
             </h1>
 
             {/* Descripción */}
-            <p className="mt-6 text-lg md:text-xl text-white/65 max-w-xl leading-relaxed">
+            <p className="mt-6 text-lg md:text-xl text-white/70 max-w-xl leading-relaxed">
               Soluciones de ingeniería eléctrica, electromecánica, automatización,
               mantenimiento, infraestructura y respaldo energético para industrias
               en Paraguay.
@@ -97,15 +94,15 @@ export function Hero() {
               <div className="flex flex-wrap gap-8">
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-blue" />
-                  <span className="text-sm text-white/55">RUC: 80176311-8</span>
+                  <span className="text-sm text-white/65">RUC: 80176311-8</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-blue" />
-                  <span className="text-sm text-white/55">Respuesta en menos de 24h</span>
+                  <span className="text-sm text-white/65">Respuesta en menos de 24h</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-blue" />
-                  <span className="text-sm text-white/55">Equipo especializado</span>
+                  <span className="text-sm text-white/65">Equipo especializado</span>
                 </div>
               </div>
             </div>

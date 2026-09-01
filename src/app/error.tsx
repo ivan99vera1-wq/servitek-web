@@ -20,7 +20,7 @@ export default function Error({
         <h2 className="text-h3 mt-4 font-semibold text-white">
           Algo salió mal
         </h2>
-        <p className="text-body mt-2 text-white/45">
+        <p className="text-body mt-2 text-white/60">
           Lo sentimos, ha ocurrido un error inesperado. Por favor, intenta de nuevo.
         </p>
         <button

@@ -32,7 +32,7 @@ export function PageHero({ title, subtitle, className }: PageHeroProps) {
       <div className="container-custom relative z-10">
         <h1 className="text-h1 md:text-display text-white text-balance">{title}</h1>
         {subtitle && (
-          <p className="mt-4 text-lg text-white/55 max-w-3xl leading-relaxed">{subtitle}</p>
+          <p className="mt-4 text-lg text-white/65 max-w-3xl leading-relaxed">{subtitle}</p>
         )}
       </div>
     </section>

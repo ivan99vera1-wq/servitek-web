@@ -10,7 +10,7 @@ export function WhyServitek() {
       <div className="container-custom">
         <ScrollReveal>
           <div className="mb-12 md:mb-16 text-center">
-            <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">
+            <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
               <span className="w-8 h-[1px] bg-blue" />
               ¿POR QUÉ SERVITEK?
               <span className="w-8 h-[1px] bg-blue" />
@@ -25,13 +25,13 @@ export function WhyServitek() {
           {whyServitek.pillars.map((pillar, index) => (
             <ScrollReveal key={pillar.number} delay={index * 100}>
               <div className="text-center md:text-left">
-                <span className="font-mono text-4xl font-bold text-blue/30">
+                <span className="font-mono text-4xl font-bold text-blue-text/70">
                   {pillar.number}
                 </span>
                 <h3 className="mt-4 text-base font-semibold text-white uppercase tracking-wide">
                   {pillar.title}
                 </h3>
-                <p className="mt-2 text-sm text-white/45 leading-relaxed">{pillar.description}</p>
+                <p className="mt-2 text-sm text-white/60 leading-relaxed">{pillar.description}</p>
               </div>
             </ScrollReveal>
           ))}

@@ -1,5 +1,5 @@
 export const aboutContent = {
-  title: "Ingeniería para operaciones que exigen confiabilidad.",
+  title: "SERVITEK: ingeniería para operaciones que exigen confiabilidad",
   subtitle: "SERVITEK E.A.S. es una empresa paraguaya especializada en soluciones de ingeniería eléctrica y electromecánica industrial.",
 
   /**
@@ -38,7 +38,7 @@ export const valueProposition = {
 };
 
 export const whyServitek = {
-  title: "Cuando tu operación no puede parar, la ingeniería importa.",
+  title: "Cuando su operación no puede parar, la ingeniería importa.",
   pillars: [
     {
       number: "01",

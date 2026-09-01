@@ -1,6 +1,8 @@
 export interface Service {
   id: string;
   title: string;
+  /** Título corto en caja normal: metadatos, breadcrumbs y tarjetas. */
+  shortTitle: string;
   slug: string;
   description: string;
   fullDescription?: string;

@@ -57,8 +57,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         <div className="container-custom">
           {/* Nota sobre proyecto demo */}
           <div className="card-dark p-6 mb-8">
-            <p className="text-sm text-white/40">
-              <strong className="text-white/60">Nota:</strong> Este es un proyecto de ejemplo.
+            <p className="text-sm text-white/60">
+              <strong className="text-white/70">Nota:</strong> Este es un proyecto de ejemplo.
               SERVITEK está preparando su portafolio de proyectos reales.
             </p>
           </div>
@@ -67,21 +67,21 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             {/* Contenido principal */}
             <div className="lg:col-span-2">
               <ScrollReveal>
-                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">PROYECTO</span>
-                <h2 className="mt-2 text-h3 font-bold text-white">{project.title}</h2>
+                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">PROYECTO</span>
+                <h2 className="mt-2 text-h3 font-bold text-white">Alcance del proyecto</h2>
 
-                <div className="mt-4 flex flex-wrap gap-4 text-sm text-white/40">
+                <div className="mt-4 flex flex-wrap gap-4 text-sm text-white/60">
                   <div className="flex items-center gap-1">
-                    <MapPin className="h-4 w-4 text-blue/50" />
+                    <MapPin className="h-4 w-4 text-blue-text/70" />
                     {project.location}
                   </div>
                   <div className="flex items-center gap-1">
-                    <Calendar className="h-4 w-4 text-blue/50" />
+                    <Calendar className="h-4 w-4 text-blue-text/70" />
                     {project.year}
                   </div>
                 </div>
 
-                <p className="mt-6 text-lg text-white/50 leading-relaxed">
+                <p className="mt-6 text-lg text-white/65 leading-relaxed">
                   {project.description}
                 </p>
 
@@ -89,7 +89,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 <div className="mt-8 h-64 bg-gradient-to-br from-[#0A1F35] to-[#0B2A47] rounded-[14px] flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D30] to-transparent opacity-60" />
                   <div className="relative text-center">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-blue/60">IMAGEN DEL PROYECTO</span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-blue-text/90">IMAGEN DEL PROYECTO</span>
                     <p className="mt-2 text-sm font-semibold text-white/80">{project.title}</p>
                   </div>
                 </div>
@@ -106,24 +106,24 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
                   <div className="space-y-4">
                     <div>
-                      <span className="text-sm font-medium text-white/60">Sector</span>
-                      <p className="text-white/45">{project.sector}</p>
+                      <span className="text-sm font-medium text-white/70">Sector</span>
+                      <p className="text-white/60">{project.sector}</p>
                     </div>
                     <div>
-                      <span className="text-sm font-medium text-white/60">Ubicación</span>
-                      <p className="text-white/45">{project.location}</p>
+                      <span className="text-sm font-medium text-white/70">Ubicación</span>
+                      <p className="text-white/60">{project.location}</p>
                     </div>
                     <div>
-                      <span className="text-sm font-medium text-white/60">Año</span>
-                      <p className="text-white/45">{project.year}</p>
+                      <span className="text-sm font-medium text-white/70">Año</span>
+                      <p className="text-white/60">{project.year}</p>
                     </div>
                     <div>
-                      <span className="text-sm font-medium text-white/60">Servicios</span>
+                      <span className="text-sm font-medium text-white/70">Servicios</span>
                       <div className="mt-2 flex flex-wrap gap-2">
                         {project.services.map((service) => (
                           <span
                             key={service}
-                            className="inline-flex items-center gap-1 px-3 py-1 bg-white/5 text-white/50 rounded-full text-xs"
+                            className="inline-flex items-center gap-1 px-3 py-1 bg-white/5 text-white/65 rounded-full text-xs"
                           >
                             <Tag className="h-3 w-3" />
                             {service}
@@ -159,20 +159,20 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                       href={`/proyectos/${p.id}`}
                       className="card-dark block p-6 group"
                     >
-                      <h4 className="text-lg font-semibold text-white group-hover:text-blue transition-colors">
+                      <h4 className="text-lg font-semibold text-white group-hover:text-blue-text transition-colors">
                         {p.title}
                       </h4>
-                      <div className="mt-2 flex items-center gap-2 text-xs text-white/35">
+                      <div className="mt-2 flex items-center gap-2 text-xs text-white/55">
                         <MapPin className="h-3 w-3" />
                         {p.location}
                         <span>•</span>
                         <Calendar className="h-3 w-3" />
                         {p.year}
                       </div>
-                      <p className="mt-2 text-sm text-white/40 line-clamp-2">
+                      <p className="mt-2 text-sm text-white/60 line-clamp-2">
                         {p.description}
                       </p>
-                      <div className="mt-4 inline-flex items-center text-sm font-medium text-white/60 group-hover:text-blue transition-colors">
+                      <div className="mt-4 inline-flex items-center text-sm font-medium text-white/70 group-hover:text-blue-text transition-colors">
                         Ver proyecto
                         <ArrowRight className="ml-1.5 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                       </div>

@@ -15,7 +15,7 @@ import { Project } from '@/types/project';
 export const projects: Project[] = [
   {
     id: "demo-1",
-    title: "Auditoría Elétrica Industrial",
+    title: "Auditoría Eléctrica Industrial",
     sector: "Frigoríficos",
     location: "Asunción, Paraguay",
     year: "2024",

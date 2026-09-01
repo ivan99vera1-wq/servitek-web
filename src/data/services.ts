@@ -4,6 +4,7 @@ export const services: Service[] = [
   {
     id: "iluminacion",
     title: "ILUMINACIÓN INDUSTRIAL, ÁREAS PÚBLICAS Y ATMÓSFERAS EXPLOSIVAS",
+    shortTitle: "Iluminación Industrial y Áreas Clasificadas",
     slug: "iluminacion-e-ingenieria-ex",
     description: "Diseño, cálculo lumínico y montaje de sistemas de iluminación de alta eficiencia para plantas industriales, naves logísticas y centros de distribución.",
     fullDescription: "Ofrecemos soluciones completas de iluminación industrial que optimizan el consumo energético y mejoran las condiciones de trabajo. Nuestro equipo especializado diseña sistemas de iluminación para entornos de alta exigencia, incluyendo áreas clasificadas con riesgo de atmósfera explosiva.",
@@ -46,6 +47,7 @@ export const services: Service[] = [
   {
     id: "auditoria",
     title: "AUDITORÍA Y AUTOMATIZACIÓN DE TABLEROS ELÉCTRICOS",
+    shortTitle: "Auditoría y Automatización de Tableros",
     slug: "auditoria-y-automatizacion",
     description: "Auditoría técnica, diagnóstico de tableros, termografía infrarroja, diseño, armado y montaje de tableros eléctricos industriales.",
     fullDescription: "Nuestro equipo realiza auditorías técnicas completas de infraestructura eléctrica, identificando puntos críticos y proponiendo soluciones de automatización que mejoran la eficiencia y seguridad de sus operaciones.",
@@ -91,6 +93,7 @@ export const services: Service[] = [
   {
     id: "motores",
     title: "MANTENIMIENTO DE MOTORES, BOMBAS Y HVAC",
+    shortTitle: "Mantenimiento de Motores, Bombas y HVAC",
     slug: "motores-bombas-hvac",
     description: "Mantenimiento preventivo y correctivo de motores eléctricos, sistemas de bombeo, HVAC, chillers y torres de enfriamiento.",
     fullDescription: "Brindamos servicios especializados de mantenimiento para equipos mecánicos y sistemas de climatización industrial. Nuestro equipo técnico realiza diagnósticos precisos y mantenimiento que prolonga la vida útil de los equipos.",
@@ -140,6 +143,7 @@ export const services: Service[] = [
   {
     id: "infraestructura",
     title: "INFRAESTRUCTURA ELÉCTRICA Y RESPALDO DE ENERGÍA",
+    shortTitle: "Infraestructura Eléctrica y Respaldo",
     slug: "infraestructura-electrica-respaldo",
     description: "Puestos de distribución, transformadores, bandejas portacables, puesta a tierra, cableado de potencia y grupos electrógenos.",
     fullDescription: "Diseñamos e implementamos infraestructura eléctrica completa para industrias que requieren alta disponibilidad energética. Nuestro servicio incluye mantenimiento preventivo de grupos electrógenos y sistemas de respaldo.",

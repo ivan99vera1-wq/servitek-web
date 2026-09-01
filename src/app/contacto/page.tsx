@@ -6,7 +6,7 @@ import { generatePageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'Contacto',
-  description: 'Contacte a SERVITEK para solicitar presupuesto o consultas sobre servicios de ingeniería eléctrica y electromecánica.',
+  description: 'Contacte con SERVITEK para solicitar presupuesto o consultas sobre servicios de ingeniería eléctrica y electromecánica.',
   path: '/contacto',
 });
 
@@ -14,14 +14,17 @@ export default function ContactoPage() {
   return (
     <>
       <PageHero
-        title="¿Necesitas una solución técnica?"
-        subtitle="Cuéntanos qué necesita tu operación y nuestro equipo podrá evaluar la solución adecuada."
+        title="¿Necesita una solución técnica?"
+        subtitle="Cuéntenos qué necesita su operación y nuestro equipo podrá evaluar la solución adecuada."
       />
 
       <section className="section-padding bg-[#061321]">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <ContactForm />
+            <div>
+              <h2 className="text-h3 mb-6 font-bold text-white">Solicitar presupuesto</h2>
+              <ContactForm />
+            </div>
             <ContactInfo />
           </div>
         </div>

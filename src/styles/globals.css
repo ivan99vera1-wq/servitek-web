@@ -76,7 +76,7 @@
   }
 
   .label-engineering {
-    @apply font-mono text-xs uppercase tracking-widest text-text-dark;
+    @apply font-mono text-xs uppercase tracking-widest text-white/60;
   }
 
   .card-dark {
@@ -119,11 +119,11 @@
   }
 
   .trust-indicator-value {
-    @apply text-stat font-bold text-blue;
+    @apply text-stat font-bold text-blue-text;
   }
 
   .trust-indicator-label {
-    @apply label-engineering mt-1 text-text-dark;
+    @apply label-engineering mt-1 text-white/60;
   }
 
   .scroll-reveal {
@@ -148,47 +148,10 @@
   }
 }
 
-@layer utilities {
-  .bg-navy {
-    background-color: #061321;
-  }
-
-  .bg-navy-light {
-    background-color: #0A1F35;
-  }
-
-  .bg-navy-dark {
-    background-color: #030B14;
-  }
-
-  .bg-surface-dark {
-    background-color: #0B1D30;
-  }
-
-  .bg-blue {
-    background-color: #0878F9;
-  }
-
-  .bg-blue-bright {
-    background-color: #1683FF;
-  }
-
-  .text-blue {
-    color: #0878F9;
-  }
-
-  .text-blue-bright {
-    color: #1683FF;
-  }
-
-  .border-blue {
-    border-color: #0878F9;
-  }
-
-  .border-white\/8 {
-    border-color: rgba(255,255,255,0.08);
-  }
-}
+/* Todas estas utilidades ya las genera Tailwind desde el tema (tailwind.config.ts).
+   Redefinirlas aquí las duplicaba y, al ir después en la misma capa, pisaba a los
+   tokens: por eso .text-blue-text servía el azul antiguo y fallaba el contraste.
+   Si hace falta un color nuevo, se añade al tema, no aquí. */
 
 @media (prefers-reduced-motion: reduce) {
   *,

@@ -24,12 +24,12 @@ export default function ServiciosPage() {
         <div className="container-custom">
           <ScrollReveal>
             <div className="max-w-3xl mx-auto text-center mb-16">
-              <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">
+              <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
                 <span className="w-8 h-[1px] bg-blue" />
                 ENFOQUE TÉCNICO
                 <span className="w-8 h-[1px] bg-blue" />
               </span>
-              <p className="mt-6 text-lg text-white/50 leading-relaxed">
+              <p className="mt-6 text-lg text-white/65 leading-relaxed">
                 Cada servicio está diseñado para resolver problemas reales de la industria paraguaya.
                 Desde diagnóstico preciso hasta puesta en marcha, nuestro equipo especializado
                 garantiza la continuidad operativa de su planta industrial.
@@ -51,7 +51,7 @@ export default function ServiciosPage() {
         <div className="container-custom">
           <ScrollReveal>
             <div className="mb-12 md:mb-16 text-center">
-              <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">
+              <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
                 <span className="w-8 h-[1px] bg-blue" />
                 PROCESO
                 <span className="w-8 h-[1px] bg-blue" />
@@ -59,7 +59,7 @@ export default function ServiciosPage() {
               <h2 className="mt-6 text-h2 lg:text-h1 font-bold text-white text-balance">
                 Nuestro proceso de trabajo
               </h2>
-              <p className="mt-4 text-lg text-white/50 max-w-3xl mx-auto">
+              <p className="mt-4 text-lg text-white/65 max-w-3xl mx-auto">
                 Cada proyecto sigue un proceso estructurado que garantiza resultados confiables.
               </p>
             </div>
@@ -74,11 +74,11 @@ export default function ServiciosPage() {
             ].map((item) => (
               <ScrollReveal key={item.step} delay={parseInt(item.step) * 100}>
                 <div className="text-center md:text-left">
-                  <span className="font-mono text-4xl font-bold text-blue/25">
+                  <span className="font-mono text-4xl font-bold text-blue-text/70">
                     {item.step}
                   </span>
                   <h3 className="mt-4 text-lg font-semibold text-white">{item.title}</h3>
-                  <p className="mt-2 text-sm text-white/45 leading-relaxed">{item.description}</p>
+                  <p className="mt-2 text-sm text-white/60 leading-relaxed">{item.description}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -104,8 +104,8 @@ export default function ServiciosPage() {
               <h2 className="text-h2 lg:text-h1 font-bold text-white">
                 ¿Necesita una solución técnica?
               </h2>
-              <p className="mt-6 text-lg text-white/50">
-                Cuéntanos qué necesita su operación y nuestro equipo podrá evaluar
+              <p className="mt-6 text-lg text-white/65">
+                Cuéntenos qué necesita su operación y nuestro equipo podrá evaluar
                 la solución adecuada.
               </p>
               <div className="mt-8">

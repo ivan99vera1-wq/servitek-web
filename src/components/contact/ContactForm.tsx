@@ -1,200 +1,289 @@
 'use client';
 
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Button } from '@/components/ui/Button';
-import { serviceOptions } from '@/data/contact';
+import Link from 'next/link';
+import { CheckCircle2, AlertCircle, Mail } from 'lucide-react';
+import { serviceOptions, whatsappMessageTemplate } from '@/data/contact';
 import { generateWhatsAppUrl } from '@/lib/whatsapp';
+import { company } from '@/data/company';
 import { trackFormSubmit, trackWhatsAppClick } from '@/lib/analytics';
 
 const contactFormSchema = z.object({
-  name: z.string().min(2, 'Nombre requerido'),
-  company: z.string().min(2, 'Empresa requerida'),
-  phone: z.string().min(8, 'Teléfono requerido'),
-  city: z.string().min(2, 'Ciudad requerida'),
-  serviceType: z.string().min(1, 'Seleccione un servicio'),
-  message: z.string().min(10, 'Mensaje requerido'),
-  privacy: z.boolean().refine((val) => val === true, 'Debes aceptar la Política de Privacidad'),
-  honeypot: z.string().max(0, 'Campo honeypot detectado'),
+  name: z.string().min(2, 'Escriba su nombre completo'),
+  company: z.string().min(2, 'Escriba el nombre de su empresa'),
+  phone: z.string().regex(/^[\d\s()+-]{7,20}$/, 'Escriba un teléfono válido, por ejemplo 0981 118743'),
+  city: z.string().min(2, 'Escriba su ciudad'),
+  serviceType: z.string().min(1, 'Elija el servicio que necesita'),
+  message: z.string().min(10, 'Describa su necesidad con algo más de detalle (mínimo 10 caracteres)'),
+  privacy: z.literal(true, {
+    errorMap: () => ({ message: 'Debe aceptar la Política de Privacidad para continuar' }),
+  }),
+  honeypot: z.string().max(0),
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
+const inputBase =
+  'w-full px-4 py-3 bg-white/5 border rounded-md text-white placeholder-white/40 ' +
+  'focus:outline-none focus:ring-2 focus:ring-blue-text focus:border-transparent transition-colors';
+
+/** Rojo accesible sobre los fondos oscuros del sitio (6,1:1 sobre #0b253f). */
+const errorText = 'mt-1.5 flex items-start gap-1.5 text-sm text-[#FF8A80]';
+
 export function ContactForm() {
+  const [sent, setSent] = useState(false);
   const {
     register,
     handleSubmit,
+    reset,
+    setFocus,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      honeypot: '',
-      privacy: false,
-    },
+    defaultValues: { honeypot: '' },
   });
 
   const onSubmit = (data: ContactFormData) => {
     trackFormSubmit('contact_form');
     trackWhatsAppClick();
-
-    const message = `Hola, me interesa información sobre sus servicios.
-
-*Datos de contacto:*
-- Nombre: ${data.name}
-- Empresa: ${data.company}
-- Teléfono: ${data.phone}
-- Ciudad: ${data.city}
-- Servicio de interés: ${data.serviceType}
-
-*Mensaje:*
-${data.message}`;
-
-    const url = generateWhatsAppUrl(message);
-    window.open(url, '_blank', 'noopener,noreferrer');
+    // window.open tras validación asíncrona lo bloquean algunos navegadores
+    // móviles. Se navega en la misma pestaña como respaldo si eso ocurre.
+    const url = generateWhatsAppUrl(whatsappMessageTemplate(data));
+    const win = window.open(url, '_blank', 'noopener,noreferrer');
+    if (!win) window.location.href = url;
+    setSent(true);
+    reset();
   };
 
+  /** Lleva el foco al primer campo inválido, como espera un lector de pantalla. */
+  const onInvalid = (formErrors: typeof errors) => {
+    const first = (Object.keys(formErrors) as Array<keyof ContactFormData>)[0];
+    if (first) setFocus(first);
+  };
+
+  const fieldProps = (name: keyof ContactFormData) => ({
+    'aria-invalid': errors[name] ? ('true' as const) : ('false' as const),
+    'aria-describedby': errors[name] ? `${name}-error` : undefined,
+    className: `${inputBase} ${errors[name] ? 'border-[#FF8A80]' : 'border-white/10'}`,
+  });
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <div>
-        <label htmlFor="name" className="block text-sm font-medium text-white/70 mb-2">
-          Nombre completo *
-        </label>
-        <input
-          type="text"
-          id="name"
-          {...register('name')}
-          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition-colors"
-          placeholder="Su nombre"
-        />
-        {errors.name && (
-          <p className="mt-1 text-sm text-blue">{errors.name.message}</p>
-        )}
-      </div>
-
-      <div>
-        <label htmlFor="company" className="block text-sm font-medium text-white/70 mb-2">
-          Empresa *
-        </label>
-        <input
-          type="text"
-          id="company"
-          {...register('company')}
-          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition-colors"
-          placeholder="Nombre de la empresa"
-        />
-        {errors.company && (
-          <p className="mt-1 text-sm text-blue">{errors.company.message}</p>
-        )}
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-white/70 mb-2">
-            Teléfono *
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            {...register('phone')}
-            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition-colors"
-            placeholder="0981 118743"
-          />
-          {errors.phone && (
-            <p className="mt-1 text-sm text-blue">{errors.phone.message}</p>
-          )}
+    <div>
+      {sent && (
+        <div
+          role="status"
+          className="mb-6 flex items-start gap-3 rounded-md border border-[#4ADE80]/40 bg-[#4ADE80]/10 p-4"
+        >
+          <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#7BE49B]" aria-hidden="true" />
+          <div className="text-sm text-white/80">
+            <p className="font-semibold text-white">Se abrió WhatsApp con su consulta.</p>
+            <p className="mt-1">
+              Recuerde pulsar enviar dentro de WhatsApp para que nos llegue. Si no se abrió,
+              escríbanos a{' '}
+              <a
+                href={`mailto:${company.contact.email}`}
+                className="text-blue-text underline underline-offset-2"
+              >
+                {company.contact.email}
+              </a>
+              .
+            </p>
+          </div>
         </div>
+      )}
 
+      <form onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate className="space-y-6">
         <div>
-          <label htmlFor="city" className="block text-sm font-medium text-white/70 mb-2">
-            Ciudad *
+          <label htmlFor="name" className="mb-2 block text-sm font-medium text-white/80">
+            Nombre completo <span aria-hidden="true">*</span>
           </label>
           <input
             type="text"
-            id="city"
-            {...register('city')}
-            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition-colors"
-            placeholder="Asunción"
+            id="name"
+            autoComplete="name"
+            placeholder="Su nombre"
+            {...register('name')}
+            {...fieldProps('name')}
           />
-          {errors.city && (
-            <p className="mt-1 text-sm text-blue">{errors.city.message}</p>
+          {errors.name && (
+            <p id="name-error" className={errorText}>
+              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+              {errors.name.message}
+            </p>
           )}
         </div>
-      </div>
 
-      <div>
-        <label htmlFor="serviceType" className="block text-sm font-medium text-white/70 mb-2">
-          Tipo de servicio *
-        </label>
-        <select
-          id="serviceType"
-          {...register('serviceType')}
-          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition-colors"
-        >
-          <option value="" className="bg-navy">Seleccione un servicio</option>
-          {serviceOptions.map((option) => (
-            <option key={option} value={option} className="bg-navy">
-              {option}
+        <div>
+          <label htmlFor="company" className="mb-2 block text-sm font-medium text-white/80">
+            Empresa <span aria-hidden="true">*</span>
+          </label>
+          <input
+            type="text"
+            id="company"
+            autoComplete="organization"
+            placeholder="Nombre de la empresa"
+            {...register('company')}
+            {...fieldProps('company')}
+          />
+          {errors.company && (
+            <p id="company-error" className={errorText}>
+              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+              {errors.company.message}
+            </p>
+          )}
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div>
+            <label htmlFor="phone" className="mb-2 block text-sm font-medium text-white/80">
+              Teléfono <span aria-hidden="true">*</span>
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              autoComplete="tel"
+              inputMode="tel"
+              placeholder="0981 118743"
+              {...register('phone')}
+              {...fieldProps('phone')}
+            />
+            {errors.phone && (
+              <p id="phone-error" className={errorText}>
+                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                {errors.phone.message}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="city" className="mb-2 block text-sm font-medium text-white/80">
+              Ciudad <span aria-hidden="true">*</span>
+            </label>
+            <input
+              type="text"
+              id="city"
+              autoComplete="address-level2"
+              placeholder="Asunción"
+              {...register('city')}
+              {...fieldProps('city')}
+            />
+            {errors.city && (
+              <p id="city-error" className={errorText}>
+                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                {errors.city.message}
+              </p>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="serviceType" className="mb-2 block text-sm font-medium text-white/80">
+            Tipo de servicio <span aria-hidden="true">*</span>
+          </label>
+          <select id="serviceType" {...register('serviceType')} {...fieldProps('serviceType')}>
+            <option value="" className="bg-navy">
+              Elija un servicio
             </option>
-          ))}
-        </select>
-        {errors.serviceType && (
-          <p className="mt-1 text-sm text-blue">{errors.serviceType.message}</p>
-        )}
-      </div>
+            {serviceOptions.map((option) => (
+              <option key={option} value={option} className="bg-navy">
+                {option}
+              </option>
+            ))}
+          </select>
+          {errors.serviceType && (
+            <p id="serviceType-error" className={errorText}>
+              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+              {errors.serviceType.message}
+            </p>
+          )}
+        </div>
 
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium text-white/70 mb-2">
-          Mensaje *
-        </label>
-        <textarea
-          id="message"
-          {...register('message')}
-          rows={4}
-          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition-colors resize-none"
-          placeholder="Describa su necesidad técnica..."
-        />
-        {errors.message && (
-          <p className="mt-1 text-sm text-blue">{errors.message.message}</p>
-        )}
-      </div>
+        <div>
+          <label htmlFor="message" className="mb-2 block text-sm font-medium text-white/80">
+            Mensaje <span aria-hidden="true">*</span>
+          </label>
+          <textarea
+            id="message"
+            rows={4}
+            placeholder="Describa su necesidad técnica..."
+            {...register('message')}
+            {...fieldProps('message')}
+          />
+          {errors.message && (
+            <p id="message-error" className={errorText}>
+              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+              {errors.message.message}
+            </p>
+          )}
+        </div>
 
-      {/* Honeypot field - anti-spam */}
-      <input
-        type="text"
-        {...register('honeypot')}
-        className="absolute opacity-0 pointer-events-none"
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden="true"
-      />
-
-      <div className="flex items-start gap-2 text-sm text-white/45">
+        {/* Anti-spam: invisible para personas, sin foco ni lectura asistida. */}
         <input
-          type="checkbox"
-          id="privacy"
-          {...register('privacy')}
-          className="mt-1 accent-blue"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="pointer-events-none absolute h-0 w-0 opacity-0"
+          {...register('honeypot')}
         />
-        <label htmlFor="privacy">
-          Al enviar aceptas la{' '}
-          <a href="/politica-de-privacidad" className="text-blue hover:underline">
-            Política de Privacidad
-          </a>{' '}
-          *
-        </label>
-      </div>
-      {errors.privacy && (
-        <p className="text-sm text-blue">{errors.privacy.message}</p>
-      )}
 
-      <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? 'Enviando...' : 'ENVIAR POR WHATSAPP'}
-      </Button>
+        <div>
+          <div className="flex items-start gap-3">
+            <input
+              type="checkbox"
+              id="privacy"
+              {...register('privacy')}
+              aria-invalid={errors.privacy ? 'true' : 'false'}
+              aria-describedby={errors.privacy ? 'privacy-error' : undefined}
+              className="mt-0.5 h-5 w-5 shrink-0 accent-[#0A6BDB]"
+            />
+            <label htmlFor="privacy" className="text-sm text-white/70">
+              He leído y acepto la Política de Privacidad <span aria-hidden="true">*</span>
+            </label>
+          </div>
+          <p className="mt-1.5 pl-8 text-sm">
+            <Link
+              href="/politica-de-privacidad"
+              className="text-blue-text underline underline-offset-2"
+            >
+              Leer la Política de Privacidad
+            </Link>
+          </p>
+          {errors.privacy && (
+            <p id="privacy-error" className={errorText}>
+              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+              {errors.privacy.message}
+            </p>
+          )}
+        </div>
 
-      <p className="text-xs text-white/30 text-center">
-        El formulario enviará los datos por WhatsApp a nuestro equipo técnico.
-      </p>
-    </form>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="inline-flex w-full items-center justify-center rounded-md bg-blue-solid px-8 py-4 text-lg font-medium text-white transition-all duration-200 hover:bg-blue-solid-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-text focus-visible:ring-offset-2 focus-visible:ring-offset-[#061321] disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          {isSubmitting ? 'Enviando...' : 'ENVIAR POR WHATSAPP'}
+        </button>
+
+        <p className="text-center text-xs text-white/60">
+          Al enviar se abrirá WhatsApp con sus datos ya escritos. Debe pulsar enviar allí para que
+          la consulta nos llegue.
+        </p>
+
+        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 border-t border-white/[0.08] pt-5 text-center text-sm text-white/70">
+          <Mail className="h-4 w-4 shrink-0 text-blue-text" aria-hidden="true" />
+          <span>¿Prefiere el correo? Escríbanos a</span>
+          <a
+            href={`mailto:${company.contact.email}`}
+            className="break-all text-blue-text underline underline-offset-2"
+          >
+            {company.contact.email}
+          </a>
+        </div>
+      </form>
+    </div>
   );
 }

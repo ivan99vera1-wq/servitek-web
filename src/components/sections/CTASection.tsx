@@ -24,7 +24,7 @@ export function CTASection() {
       <div className="container-custom relative z-10">
         <ScrollReveal>
           <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">
+            <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
               <span className="w-8 h-[1px] bg-blue" />
               CONTACTO
               <span className="w-8 h-[1px] bg-blue" />
@@ -32,8 +32,8 @@ export function CTASection() {
             <h2 className="mt-6 text-h2 lg:text-h1 font-bold text-white text-balance">
               ¿Necesita una solución técnica?
             </h2>
-            <p className="mt-6 text-lg text-white/55 max-w-2xl mx-auto leading-relaxed">
-              Cuéntanos qué necesita su operación y nuestro equipo podrá evaluar
+            <p className="mt-6 text-lg text-white/65 max-w-2xl mx-auto leading-relaxed">
+              Cuéntenos qué necesita su operación y nuestro equipo podrá evaluar
               la solución adecuada. Respuesta garantizada en menos de 24 horas.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">

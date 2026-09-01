@@ -4,6 +4,7 @@ import { StatCard } from '@/components/ui/StatCard';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { company } from '@/data/company';
 import { aboutContent, whyServitek } from '@/data/company-content';
+import { CTASection } from '@/components/sections/CTASection';
 import { generatePageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = generatePageMetadata({
@@ -37,22 +38,22 @@ export default function NosotrosPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <ScrollReveal>
               <div>
-                <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">
+                <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
                   <span className="w-6 h-[1px] bg-blue" />
                   MISIÓN
                 </span>
-                <p className="mt-5 text-lg text-white/55 leading-relaxed">
+                <p className="mt-5 text-lg text-white/65 leading-relaxed">
                   {company.mission}
                 </p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={200}>
               <div>
-                <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">
+                <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
                   <span className="w-6 h-[1px] bg-blue" />
                   VISIÓN
                 </span>
-                <p className="mt-5 text-lg text-white/55 leading-relaxed">
+                <p className="mt-5 text-lg text-white/65 leading-relaxed">
                   {company.vision}
                 </p>
               </div>
@@ -66,7 +67,7 @@ export default function NosotrosPage() {
         <div className="container-custom">
           <ScrollReveal>
             <div className="mb-12 md:mb-16 text-center">
-              <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">
+              <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
                 <span className="w-8 h-[1px] bg-blue" />
                 VALORES
                 <span className="w-8 h-[1px] bg-blue" />
@@ -74,7 +75,7 @@ export default function NosotrosPage() {
               <h2 className="mt-6 text-h2 lg:text-h1 font-bold text-white text-balance">
                 Nuestros Valores
               </h2>
-              <p className="mt-4 text-lg text-white/50 max-w-3xl mx-auto">
+              <p className="mt-4 text-lg text-white/65 max-w-3xl mx-auto">
                 Los principios que guían cada proyecto y cada relación comercial.
               </p>
             </div>
@@ -85,7 +86,7 @@ export default function NosotrosPage() {
               <ScrollReveal key={value.title} delay={index * 100}>
                 <div className="card-dark p-6 h-full">
                   <h3 className="font-semibold text-white">{value.title}</h3>
-                  <p className="mt-2 text-sm text-white/45 leading-relaxed">{value.description}</p>
+                  <p className="mt-2 text-sm text-white/60 leading-relaxed">{value.description}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -99,7 +100,7 @@ export default function NosotrosPage() {
         <div className="container-custom">
           <ScrollReveal>
             <div className="mb-12 md:mb-16 text-center">
-              <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">
+              <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
                 <span className="w-8 h-[1px] bg-blue" />
                 PILARES
                 <span className="w-8 h-[1px] bg-blue" />
@@ -114,19 +115,21 @@ export default function NosotrosPage() {
             {whyServitek.pillars.map((pillar, index) => (
               <ScrollReveal key={pillar.number} delay={index * 100}>
                 <div className="text-center md:text-left">
-                  <span className="font-mono text-4xl font-bold text-blue/25">
+                  <span className="font-mono text-4xl font-bold text-blue-text/70">
                     {pillar.number}
                   </span>
                   <h3 className="mt-4 text-base font-semibold text-white uppercase tracking-wide">
                     {pillar.title}
                   </h3>
-                  <p className="mt-2 text-sm text-white/45 leading-relaxed">{pillar.description}</p>
+                  <p className="mt-2 text-sm text-white/60 leading-relaxed">{pillar.description}</p>
                 </div>
               </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
+
+      <CTASection />
     </>
   );
 }

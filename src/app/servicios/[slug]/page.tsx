@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   if (!service) return {};
 
   return generatePageMetadata({
-    title: service.title,
+    title: service.shortTitle,
     description: service.description,
     path: `/servicios/${service.slug}`,
   });
@@ -45,7 +45,7 @@ export default function ServicePage({ params }: ServicePageProps) {
   }
 
   const serviceSchema = generateServiceSchema([{
-    name: service.title,
+    name: service.shortTitle,
     description: service.fullDescription || service.description,
     url: `/servicios/${service.slug}`,
   }]);
@@ -58,14 +58,14 @@ export default function ServicePage({ params }: ServicePageProps) {
       />
 
       <PageHero
-        title={service.title}
+        title={service.shortTitle}
         subtitle={service.description}
       />
 
       <Breadcrumbs
         items={[
           { label: 'Servicios', href: '/servicios' },
-          { label: service.title, href: `/servicios/${service.slug}` },
+          { label: service.shortTitle, href: `/servicios/${service.slug}` },
         ]}
       />
 
@@ -76,17 +76,19 @@ export default function ServicePage({ params }: ServicePageProps) {
             <ScrollReveal>
               <div>
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="p-4 bg-blue/10 text-blue rounded-lg">
+                  <div className="p-4 bg-blue/10 text-blue-text rounded-lg">
                     {iconMap[service.icon] || <Zap className="h-12 w-12" />}
                   </div>
                   <div>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">UNIDAD DE NEGOCIO</span>
-                    <h2 className="text-h3 font-bold text-white">{service.title}</h2>
+                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
+                      UNIDAD DE NEGOCIO
+                    </span>
+                    <h2 className="text-h3 font-bold text-white">En qué consiste</h2>
                   </div>
                 </div>
 
                 {service.fullDescription && (
-                  <p className="text-lg text-white/55 leading-relaxed">
+                  <p className="text-lg text-white/65 leading-relaxed">
                     {service.fullDescription}
                   </p>
                 )}
@@ -95,7 +97,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                 {service.problemsSolved && service.problemsSolved.length > 0 && (
                   <div className="mt-8">
                     <div className="flex items-center gap-2 mb-4">
-                      <AlertTriangle className="h-5 w-5 text-blue" />
+                      <AlertTriangle className="h-5 w-5 text-blue-text" />
                       <h3 className="text-h4 font-semibold text-white">
                         Problemas que resolvemos
                       </h3>
@@ -103,8 +105,8 @@ export default function ServicePage({ params }: ServicePageProps) {
                     <ul className="space-y-3">
                       {service.problemsSolved.map((problem) => (
                         <li key={problem} className="flex items-start gap-3">
-                          <span className="text-blue mt-1">•</span>
-                          <span className="text-white/50">{problem}</span>
+                          <span className="text-blue-text mt-1">•</span>
+                          <span className="text-white/65">{problem}</span>
                         </li>
                       ))}
                     </ul>
@@ -130,8 +132,8 @@ export default function ServicePage({ params }: ServicePageProps) {
                   <ul className="space-y-4">
                     {service.solutions.map((solution) => (
                       <li key={solution} className="flex items-start gap-3">
-                        <CheckCircle className="h-5 w-5 text-blue shrink-0 mt-0.5" />
-                        <span className="text-white/50">{solution}</span>
+                        <CheckCircle className="h-5 w-5 text-blue-text shrink-0 mt-0.5" />
+                        <span className="text-white/65">{solution}</span>
                       </li>
                     ))}
                   </ul>
@@ -143,7 +145,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                 <ScrollReveal delay={300}>
                   <div className="bg-[#0A1F35] text-white rounded-[14px] p-8 border border-white/[0.08]">
                     <div className="flex items-center gap-2 mb-6">
-                      <Settings className="h-5 w-5 text-blue" />
+                      <Settings className="h-5 w-5 text-blue-text" />
                       <h3 className="text-h4 font-semibold">
                         Alcance técnico
                       </h3>
@@ -151,8 +153,8 @@ export default function ServicePage({ params }: ServicePageProps) {
                     <ul className="space-y-3">
                       {service.technicalScope.map((item) => (
                         <li key={item} className="flex items-start gap-3">
-                          <span className="text-blue font-mono text-sm mt-0.5">→</span>
-                          <span className="text-white/65">{item}</span>
+                          <span className="text-blue-text font-mono text-sm mt-0.5">→</span>
+                          <span className="text-white/70">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -173,7 +175,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                   {service.clients.map((client) => (
                     <span
                       key={client}
-                      className="px-4 py-2 bg-white/5 text-white/60 rounded-full text-sm"
+                      className="px-4 py-2 bg-white/5 text-white/70 rounded-full text-sm"
                     >
                       {client}
                     </span>

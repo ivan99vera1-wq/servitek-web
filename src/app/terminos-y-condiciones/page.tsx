@@ -12,7 +12,7 @@ export const metadata: Metadata = generatePageMetadata({
 
 export default function TerminosYCondiciones() {
   return (
-    <main className="min-h-screen bg-[#061321] py-16 md:py-24">
+    <div className="min-h-screen bg-[#061321] py-16 md:py-24">
       <div className="container-custom">
         <h1 className="text-h2 md:text-display font-bold text-white">Términos y Condiciones</h1>
 
@@ -53,13 +53,13 @@ export default function TerminosYCondiciones() {
           </p>
 
           <div className="mt-12 rounded-lg border border-white/10 bg-white/[0.03] p-5">
-            <p className="text-sm text-white/60">
+            <p className="text-sm text-white/70">
               Documento en revisión. La versión definitiva se publicará antes de la puesta en
               marcha del sitio.
             </p>
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

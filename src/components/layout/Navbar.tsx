@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { navigation, ctaNavigation } from '@/data/navigation';
@@ -10,31 +11,58 @@ import { cn } from '@/lib/utils';
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
+    if (!isMobileMenuOpen) return;
+
+    const drawer = drawerRef.current;
+    const toggle = toggleRef.current;
+    const focusables = () =>
+      Array.from(
+        drawer?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? []
+      );
+
+    const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setIsMobileMenuOpen(false);
+        return;
+      }
+      // Atrapa el foco dentro del cajón mientras está abierto.
+      if (e.key !== 'Tab') return;
+      const items = focusables();
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
       }
     };
 
-    if (isMobileMenuOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
-    }
+    document.addEventListener('keydown', onKeyDown);
+    document.body.style.overflow = 'hidden';
+    focusables()[0]?.focus();
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = '';
+      // Devuelve el foco al botón que abrió el menú.
+      toggle?.focus();
     };
   }, [isMobileMenuOpen]);
 
@@ -67,10 +95,19 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="relative text-sm font-medium text-white/75 hover:text-blue transition-colors duration-200 group"
+                aria-current={isActive(item.href) ? 'page' : undefined}
+                className={cn(
+                  'relative text-sm font-medium transition-colors duration-200 group',
+                  isActive(item.href) ? 'text-blue-text' : 'text-white/75 hover:text-blue-text'
+                )}
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue transition-all duration-300 group-hover:w-full" />
+                <span
+                  className={cn(
+                    'absolute -bottom-1 left-0 h-[2px] bg-blue transition-all duration-300 group-hover:w-full',
+                    isActive(item.href) ? 'w-full' : 'w-0'
+                  )}
+                />
               </Link>
             ))}
           </nav>
@@ -87,8 +124,9 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
+            ref={toggleRef}
             type="button"
-            className="lg:hidden p-2 -mr-2 text-white/75 hover:text-blue transition-colors"
+            className="lg:hidden -mr-2 flex h-11 w-11 items-center justify-center text-white/75 transition-colors hover:text-blue-text"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={isMobileMenuOpen}
@@ -114,6 +152,7 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div
+        ref={drawerRef}
         id="menu-movil"
         className={cn(
           'fixed top-0 right-0 z-50 h-full w-full max-w-sm bg-[#071827] shadow-2xl transform lg:hidden',
@@ -144,7 +183,7 @@ export function Navbar() {
             </Link>
             <button
               type="button"
-              className="p-2 -mr-2 text-white/75 hover:text-blue transition-colors"
+              className="p-2 -mr-2 text-white/75 hover:text-blue-text transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
               aria-label="Cerrar menú"
             >
@@ -159,7 +198,11 @@ export function Navbar() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="block px-4 py-3 text-base font-medium text-white/75 hover:text-blue hover:bg-white/5 rounded-lg transition-all duration-200"
+                    aria-current={isActive(item.href) ? 'page' : undefined}
+                    className={cn(
+                      'block rounded-lg px-4 py-3.5 text-base font-medium transition-all duration-200 hover:bg-white/5',
+                      isActive(item.href) ? 'bg-white/5 text-blue-text' : 'text-white/75 hover:text-blue-text'
+                    )}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}

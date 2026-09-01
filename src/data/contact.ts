@@ -7,8 +7,8 @@ export const serviceOptions = [
 ];
 
 export const contactInfo = {
-  title: "¿Necesitas una solución técnica?",
-  subtitle: "Cuéntanos qué necesita tu operación y nuestro equipo podrá evaluar la solución adecuada.",
+  title: "¿Necesita una solución técnica?",
+  subtitle: "Cuéntenos qué necesita su operación y nuestro equipo podrá evaluar la solución adecuada.",
   formTitle: "Solicitar Presupuesto",
   infoTitle: "Información de Contacto"
 };

@@ -28,7 +28,7 @@ export function BusinessUnits() {
       <div className="container-custom relative z-10">
         <ScrollReveal>
           <div className="mb-12 md:mb-16 text-center">
-            <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">
+            <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
               <span className="w-8 h-[1px] bg-blue" />
               ÁREAS DE SERVICIO
               <span className="w-8 h-[1px] bg-blue" />
@@ -36,7 +36,7 @@ export function BusinessUnits() {
             <h2 className="mt-6 text-h2 lg:text-h1 font-bold text-white text-balance">
               Cuatro unidades de negocio
             </h2>
-            <p className="mt-4 text-lg text-white/55 max-w-3xl mx-auto">
+            <p className="mt-4 text-lg text-white/65 max-w-3xl mx-auto">
               Cubrimos toda la cadena de soluciones eléctricas e industriales para operaciones que no pueden parar.
             </p>
           </div>
@@ -50,20 +50,20 @@ export function BusinessUnits() {
                 className="block p-6 h-full group card-dark"
               >
                 <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 p-3 bg-blue/10 text-blue rounded-lg group-hover:bg-blue-solid group-hover:text-white transition-all duration-300">
+                  <div className="flex-shrink-0 p-3 bg-blue/10 text-blue-text rounded-lg group-hover:bg-blue-solid group-hover:text-white transition-all duration-300">
                     {iconMap[service.icon] || <Zap className="h-7 w-7" />}
                   </div>
                   <div className="flex-1">
-                    <span className="font-mono text-xs text-blue/70">
+                    <span className="font-mono text-xs text-blue-text/90">
                       0{index + 1}
                     </span>
-                    <h3 className="mt-1 text-lg font-semibold text-white group-hover:text-blue transition-colors duration-300">
-                      {service.title}
+                    <h3 className="mt-1 text-lg font-semibold text-white group-hover:text-blue-text transition-colors duration-300">
+                      {service.shortTitle}
                     </h3>
-                    <p className="mt-2 text-white/45 text-sm line-clamp-2 leading-relaxed">
+                    <p className="mt-2 text-white/60 text-sm line-clamp-2 leading-relaxed">
                       {service.description}
                     </p>
-                    <div className="mt-4 inline-flex items-center text-sm font-medium text-white/60 group-hover:text-blue transition-colors duration-300">
+                    <div className="mt-4 inline-flex items-center text-sm font-medium text-white/70 group-hover:text-blue-text transition-colors duration-300">
                       Conocer servicio
                       <ArrowRight className="ml-1.5 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </div>

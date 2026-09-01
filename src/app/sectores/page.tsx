@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { PageHero } from '@/components/ui/PageHero';
 import { SectorCard } from '@/components/sectors/SectorCard';
 import { sectors } from '@/data/sectors';
+import { CTASection } from '@/components/sections/CTASection';
 import { generatePageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = generatePageMetadata({
@@ -20,6 +21,7 @@ export default function SectoresPage() {
 
       <section className="section-padding bg-[#061321]">
         <div className="container-custom">
+          <h2 className="sr-only">Sectores que atendemos</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {sectors.map((sector) => (
               <SectorCard key={sector.id} sector={sector} />
@@ -27,6 +29,8 @@ export default function SectoresPage() {
           </div>
         </div>
       </section>
+
+      <CTASection />
     </>
   );
 }

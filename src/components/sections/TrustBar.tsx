@@ -18,8 +18,8 @@ export function TrustBar() {
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 md:gap-x-10">
           {trustItems.map((item, index) => (
             <div key={item.text} className="flex items-center gap-3">
-              <item.icon className="h-4 w-4 text-blue shrink-0" />
-              <span className="font-mono text-[11px] md:text-xs uppercase tracking-[0.15em] text-white/55 whitespace-nowrap">
+              <item.icon className="h-4 w-4 text-blue-text shrink-0" />
+              <span className="font-mono text-[11px] md:text-xs uppercase tracking-[0.15em] text-white/65 whitespace-nowrap">
                 {item.text}
               </span>
               {index < trustItems.length - 1 && (

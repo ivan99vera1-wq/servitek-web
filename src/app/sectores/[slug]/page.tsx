@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: SectorPageProps): Promise<Met
   if (!sector) return {};
 
   return generatePageMetadata({
-    title: sector.title,
+    title: sector.shortTitle,
     description: sector.description,
     path: `/sectores/${sector.slug}`,
   });
@@ -43,14 +43,14 @@ export default function SectorPage({ params }: SectorPageProps) {
   return (
     <>
       <PageHero
-        title={sector.title}
+        title={sector.shortTitle}
         subtitle={sector.description}
       />
 
       <Breadcrumbs
         items={[
           { label: 'Sectores', href: '/sectores' },
-          { label: sector.title, href: `/sectores/${sector.slug}` },
+          { label: sector.shortTitle, href: `/sectores/${sector.slug}` },
         ]}
       />
 
@@ -60,16 +60,16 @@ export default function SectorPage({ params }: SectorPageProps) {
             {/* Contenido principal */}
             <ScrollReveal>
               <div>
-                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue/80">SECTOR INDUSTRIAL</span>
-                <h2 className="mt-2 text-h3 font-bold text-white">{sector.title}</h2>
-                <p className="mt-4 text-lg text-white/55 leading-relaxed">
+                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">SECTOR INDUSTRIAL</span>
+                <h2 className="mt-2 text-h3 font-bold text-white">Qué resolvemos en este sector</h2>
+                <p className="mt-4 text-lg text-white/65 leading-relaxed">
                   {sector.description}
                 </p>
 
                 {/* Problemas comunes */}
                 <div className="mt-8">
                   <div className="flex items-center gap-2 mb-4">
-                    <AlertTriangle className="h-5 w-5 text-blue" />
+                    <AlertTriangle className="h-5 w-5 text-blue-text" />
                     <h3 className="text-h4 font-semibold text-white">
                       Problemas comunes en este sector
                     </h3>
@@ -77,8 +77,8 @@ export default function SectorPage({ params }: SectorPageProps) {
                   <ul className="space-y-3">
                     {sector.problems.map((problem) => (
                       <li key={problem} className="flex items-start gap-3">
-                        <span className="text-blue mt-1">•</span>
-                        <span className="text-white/50">{problem}</span>
+                        <span className="text-blue-text mt-1">•</span>
+                        <span className="text-white/65">{problem}</span>
                       </li>
                     ))}
                   </ul>
@@ -101,8 +101,8 @@ export default function SectorPage({ params }: SectorPageProps) {
                 <ul className="space-y-4">
                   {sector.solutions.map((solution) => (
                     <li key={solution} className="flex items-start gap-3">
-                      <CheckCircle className="h-5 w-5 text-blue shrink-0 mt-0.5" />
-                      <span className="text-white/50">{solution}</span>
+                      <CheckCircle className="h-5 w-5 text-blue-text shrink-0 mt-0.5" />
+                      <span className="text-white/65">{solution}</span>
                     </li>
                   ))}
                 </ul>
@@ -123,13 +123,13 @@ export default function SectorPage({ params }: SectorPageProps) {
                     href={`/servicios/${service.slug}`}
                     className="card-dark block p-6 group"
                   >
-                    <h4 className="text-lg font-semibold text-white group-hover:text-blue transition-colors">
-                      {service.title}
+                    <h4 className="text-lg font-semibold text-white group-hover:text-blue-text transition-colors">
+                      {service.shortTitle}
                     </h4>
-                    <p className="mt-2 text-sm text-white/40 line-clamp-2">
+                    <p className="mt-2 text-sm text-white/60 line-clamp-2">
                       {service.description}
                     </p>
-                    <div className="mt-4 inline-flex items-center text-sm font-medium text-white/60 group-hover:text-blue transition-colors">
+                    <div className="mt-4 inline-flex items-center text-sm font-medium text-white/70 group-hover:text-blue-text transition-colors">
                       Conocer servicio
                       <ArrowRight className="ml-1.5 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -159,8 +159,8 @@ export default function SectorPage({ params }: SectorPageProps) {
               <h2 className="text-h2 lg:text-h1 font-bold text-white">
                 ¿Necesita una solución para su sector?
               </h2>
-              <p className="mt-6 text-lg text-white/50">
-                Cuéntanos sobre las necesidades de su operación y le propondremos
+              <p className="mt-6 text-lg text-white/65">
+                Cuéntenos las necesidades de su operación y le propondremos
                 la solución técnica adecuada.
               </p>
               <div className="mt-8">
