@@ -23,7 +23,7 @@ export default function NosotrosPage() {
       {/* Estadísticas */}
       <section className="bg-[#071827] border-y border-white/[0.06]">
         <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3">
             {aboutContent.stats.map((stat) => (
               <StatCard key={stat.label} value={stat.value} label={stat.label} />
             ))}

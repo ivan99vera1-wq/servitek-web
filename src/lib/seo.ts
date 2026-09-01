@@ -1,19 +1,23 @@
 import { Metadata } from 'next';
-import { company } from '@/data/company';
+import { absoluteUrl, IS_INDEXABLE } from '@/lib/site';
 
 export function generatePageMetadata({
   title,
   description,
   path,
   image,
+  noIndex = false,
 }: {
   title: string;
   description: string;
   path: string;
   image?: string;
+  /** Fuerza noindex en esta página aunque el sitio sea indexable (contenido provisional). */
+  noIndex?: boolean;
 }): Metadata {
-  const url = `https://servitek.com.py${path}`;
+  const url = absoluteUrl(path);
   const ogImage = image || '/og-image.jpg';
+  const index = IS_INDEXABLE && !noIndex;
 
   return {
     title,
@@ -42,6 +46,10 @@ export function generatePageMetadata({
     },
     alternates: {
       canonical: url,
+    },
+    robots: {
+      index,
+      follow: index,
     },
   };
 }

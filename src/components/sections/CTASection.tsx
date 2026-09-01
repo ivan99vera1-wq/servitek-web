@@ -39,7 +39,7 @@ export function CTASection() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contacto"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-md bg-blue text-white transition-all duration-200 hover:bg-blue-bright hover:shadow-[0_0_30px_rgba(8,120,249,0.25)]"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-md bg-blue-solid text-white transition-all duration-200 hover:bg-blue-solid-hover hover:shadow-[0_0_30px_rgba(8,120,249,0.25)]"
               >
                 SOLICITAR PRESUPUESTO
                 <ArrowRight className="h-5 w-5" />

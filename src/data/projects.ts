@@ -7,6 +7,9 @@ import { Project } from '@/types/project';
  * Reemplazar con proyectos reales de SERVITEK cuando estén disponibles.
  *
  * NO afirmar que estos son proyectos realizados por SERVITEK.
+ *
+ * Marcados con isDemo: true -> quedan fuera del sitemap y emiten noindex.
+ * PENDIENTE (empresa): faltan las fotografias reales de cada proyecto.
  */
 
 export const projects: Project[] = [
@@ -18,8 +21,9 @@ export const projects: Project[] = [
     year: "2024",
     services: ["Auditoría y Automatización", "Termografía Infrarroja"],
     description: "Auditoría técnica completa de infraestructura eléctrica con diagnóstico termográfico y propuesta de optimización para planta procesadora.",
-    images: ["/images/projects/demo-1.webp"],
-    featured: true
+    images: [],
+    featured: true,
+    isDemo: true
   },
   {
     id: "demo-2",
@@ -29,8 +33,9 @@ export const projects: Project[] = [
     year: "2024",
     services: ["Iluminación e Ingeniería Ex", "Eficiencia Energética"],
     description: "Diseño e implementación de sistema de iluminación LED de alta eficiencia para naves de procesamiento y almacenamiento.",
-    images: ["/images/projects/demo-2.webp"],
-    featured: true
+    images: [],
+    featured: true,
+    isDemo: true
   },
   {
     id: "demo-3",
@@ -40,8 +45,9 @@ export const projects: Project[] = [
     year: "2024",
     services: ["Motores, Bombas y HVAC", "Mantenimiento Preventivo"],
     description: "Programa de mantenimiento preventivo para sistema de climatización central y motores eléctricos de infraestructura hospitalaria.",
-    images: ["/images/projects/demo-3.webp"],
-    featured: false
+    images: [],
+    featured: false,
+    isDemo: true
   },
   {
     id: "demo-4",
@@ -51,7 +57,8 @@ export const projects: Project[] = [
     year: "2024",
     services: ["Infraestructura Eléctrica y Respaldo", "Grupos Electrógenos"],
     description: "Implementación de sistema de respaldo energético con grupos electrógenos y transferencia automática para centro de datos.",
-    images: ["/images/projects/demo-4.webp"],
-    featured: true
+    images: [],
+    featured: true,
+    isDemo: true
   }
 ];

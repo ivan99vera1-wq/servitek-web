@@ -111,7 +111,7 @@ export default function ServiciosPage() {
               <div className="mt-8">
                 <a
                   href="/contacto"
-                  className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-md bg-blue text-white hover:bg-blue-bright transition-all duration-200 hover:shadow-[0_0_30px_rgba(8,120,249,0.25)]"
+                  className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-md bg-blue-solid text-white hover:bg-blue-solid-hover transition-all duration-200 hover:shadow-[0_0_30px_rgba(8,120,249,0.25)]"
                 >
                   SOLICITAR PRESUPUESTO
                 </a>

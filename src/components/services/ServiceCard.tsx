@@ -20,7 +20,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
       className="card-dark block p-8 h-full group"
     >
       <div className="flex items-start gap-6">
-        <div className="flex-shrink-0 p-4 bg-blue/10 text-blue rounded-lg group-hover:bg-blue group-hover:text-white transition-all duration-300">
+        <div className="flex-shrink-0 p-4 bg-blue/10 text-blue rounded-lg group-hover:bg-blue-solid group-hover:text-white transition-all duration-300">
           {iconMap[service.icon] || <Zap className="h-8 w-8" />}
         </div>
         <div className="flex-1">

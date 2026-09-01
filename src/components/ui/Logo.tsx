@@ -16,12 +16,12 @@ const logoConfig = {
     height: 40,
   },
   vertical: {
-    src: '/images/logo/logo-pricipal.webp',
+    src: '/images/logo/logo-principal.webp',
     width: 60,
     height: 120,
   },
   horizontal: {
-    src: '/images/logo/logo-pricipal.webp',
+    src: '/images/logo/logo-principal.webp',
     width: 180,
     height: 60,
   },

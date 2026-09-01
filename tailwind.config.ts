@@ -16,7 +16,16 @@ const config: Config = {
           dark: '#030B14',
         },
         blue: {
+          // Azul de marca. Válido para elementos decorativos (líneas, puntos,
+          // fondos translúcidos), NO para texto pequeño ni como relleno de
+          // botón: sobre él, el texto blanco solo alcanza 4,15:1.
           DEFAULT: '#0878F9',
+          // Relleno de botones con texto blanco encima → 5,07:1 (WCAG AA).
+          solid: '#0A6BDB',
+          // Estado hover del botón → 4,79:1 (WCAG AA).
+          'solid-hover': '#0F71D9',
+          // Texto e iconos azules sobre fondo oscuro → 6,53:1 sobre #061321.
+          text: '#3D9BFF',
           bright: '#1683FF',
           hover: '#1689FF',
           glow: '#0878F933',

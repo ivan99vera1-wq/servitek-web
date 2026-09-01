@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import { generateOrganizationSchema, generateLocalBusinessSchema } from '@/lib/schema';
+import { SITE_URL, IS_INDEXABLE } from '@/lib/site';
 import { Providers } from '@/components/layout/Providers';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
@@ -39,11 +40,23 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'SERVITEK' }],
   creator: 'SERVITEK',
-  metadataBase: new URL('https://servitek.com.py'),
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: SITE_URL,
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+  },
+  manifest: '/site.webmanifest',
   openGraph: {
     type: 'website',
     locale: 'es_PY',
-    url: 'https://servitek.com.py',
+    url: SITE_URL,
     siteName: 'SERVITEK',
     title: 'SERVITEK | Soluciones Eléctricas y Electromecánicas en Paraguay',
     description:
@@ -64,12 +77,13 @@ export const metadata: Metadata = {
       'Soluciones de ingeniería eléctrica, electromecánica, automatización, mantenimiento, infraestructura y respaldo energético para industrias en Paraguay.',
     images: ['/og-image.jpg'],
   },
+  // Mientras no haya dominio propio el sitio no debe indexarse (ver lib/site.ts).
   robots: {
-    index: true,
-    follow: true,
+    index: IS_INDEXABLE,
+    follow: IS_INDEXABLE,
     googleBot: {
-      index: true,
-      follow: true,
+      index: IS_INDEXABLE,
+      follow: IS_INDEXABLE,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
@@ -88,9 +102,6 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <head>
-        <link rel="icon" href="/logo-s.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/logo-s.png" />
-        <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#061321" />
         <script
           type="application/ld+json"

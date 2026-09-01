@@ -2,10 +2,17 @@ export const aboutContent = {
   title: "Ingeniería para operaciones que exigen confiabilidad.",
   subtitle: "SERVITEK E.A.S. es una empresa paraguaya especializada en soluciones de ingeniería eléctrica y electromecánica industrial.",
 
+  /**
+   * PENDIENTE (empresa): faltan cifras verificables. Cuando SERVITEK las
+   * facilite, sustituir por datos reales — años de experiencia, proyectos
+   * ejecutados, clientes atendidos, tamaño del equipo técnico.
+   *
+   * Hasta entonces solo se muestran los datos que sí son ciertos hoy. No se
+   * inventan cifras ni se dejan marcadores visibles al público.
+   */
   stats: [
-    { value: "+XX", label: "Unidades de negocio" }, // PENDIENTE: reemplazar XX con la cifra real que indique el cliente (años de experiencia, proyectos realizados, etc.)
-    { value: "24/7", label: "Soporte técnico" },
-    { value: "100%", label: "Compromiso técnico" },
+    { value: "4", label: "Unidades de negocio" },
+    { value: "24/7", label: "Guardia de emergencias" },
     { value: "Paraguay", label: "Cobertura nacional" }
   ],
 

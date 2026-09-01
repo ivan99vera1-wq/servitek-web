@@ -50,7 +50,7 @@ export function BusinessUnits() {
                 className="block p-6 h-full group card-dark"
               >
                 <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 p-3 bg-blue/10 text-blue rounded-lg group-hover:bg-blue group-hover:text-white transition-all duration-300">
+                  <div className="flex-shrink-0 p-3 bg-blue/10 text-blue rounded-lg group-hover:bg-blue-solid group-hover:text-white transition-all duration-300">
                     {iconMap[service.icon] || <Zap className="h-7 w-7" />}
                   </div>
                   <div className="flex-1">

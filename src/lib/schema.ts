@@ -1,14 +1,19 @@
 import { company } from '@/data/company';
+import { absoluteUrl, SITE_URL } from '@/lib/site';
+
+const ORG_ID = `${SITE_URL}/#organization`;
 
 export function generateOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': ORG_ID,
     name: company.legalName || company.name,
     alternateName: company.name,
     description: company.description,
-    url: 'https://servitek.com.py',
-    logo: 'https://servitek.com.py/images/logo/logo2.png',
+    url: SITE_URL,
+    logo: absoluteUrl('/images/logo/logo-principal.webp'),
+    image: absoluteUrl('/og-image.jpg'),
     identifier: {
       '@type': 'PropertyValue',
       propertyID: 'RUC',
@@ -26,8 +31,8 @@ export function generateOrganizationSchema() {
       addressLocality: 'Asunción',
       addressCountry: 'PY',
     },
-    // TODO: Confirmar URLs reales de redes sociales antes de publicar
-    sameAs: [],
+    // PENDIENTE (empresa): añadir aquí las URLs reales de redes sociales.
+    // Se omite el campo mientras no estén confirmadas.
   };
 }
 
@@ -35,27 +40,27 @@ export function generateLocalBusinessSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
+    '@id': `${SITE_URL}/#localbusiness`,
+    parentOrganization: { '@id': ORG_ID },
     name: company.legalName || company.name,
     description: company.description,
-    url: 'https://servitek.com.py',
+    url: SITE_URL,
     telephone: company.contact.phone,
     email: company.contact.email,
+    image: absoluteUrl('/og-image.jpg'),
     identifier: {
       '@type': 'PropertyValue',
       propertyID: 'RUC',
       value: company.ruc,
     },
+    // PENDIENTE (empresa): falta streetAddress real.
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Asunción',
       addressCountry: 'PY',
     },
-    // TODO: Reemplazar con coordenadas reales de la oficina de SERVITEK
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: -25.2637,
-      longitude: -57.5759,
-    },
+    // PENDIENTE (empresa): no se declaran coordenadas hasta conocer la
+    // ubicación real. Publicar un "geo" inventado perjudica el SEO local.
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
@@ -65,17 +70,16 @@ export function generateLocalBusinessSchema() {
   };
 }
 
-export function generateServiceSchema(services: Array<{ name: string; description: string; url: string }>) {
-  return services.map(service => ({
+export function generateServiceSchema(
+  services: Array<{ name: string; description: string; url: string }>
+) {
+  return services.map((service) => ({
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: service.name,
     description: service.description,
-    url: `https://servitek.com.py${service.url}`,
-    provider: {
-      '@type': 'Organization',
-      name: company.legalName || company.name,
-    },
+    url: absoluteUrl(service.url),
+    provider: { '@id': ORG_ID },
     areaServed: {
       '@type': 'Country',
       name: 'Paraguay',

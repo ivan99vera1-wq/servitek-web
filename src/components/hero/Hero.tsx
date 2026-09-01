@@ -78,7 +78,7 @@ export function Hero() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/servicios"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-blue text-white font-semibold rounded-md transition-all duration-200 hover:bg-blue-bright hover:shadow-[0_0_30px_rgba(8,120,249,0.25)]"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-blue-solid text-white font-semibold rounded-md transition-all duration-200 hover:bg-blue-solid-hover hover:shadow-[0_0_30px_rgba(8,120,249,0.25)]"
               >
                 NUESTROS SERVICIOS
                 <ArrowRight className="h-4 w-4" />
@@ -120,7 +120,7 @@ export function Hero() {
               {/* Logo grande */}
               <div className="relative">
                 <Image
-                  src="/images/logo/logo-pricipal.webp"
+                  src="/images/logo/logo-principal.webp"
                   alt="SERVITEK"
                   width={400}
                   height={133}

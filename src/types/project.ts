@@ -8,4 +8,6 @@ export interface Project {
   description: string;
   images: string[];
   featured?: boolean;
+  /** Proyecto de ejemplo: no debe indexarse ni presentarse como obra ejecutada. */
+  isDemo?: boolean;
 }

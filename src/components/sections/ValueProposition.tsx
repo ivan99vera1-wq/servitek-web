@@ -30,7 +30,7 @@ export function ValueProposition() {
             return (
               <ScrollReveal key={item.title} delay={index * 100}>
                 <div className="card-dark p-8 h-full group">
-                  <div className="p-3 bg-blue/10 text-blue rounded-lg w-fit mb-5 group-hover:bg-blue group-hover:text-white transition-colors duration-300">
+                  <div className="p-3 bg-blue/10 text-blue rounded-lg w-fit mb-5 group-hover:bg-blue-solid group-hover:text-white transition-colors duration-300">
                     <Icon className="h-6 w-6" />
                   </div>
                   <h3 className="text-lg font-semibold text-white">{item.title}</h3>

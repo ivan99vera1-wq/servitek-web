@@ -8,6 +8,8 @@ export const metadata: Metadata = generatePageMetadata({
   title: 'Proyectos',
   description: 'Conozca los proyectos ejecutados por SERVITEK en la industria paraguaya.',
   path: '/proyectos',
+  // PENDIENTE (empresa): portafolio de ejemplo. No indexar hasta tener obra real.
+  noIndex: projects.some((p) => p.isDemo),
 });
 
 export default function ProyectosPage() {

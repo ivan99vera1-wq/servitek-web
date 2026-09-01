@@ -27,6 +27,8 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     title: project.title,
     description: project.description,
     path: `/proyectos/${project.id}`,
+    // PENDIENTE (empresa): proyectos de ejemplo. No indexar hasta tener obra real.
+    noIndex: project.isDemo,
   });
 }
 

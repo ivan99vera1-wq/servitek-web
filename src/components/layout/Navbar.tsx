@@ -52,7 +52,7 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="shrink-0 flex items-center">
             <Image
-              src="/images/logo/logo-pricipal.webp"
+              src="/images/logo/logo-principal.webp"
               alt="SERVITEK"
               width={180}
               height={60}
@@ -79,7 +79,7 @@ export function Navbar() {
           <div className="hidden lg:block">
             <Link
               href={ctaNavigation.href}
-              className="inline-flex items-center justify-center px-5 py-2.5 bg-blue text-white text-sm font-semibold rounded-md transition-all duration-200 hover:bg-blue-bright hover:shadow-[0_0_20px_rgba(8,120,249,0.3)]"
+              className="inline-flex items-center justify-center px-5 py-2.5 bg-blue-solid text-white text-sm font-semibold rounded-md transition-all duration-200 hover:bg-blue-solid-hover hover:shadow-[0_0_20px_rgba(8,120,249,0.3)]"
             >
               {ctaNavigation.label}
             </Link>
@@ -92,6 +92,7 @@ export function Navbar() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={isMobileMenuOpen}
+            aria-controls="menu-movil"
           >
             {isMobileMenuOpen ? (
               <X className="h-6 w-6" />
@@ -113,12 +114,20 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div
+        id="menu-movil"
         className={cn(
-          'fixed top-0 right-0 z-50 h-full w-full max-w-sm bg-[#071827] shadow-2xl transform transition-transform duration-300 lg:hidden',
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          'fixed top-0 right-0 z-50 h-full w-full max-w-sm bg-[#071827] shadow-2xl transform lg:hidden',
+          'transition-[transform,visibility] duration-300',
+          /* Cerrado, el cajón sigue en el DOM desplazado fuera de pantalla y
+             dejaba 9 paradas de tabulación invisibles en cada página.
+             `visibility: hidden` lo saca del orden de foco en todos los
+             navegadores; se transiciona junto al transform para no cortar la
+             animación de salida. (React 18 descarta el atributo `inert`.) */
+          isMobileMenuOpen ? 'translate-x-0 visible' : 'translate-x-full invisible'
         )}
-        role="dialog"
-        aria-modal="true"
+        aria-hidden={!isMobileMenuOpen}
+        role={isMobileMenuOpen ? 'dialog' : undefined}
+        aria-modal={isMobileMenuOpen ? true : undefined}
         aria-label="Menú de navegación"
       >
         <div className="flex flex-col h-full">
@@ -126,7 +135,7 @@ export function Navbar() {
           <div className="flex items-center justify-between p-4 border-b border-white/10">
             <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
               <Image
-                src="/images/logo/logo-pricipal.webp"
+                src="/images/logo/logo-principal.webp"
                 alt="SERVITEK"
                 width={140}
                 height={47}
@@ -164,7 +173,7 @@ export function Navbar() {
           <div className="p-4 border-t border-white/10">
             <Link
               href={ctaNavigation.href}
-              className="flex items-center justify-center w-full px-6 py-3.5 bg-blue text-white font-semibold rounded-md transition-all duration-200 hover:bg-blue-bright"
+              className="flex items-center justify-center w-full px-6 py-3.5 bg-blue-solid text-white font-semibold rounded-md transition-all duration-200 hover:bg-blue-solid-hover"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {ctaNavigation.label}
