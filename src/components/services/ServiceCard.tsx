@@ -1,14 +1,7 @@
 import Link from 'next/link';
-import { Lightbulb, Cog, Wrench, Zap, PackageCheck, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Service } from '@/types/service';
-
-const iconMap: Record<string, React.ReactNode> = {
-  Lightbulb: <Lightbulb className="h-8 w-8" />,
-  Cog: <Cog className="h-8 w-8" />,
-  Wrench: <Wrench className="h-8 w-8" />,
-  Zap: <Zap className="h-8 w-8" />,
-  PackageCheck: <PackageCheck className="h-8 w-8" />,
-};
+import { ServiceIcon } from '@/lib/icons';
 
 interface ServiceCardProps {
   service: Service;
@@ -22,7 +15,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
     >
       <div className="flex items-start gap-4 sm:gap-6">
         <div className="flex-shrink-0 p-3 sm:p-4 bg-blue/10 text-blue-text rounded-lg group-hover:bg-blue-solid group-hover:text-white transition-all duration-300">
-          {iconMap[service.icon] || <Zap className="h-8 w-8" />}
+          <ServiceIcon name={service.icon} className="h-8 w-8" />
         </div>
         {/* min-w-0: sin él, el ancho min-content de palabras largas
             ("INFRAESTRUCTURA") desbordaba la tarjeta a 320 px. */}

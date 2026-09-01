@@ -9,7 +9,7 @@ export function ProjectsPreview() {
   if (featuredProjects.length === 0) return null;
 
   return (
-    <section className="section-padding bg-[#061321]">
+    <section className="section-padding bg-navy">
       <div className="container-custom">
         <ScrollReveal>
           <div className="mb-12 md:mb-16 text-center">
@@ -29,12 +29,12 @@ export function ProjectsPreview() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {featuredProjects.map((project, index) => (
-            <ScrollReveal key={project.id} delay={index * 100}>
+            <ScrollReveal key={project.id} delay={index * 100} fullHeight>
               <div className="card-dark overflow-hidden h-full flex flex-col group">
                 {/* Placeholder para imagen */}
-                <div className="h-44 bg-gradient-to-br from-[#0A1F35] to-[#0B2A47] flex items-center justify-center relative overflow-hidden">
+                <div className="h-44 bg-gradient-to-br from-navy-light to-navy-lighter flex items-center justify-center relative overflow-hidden">
                   {/* Overlay sutil */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D30] to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface-muted to-transparent opacity-60" />
                   <div className="relative text-center">
                     <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-blue-text/90">PROYECTO</span>
                     <p className="mt-1 text-sm font-semibold text-white/80">{project.sector}</p>

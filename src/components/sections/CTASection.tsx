@@ -5,7 +5,7 @@ import { generateWhatsAppUrl } from '@/lib/whatsapp';
 
 export function CTASection() {
   return (
-    <section className="relative section-padding bg-[#061321] overflow-hidden">
+    <section className="relative section-padding bg-navy overflow-hidden">
       {/* Glow azul */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue/5 rounded-full blur-[120px]" />
 
@@ -39,7 +39,7 @@ export function CTASection() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contacto"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-md bg-blue-solid text-white transition-all duration-200 hover:bg-blue-solid-hover hover:shadow-[0_0_30px_rgba(8,120,249,0.25)]"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-md bg-blue-solid text-white transition-all duration-200 hover:bg-blue-solid-hover hover:shadow-glow"
               >
                 SOLICITAR PRESUPUESTO
                 <ArrowRight className="h-5 w-5" />
@@ -48,7 +48,7 @@ export function CTASection() {
                 href={generateWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-md border border-white/25 text-white hover:bg-white hover:text-[#061321] transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-md border border-white/25 text-white hover:bg-white hover:text-navy transition-all duration-200"
               >
                 <Phone className="h-5 w-5" />
                 WhatsApp directo

@@ -31,7 +31,7 @@ const inputBase =
   'focus:outline-none focus:ring-2 focus:ring-blue-text focus:border-transparent transition-colors';
 
 /** Rojo accesible sobre los fondos oscuros del sitio (6,1:1 sobre #0b253f). */
-const errorText = 'mt-1.5 flex items-start gap-1.5 text-sm text-[#FF8A80]';
+const errorText = 'mt-1.5 flex items-start gap-1.5 text-sm text-danger';
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -67,7 +67,7 @@ export function ContactForm() {
   const fieldProps = (name: keyof ContactFormData) => ({
     'aria-invalid': errors[name] ? ('true' as const) : ('false' as const),
     'aria-describedby': errors[name] ? `${name}-error` : undefined,
-    className: `${inputBase} ${errors[name] ? 'border-[#FF8A80]' : 'border-white/10'}`,
+    className: `${inputBase} ${errors[name] ? 'border-danger' : 'border-white/10'}`,
   });
 
   return (
@@ -75,9 +75,9 @@ export function ContactForm() {
       {sent && (
         <div
           role="status"
-          className="mb-6 flex items-start gap-3 rounded-md border border-[#4ADE80]/40 bg-[#4ADE80]/10 p-4"
+          className="mb-6 flex items-start gap-3 rounded-md border border-success/40 bg-success/10 p-4"
         >
-          <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#7BE49B]" aria-hidden="true" />
+          <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-success" aria-hidden="true" />
           <div className="text-sm text-white/80">
             <p className="font-semibold text-white">Se abrió WhatsApp con su consulta.</p>
             <p className="mt-1">
@@ -238,7 +238,7 @@ export function ContactForm() {
               {...register('privacy')}
               aria-invalid={errors.privacy ? 'true' : 'false'}
               aria-describedby={errors.privacy ? 'privacy-error' : undefined}
-              className="mt-0.5 h-5 w-5 shrink-0 accent-[#0A6BDB]"
+              className="mt-0.5 h-5 w-5 shrink-0 accent-blue-solid"
             />
             <label htmlFor="privacy" className="text-sm text-white/70">
               He leído y acepto la Política de Privacidad <span aria-hidden="true">*</span>
@@ -263,7 +263,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex w-full items-center justify-center rounded-md bg-blue-solid px-8 py-4 text-lg font-medium text-white transition-all duration-200 hover:bg-blue-solid-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-text focus-visible:ring-offset-2 focus-visible:ring-offset-[#061321] disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex w-full items-center justify-center rounded-md bg-blue-solid px-8 py-4 text-lg font-medium text-white transition-all duration-200 hover:bg-blue-solid-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-text focus-visible:ring-offset-2 focus-visible:ring-offset-navy disabled:cursor-not-allowed disabled:opacity-50"
         >
           {isSubmitting ? 'Enviando...' : 'ENVIAR POR WHATSAPP'}
         </button>
@@ -273,7 +273,7 @@ export function ContactForm() {
           la consulta nos llegue.
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 border-t border-white/[0.08] pt-5 text-center text-sm text-white/70">
+        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 border-t border-line pt-5 text-center text-sm text-white/70">
           <Mail className="h-4 w-4 shrink-0 text-blue-text" aria-hidden="true" />
           <span>¿Prefiere el correo? Escríbanos a</span>
           <a

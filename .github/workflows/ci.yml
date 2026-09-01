@@ -1,0 +1,58 @@
+name: CI
+
+# Impide que se integre en la rama principal un cambio que rompa el build.
+# Es la misma cadena que ejecuta Cloudflare Pages al desplegar, más los tests.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verificar:
+    name: Typecheck, lint, tests y build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Comprobar tipos
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Tests
+        run: npm test
+
+      - name: Build estático
+        run: npm run build
+
+      - name: Comprobar que el export se ha generado
+        run: |
+          test -f out/index.html
+          test -f out/sitemap.xml
+          test -f out/robots.txt
+          test -f out/_headers
+          echo "Export correcto: $(find out -name '*.html' | wc -l) páginas HTML"
+
+      - name: Comprobar que el build no ensucia el repositorio
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "El build ha modificado ficheros versionados:"
+            git status --short
+            exit 1
+          fi

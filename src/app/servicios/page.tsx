@@ -3,7 +3,7 @@ import { PageHero } from '@/components/ui/PageHero';
 import { ServiceCard } from '@/components/services/ServiceCard';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { services } from '@/data/services';
-import { servicesIntro } from '@/data/company-content';
+import { servicesIntro, workProcess } from '@/data/company-content';
 import { generatePageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = generatePageMetadata({
@@ -21,7 +21,7 @@ export default function ServiciosPage() {
       />
 
       {/* Introducción */}
-      <section className="section-padding bg-[#061321]">
+      <section className="section-padding bg-navy">
         <div className="container-custom">
           <ScrollReveal>
             <div className="mx-auto mb-16 max-w-3xl text-center">
@@ -49,7 +49,7 @@ export default function ServiciosPage() {
       </section>
 
       {/* Proceso de trabajo */}
-      <section className="section-padding bg-[#0A1F35]">
+      <section className="section-padding bg-navy-light">
         <div className="container-custom">
           <ScrollReveal>
             <div className="mb-12 md:mb-16 text-center">
@@ -68,12 +68,7 @@ export default function ServiciosPage() {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { step: '01', title: 'Diagnóstico', description: 'Análisis técnico completo de su infraestructura eléctrica y necesidades operativas.' },
-              { step: '02', title: 'Propuesta', description: 'Diseño de solución técnica con alcance, cronograma y presupuesto detallado.' },
-              { step: '03', title: 'Ejecución', description: 'Implementación por equipo especializado con protocolos de seguridad y calidad.' },
-              { step: '04', title: 'Seguimiento', description: 'Puesta en marcha, pruebas y soporte técnico continuo para garantizar la operación.' },
-            ].map((item) => (
+            {workProcess.map((item) => (
               <ScrollReveal key={item.step} delay={parseInt(item.step) * 100}>
                 <div className="text-center md:text-left">
                   <span className="font-mono text-4xl font-bold text-blue-text/70">
@@ -89,7 +84,7 @@ export default function ServiciosPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-[#061321] relative">
+      <section className="section-padding bg-navy relative">
         <div className="absolute inset-0 opacity-[0.02]">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
@@ -113,7 +108,7 @@ export default function ServiciosPage() {
               <div className="mt-8">
                 <a
                   href="/contacto"
-                  className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-md bg-blue-solid text-white hover:bg-blue-solid-hover transition-all duration-200 hover:shadow-[0_0_30px_rgba(8,120,249,0.25)]"
+                  className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-md bg-blue-solid text-white hover:bg-blue-solid-hover transition-all duration-200 hover:shadow-glow"
                 >
                   SOLICITAR PRESUPUESTO
                 </a>

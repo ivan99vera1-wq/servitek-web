@@ -18,7 +18,7 @@ export function FounderCard() {
     <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[minmax(0,320px)_1fr] md:gap-14">
       {/* Fotografía */}
       <div className="relative mx-auto w-full max-w-[320px]">
-        <div className="relative aspect-[3/4] overflow-hidden rounded-[14px] border border-white/[0.08] bg-[#0b253f]">
+        <div className="relative aspect-[3/4] overflow-hidden rounded-[14px] border border-line bg-surface-card">
           {founder.photo ? (
             <Image
               src={founder.photo}

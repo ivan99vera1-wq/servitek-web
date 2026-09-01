@@ -98,7 +98,7 @@ servitek-web/
 ├── ARCHITECTURE.md             # Este archivo
 ├── CONTENT_GUIDE.md            # Guía de edición de contenido
 ├── README.md                   # Documentación del proyecto
-├── next.config.ts
+├── next.config.js
 ├── tailwind.config.ts
 ├── tsconfig.json
 ├── .eslintrc.json
@@ -772,7 +772,7 @@ Esto permite mostrar loaders específicos por sección sin afectar al resto de l
 
 ### Configuración técnica
 
-- **output: 'export'** en `next.config.ts` — genera el sitio 100% estático en build
+- **output: 'export'** en `next.config.js` — genera el sitio 100% estático en build
 - **images: { unoptimized: true }** — Cloudflare Pages free no tiene servicio de optimización on-demand
 - **CERO route handlers** — con export estático no funcionan endpoints de servidor
 - **generateStaticParams()** — páginas de detalle generadas en build time
@@ -797,8 +797,12 @@ Esto permite mostrar loaders específicos por sección sin afectar al resto de l
 3. Variables de entorno en Cloudflare Dashboard:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://servitek.com.py
-NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+# Vacía mientras no haya dominio propio: se usa el valor por defecto.
+NEXT_PUBLIC_SITE_URL=
+# Mantener en false hasta conectar el dominio definitivo.
+NEXT_PUBLIC_ALLOW_INDEXING=false
+# Opcional. Activarlo instala cookies: exige banner de consentimiento.
+# NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
 
 4. Dominio personalizado vía Cloudflare DNS (recomendado si el dominio ya está en Cloudflare)
@@ -807,5 +811,5 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 
 - Ancho de banda: **ilimitado**
 - Builds: 500 por mes
-- Functions: No disponibles en plan gratuito (no las necesitamos)
+- Functions: **sí** disponibles en el plan gratuito (100.000 peticiones/día). Hoy no se usan, pero son la vía recomendada si el formulario debe enviar por email.
 - Imágenes: Sin optimización on-demand (optimizar manualmente antes de subir)

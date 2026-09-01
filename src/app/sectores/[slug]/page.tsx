@@ -54,7 +54,7 @@ export default function SectorPage({ params }: SectorPageProps) {
         ]}
       />
 
-      <section className="section-padding bg-[#061321]">
+      <section className="section-padding bg-navy">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contenido principal */}
@@ -112,7 +112,7 @@ export default function SectorPage({ params }: SectorPageProps) {
 
           {/* Servicios relacionados */}
           <ScrollReveal>
-            <div className="mt-16 pt-12 border-t border-white/[0.06]">
+            <div className="mt-16 pt-12 border-t border-line">
               <h3 className="text-h4 font-semibold text-white mb-8">
                 Servicios relacionados
               </h3>
@@ -142,7 +142,7 @@ export default function SectorPage({ params }: SectorPageProps) {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-[#061321] relative">
+      <section className="section-padding bg-navy relative">
         <div className="absolute inset-0 opacity-[0.02]">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>

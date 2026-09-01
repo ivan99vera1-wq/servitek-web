@@ -99,3 +99,46 @@ export const whyServitek = {
     }
   ]
 };
+
+/** Sellos de la barra de confianza de la portada. */
+export const trustSignals = [
+  { icon: "CheckCircle", text: "CALIDAD GARANTIZADA" },
+  { icon: "Target", text: "EXPERIENCIA" },
+  { icon: "Settings", text: "COMPROMISO" },
+  { icon: "Clock", text: "ENTREGA OPORTUNA" },
+  { icon: "Users", text: "ALIANZAS" }
+];
+
+/** Método de trabajo, mostrado en la página de Servicios. */
+export const workProcess = [
+  {
+    step: "01",
+    title: "Diagnóstico",
+    description: "Análisis técnico completo de su infraestructura eléctrica y necesidades operativas."
+  },
+  {
+    step: "02",
+    title: "Propuesta",
+    description: "Diseño de solución técnica con alcance, cronograma y presupuesto detallado."
+  },
+  {
+    step: "03",
+    title: "Ejecución",
+    description: "Implementación por equipo especializado con protocolos de seguridad y calidad."
+  },
+  {
+    step: "04",
+    title: "Seguimiento",
+    description: "Puesta en marcha, pruebas y soporte técnico continuo para garantizar la operación."
+  }
+];
+
+/**
+ * Horario de atención. Un único origen para la web y para el JSON-LD:
+ * antes vivía escrito a mano en ContactInfo y en lib/schema.ts, y ambos
+ * se contradecían con el "24/7" de la portada.
+ */
+export const businessHours = {
+  weekdays: { label: "Lunes a viernes", value: "08:00 - 17:00", opens: "08:00", closes: "17:00" },
+  emergency: { label: "Guardia de emergencias", value: "24/7" }
+};

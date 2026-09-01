@@ -3,7 +3,7 @@ import { whyServitek } from '@/data/company-content';
 
 export function WhyServitek() {
   return (
-    <section className="section-padding bg-[#061321] relative">
+    <section className="section-padding bg-navy relative">
       {/* Línea decorativa superior */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 

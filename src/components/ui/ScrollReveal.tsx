@@ -7,6 +7,12 @@ interface ScrollRevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
+  /**
+   * El wrapper pasa a ocupar toda la altura de su celda de grid. Necesario
+   * cuando el hijo usa `h-full`: sin esto resuelve contra el wrapper, que
+   * mide lo que su contenido, y las tarjetas de una fila quedan desiguales.
+   */
+  fullHeight?: boolean;
 }
 
 /**
@@ -17,7 +23,12 @@ interface ScrollRevealProps {
  * para mostrarse: si el script fallaba o no llegaba a ejecutarse, secciones
  * enteras quedaban invisibles.
  */
-export function ScrollReveal({ children, className, delay = 0 }: ScrollRevealProps) {
+export function ScrollReveal({
+  children,
+  className,
+  delay = 0,
+  fullHeight = false,
+}: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   // Se activa tras el montaje, así el HTML servido siempre es visible.
   const [armed, setArmed] = useState(false);
@@ -67,6 +78,7 @@ export function ScrollReveal({ children, className, delay = 0 }: ScrollRevealPro
       ref={ref}
       className={cn(
         'transition-all duration-500 ease-out motion-reduce:transition-none',
+        fullHeight && 'h-full',
         hidden ? 'translate-y-6 opacity-0' : 'translate-y-0 opacity-100',
         className
       )}

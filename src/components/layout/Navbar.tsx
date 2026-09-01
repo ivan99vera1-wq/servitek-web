@@ -72,11 +72,11 @@ export function Navbar() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
           isScrolled
-            ? 'bg-[rgba(4,15,27,0.96)] backdrop-blur-md border-b border-white/[0.06] shadow-[0_4px_30px_rgba(0,0,0,0.3)]'
-            : 'bg-[rgba(5,18,32,0.80)] backdrop-blur-sm'
+            ? 'bg-navy-deep/95 backdrop-blur-md border-b border-line shadow-[0_4px_30px_rgb(0_0_0_/_0.3)]'
+            : 'bg-navy/80 backdrop-blur-sm'
         )}
       >
-        <div className="container-custom flex items-center justify-between h-16 md:h-18">
+        <div className="container-custom flex items-center justify-between h-16 md:h-header">
           {/* Logo */}
           <Link href="/" className="shrink-0 flex items-center">
             <Image
@@ -116,7 +116,7 @@ export function Navbar() {
           <div className="hidden lg:block">
             <Link
               href={ctaNavigation.href}
-              className="inline-flex items-center justify-center px-5 py-2.5 bg-blue-solid text-white text-sm font-semibold rounded-md transition-all duration-200 hover:bg-blue-solid-hover hover:shadow-[0_0_20px_rgba(8,120,249,0.3)]"
+              className="inline-flex items-center justify-center px-5 py-2.5 bg-blue-solid text-white text-sm font-semibold rounded-md transition-all duration-200 hover:bg-blue-solid-hover hover:shadow-glow-sm"
             >
               {ctaNavigation.label}
             </Link>
@@ -155,7 +155,7 @@ export function Navbar() {
         ref={drawerRef}
         id="menu-movil"
         className={cn(
-          'fixed top-0 right-0 z-50 h-full w-full max-w-sm bg-[#071827] shadow-2xl transform lg:hidden',
+          'fixed top-0 right-0 z-50 h-full w-full max-w-sm bg-surface shadow-2xl transform lg:hidden',
           'transition-[transform,visibility] duration-300',
           /* Cerrado, el cajón sigue en el DOM desplazado fuera de pantalla y
              dejaba 9 paradas de tabulación invisibles en cada página.
@@ -226,7 +226,7 @@ export function Navbar() {
       </div>
 
       {/* Spacer for fixed navbar */}
-      <div className="h-16 md:h-18" />
+      <div className="h-16 md:h-header" />
     </>
   );
 }

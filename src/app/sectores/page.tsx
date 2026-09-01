@@ -19,7 +19,7 @@ export default function SectoresPage() {
         subtitle="Soluciones especializadas para los sectores más exigentes de la industria paraguaya."
       />
 
-      <section className="section-padding bg-[#061321]">
+      <section className="section-padding bg-navy">
         <div className="container-custom">
           <h2 className="sr-only">Sectores que atendemos</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

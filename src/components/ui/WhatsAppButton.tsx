@@ -14,7 +14,7 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => trackWhatsAppClick()}
-      className="animate-pulse-green fixed bottom-6 right-6 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#128C4A] text-white shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#0E7A40] hover:shadow-[0_0_20px_rgba(37,211,102,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-[#061321]"
+      className="animate-pulse-green fixed bottom-6 right-6 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-lg transition-all duration-300 hover:scale-110 hover:bg-whatsapp-hover hover:shadow-[0_0_20px_rgb(37_211_102_/_0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-whatsapp-ring focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
       aria-label="Contactar por WhatsApp (se abre en una pestaña nueva)"
     >
       <svg viewBox="0 0 24 24" fill="currentColor" className="h-7 w-7" aria-hidden="true">

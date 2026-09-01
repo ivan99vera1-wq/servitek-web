@@ -23,7 +23,7 @@ export default function NosotrosPage() {
       />
 
       {/* Estadísticas */}
-      <section className="bg-[#071827] border-y border-white/[0.06]">
+      <section className="bg-surface border-y border-line">
         <div className="container-custom">
           <div className="grid grid-cols-1 sm:grid-cols-3">
             {aboutContent.stats.map((stat) => (
@@ -34,7 +34,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* Misión y Visión */}
-      <section className="section-padding bg-[#061321]">
+      <section className="section-padding bg-navy">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <ScrollReveal>
@@ -64,7 +64,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* Fundador */}
-      <section className="section-padding bg-[#071827] border-y border-white/[0.06]">
+      <section className="section-padding bg-surface border-y border-line">
         <div className="container-custom">
           <ScrollReveal>
             <div className="mb-12 text-center md:mb-16">
@@ -85,7 +85,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* Valores */}
-      <section className="section-padding bg-[#0A1F35]">
+      <section className="section-padding bg-navy-light">
         <div className="container-custom">
           <ScrollReveal>
             <div className="mb-12 md:mb-16 text-center">
@@ -105,7 +105,7 @@ export default function NosotrosPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5">
             {company.values.map((value, index) => (
-              <ScrollReveal key={value.title} delay={index * 100}>
+              <ScrollReveal key={value.title} delay={index * 100} fullHeight>
                 <div className="card-dark p-6 h-full">
                   <h3 className="font-semibold text-white">{value.title}</h3>
                   <p className="mt-2 text-sm text-white/60 leading-relaxed">{value.description}</p>
@@ -117,7 +117,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* Pilares */}
-      <section className="section-padding bg-[#061321] relative">
+      <section className="section-padding bg-navy relative">
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
         <div className="container-custom">
           <ScrollReveal>

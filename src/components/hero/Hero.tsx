@@ -1,34 +1,27 @@
-'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, ChevronRight } from 'lucide-react';
-import { useState } from 'react';
 
 export function Hero() {
-  const [imgError, setImgError] = useState(false);
-
   return (
-    <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+    <section className="relative min-h-[85svh] flex items-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
-        {!imgError ? (
-          <Image
-            src="/images/hero/hero-industrial.webp"
-            alt="Infraestructura industrial SERVITEK"
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-            onError={() => setImgError(true)}
-          />
-        ) : (
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0A1F35] via-[#061321] to-[#030B14]" />
-        )}
+        {/* Degradado de respaldo: queda debajo, así que si la imagen no
+            carga la sección sigue teniendo fondo sin necesitar JavaScript. */}
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-light via-navy to-navy-dark" />
+        <Image
+          src="/images/hero/hero-industrial.webp"
+          alt="Planta industrial atendida por SERVITEK"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
         {/* Overlay navy oscuro */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#04101C] via-[#04101C]/85 to-[#061321]/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/85 to-navy/60" />
         {/* Gradient azul sutil */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#061321] via-transparent to-transparent opacity-70" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent opacity-70" />
       </div>
 
       {/* Grid pattern sutil */}
@@ -74,7 +67,7 @@ export function Hero() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/servicios"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-blue-solid text-white font-semibold rounded-md transition-all duration-200 hover:bg-blue-solid-hover hover:shadow-[0_0_30px_rgba(8,120,249,0.25)]"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-blue-solid text-white font-semibold rounded-md transition-all duration-200 hover:bg-blue-solid-hover hover:shadow-glow"
               >
                 NUESTROS SERVICIOS
                 <ArrowRight className="h-4 w-4" />
@@ -120,7 +113,7 @@ export function Hero() {
                   alt="SERVITEK"
                   width={400}
                   height={133}
-                  className="w-full max-w-[340px] h-auto drop-shadow-[0_0_40px_rgba(8,120,249,0.15)]"
+                  className="w-full max-w-[340px] h-auto drop-shadow-[0_0_40px_rgb(8_120_249_/_0.15)]"
                   priority
                 />
               </div>
@@ -130,7 +123,7 @@ export function Hero() {
       </div>
 
       {/* Gradiente inferior */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#061321] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-navy to-transparent" />
     </section>
   );
 }

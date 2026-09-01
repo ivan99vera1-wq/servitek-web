@@ -6,7 +6,7 @@ const icons = [Shield, Clock, Zap];
 
 export function ValueProposition() {
   return (
-    <section className="section-padding bg-[#061321]">
+    <section className="section-padding bg-navy">
       <div className="container-custom">
         <ScrollReveal>
           <div className="mb-12 md:mb-16 text-center">
@@ -28,7 +28,7 @@ export function ValueProposition() {
           {aboutContent.differentials.map((item, index) => {
             const Icon = icons[index] || Shield;
             return (
-              <ScrollReveal key={item.title} delay={index * 100}>
+              <ScrollReveal key={item.title} delay={index * 100} fullHeight>
                 <div className="card-dark p-8 h-full group">
                   <div className="p-3 bg-blue/10 text-blue-text rounded-lg w-fit mb-5 group-hover:bg-blue-solid group-hover:text-white transition-colors duration-300">
                     <Icon className="h-6 w-6" />

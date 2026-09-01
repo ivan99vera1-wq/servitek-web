@@ -9,13 +9,14 @@ Sitio web profesional para SERVITEK, empresa paraguaya de ingeniería eléctrica
 - **Tailwind CSS** - Utility-first CSS
 - **Lucide React** - Iconografía
 - **React Hook Form + Zod** - Formularios y validación
-- **next-sitemap** - Generación de sitemap
+- **next-sitemap** - Generación de sitemap y robots.txt
+- **Vitest** - Tests de datos, rutas y SEO
 
 ## Instalación
 
 ```bash
 # Clonar repositorio
-git clone https://github.com/tu-usuario/servitek-web.git
+git clone https://github.com/ivan99vera1-wq/servitek-web.git
 
 # Entrar al directorio
 cd servitek-web
@@ -33,11 +34,12 @@ Abrir [http://localhost:3000](http://localhost:3000)
 
 ```bash
 npm run dev        # Desarrollo local
-npm run build      # Build estático (export)
-npm run start      # Servir build localmente
-npm run lint       # Verificar código
-npm run format     # Formatear código
-npm run postbuild  # Generar sitemap
+npm run build      # Build estático (genera out/ y, tras él, sitemap y robots)
+npm run lint       # ESLint
+npm run typecheck  # TypeScript sin emitir
+npm test           # Tests de datos y SEO (vitest)
+npm run check      # typecheck + lint + test, lo mismo que ejecuta el CI
+npm run format     # Prettier
 ```
 
 ## Estructura del Proyecto
@@ -130,6 +132,11 @@ No tocar ningún otro archivo.
 
 El plan gratuito de Vercel (Hobby) restringe sitios comerciales. Cloudflare Pages permite uso comercial con ancho de banda ilimitado.
 
+**Nota:** Cloudflare Pages Functions **sí** está incluido en el plan gratuito
+(100.000 peticiones/día). Hoy el sitio no usa ninguna, pero es la vía
+recomendada si en algún momento el formulario debe enviar por email en lugar
+de abrir WhatsApp.
+
 ### Pasos
 
 1. Subir repositorio a GitHub
@@ -141,8 +148,12 @@ El plan gratuito de Vercel (Hobby) restringe sitios comerciales. Cloudflare Page
 4. Variables de entorno en Cloudflare Dashboard:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://servitek.com.py
-NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+# Vacía mientras no haya dominio propio: se usa el valor por defecto.
+NEXT_PUBLIC_SITE_URL=
+# Mantener en false hasta conectar el dominio definitivo.
+NEXT_PUBLIC_ALLOW_INDEXING=false
+# Opcional. Activarlo instala cookies: exige banner de consentimiento.
+# NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
 
 5. Dominio personalizado vía Cloudflare DNS
@@ -152,8 +163,9 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 Copiar `.env.example` a `.env` para desarrollo local:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://servitek.com.py
-NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX  # Opcional
+NEXT_PUBLIC_SITE_URL=
+NEXT_PUBLIC_ALLOW_INDEXING=false
+# NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX  # Opcional
 ```
 
 ## SEO

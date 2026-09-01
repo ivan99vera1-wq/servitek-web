@@ -21,7 +21,7 @@ export default function ProyectosPage() {
         subtitle="Soluciones ejecutadas para la industria paraguaya."
       />
 
-      <section className="section-padding bg-[#061321]">
+      <section className="section-padding bg-navy">
         <div className="container-custom">
           <h2 className="sr-only">Listado de proyectos</h2>
           {/* Nota sobre proyectos demo */}

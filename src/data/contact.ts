@@ -7,13 +7,6 @@ export const serviceOptions = [
   "Otro"
 ];
 
-export const contactInfo = {
-  title: "¿Necesita una solución técnica?",
-  subtitle: "Cuéntenos qué necesita su operación y nuestro equipo podrá evaluar la solución adecuada.",
-  formTitle: "Solicitar Presupuesto",
-  infoTitle: "Información de Contacto"
-};
-
 export const whatsappMessageTemplate = (data: {
   name: string;
   company: string;

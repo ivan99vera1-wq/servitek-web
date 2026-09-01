@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Lightbulb, Cog, Wrench, Zap, PackageCheck, CheckCircle, AlertTriangle, Settings } from 'lucide-react';
+import { CheckCircle, AlertTriangle, Settings } from 'lucide-react';
 import { services } from '@/data/services';
 import { PageHero } from '@/components/ui/PageHero';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
@@ -8,14 +8,7 @@ import { Button } from '@/components/ui/Button';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { generatePageMetadata } from '@/lib/seo';
 import { generateServiceSchema } from '@/lib/schema';
-
-const iconMap: Record<string, React.ReactNode> = {
-  Lightbulb: <Lightbulb className="h-12 w-12" />,
-  Cog: <Cog className="h-12 w-12" />,
-  Wrench: <Wrench className="h-12 w-12" />,
-  Zap: <Zap className="h-12 w-12" />,
-  PackageCheck: <PackageCheck className="h-12 w-12" />,
-};
+import { ServiceIcon } from '@/lib/icons';
 
 interface ServicePageProps {
   params: { slug: string };
@@ -70,7 +63,7 @@ export default function ServicePage({ params }: ServicePageProps) {
         ]}
       />
 
-      <section className="section-padding bg-[#061321]">
+      <section className="section-padding bg-navy">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contenido principal */}
@@ -78,7 +71,7 @@ export default function ServicePage({ params }: ServicePageProps) {
               <div>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="p-4 bg-blue/10 text-blue-text rounded-lg">
-                    {iconMap[service.icon] || <Zap className="h-12 w-12" />}
+                    <ServiceIcon name={service.icon} className="h-12 w-12" />
                   </div>
                   <div>
                     <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
@@ -144,7 +137,7 @@ export default function ServicePage({ params }: ServicePageProps) {
               {/* Alcance técnico */}
               {service.technicalScope && service.technicalScope.length > 0 && (
                 <ScrollReveal delay={300}>
-                  <div className="bg-[#0A1F35] text-white rounded-[14px] p-8 border border-white/[0.08]">
+                  <div className="bg-navy-light text-white rounded-[14px] p-8 border border-line">
                     <div className="flex items-center gap-2 mb-6">
                       <Settings className="h-5 w-5 text-blue-text" />
                       <h3 className="text-h4 font-semibold">
@@ -168,7 +161,7 @@ export default function ServicePage({ params }: ServicePageProps) {
           {/* Clientes */}
           {service.clients && service.clients.length > 0 && (
             <ScrollReveal>
-              <div className="mt-16 pt-12 border-t border-white/[0.06]">
+              <div className="mt-16 pt-12 border-t border-line">
                 <h3 className="text-h4 font-semibold text-white mb-6">
                   Sectores que atendemos
                 </h3>

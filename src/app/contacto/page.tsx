@@ -18,7 +18,7 @@ export default function ContactoPage() {
         subtitle="Cuéntenos qué necesita su operación y nuestro equipo podrá evaluar la solución adecuada."
       />
 
-      <section className="section-padding bg-[#061321]">
+      <section className="section-padding bg-navy">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>

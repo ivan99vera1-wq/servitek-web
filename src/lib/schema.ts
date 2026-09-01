@@ -1,4 +1,5 @@
 import { company } from '@/data/company';
+import { businessHours } from '@/data/company-content';
 import { absoluteUrl, SITE_URL } from '@/lib/site';
 
 const ORG_ID = `${SITE_URL}/#organization`;
@@ -64,8 +65,8 @@ export function generateLocalBusinessSchema() {
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '08:00',
-      closes: '17:00',
+      opens: businessHours.weekdays.opens,
+      closes: businessHours.weekdays.closes,
     },
   };
 }

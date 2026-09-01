@@ -1,19 +1,12 @@
 import Link from 'next/link';
-import { Lightbulb, Cog, Wrench, Zap, PackageCheck, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { services } from '@/data/services';
-
-const iconMap: Record<string, React.ReactNode> = {
-  Lightbulb: <Lightbulb className="h-7 w-7" />,
-  Cog: <Cog className="h-7 w-7" />,
-  Wrench: <Wrench className="h-7 w-7" />,
-  Zap: <Zap className="h-7 w-7" />,
-  PackageCheck: <PackageCheck className="h-7 w-7" />,
-};
+import { ServiceIcon } from '@/lib/icons';
 
 export function BusinessUnits() {
   return (
-    <section className="section-padding bg-[#0A1F35] relative overflow-hidden">
+    <section className="section-padding bg-navy-light relative overflow-hidden">
       {/* Patrón de fondo sutil */}
       <div className="absolute inset-0 opacity-[0.015]">
         <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -45,14 +38,14 @@ export function BusinessUnits() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {services.map((service, index) => (
-            <ScrollReveal key={service.id} delay={index * 100}>
+            <ScrollReveal key={service.id} delay={index * 100} fullHeight>
               <Link
                 href={`/servicios/${service.slug}`}
                 className="block p-6 h-full group card-dark"
               >
                 <div className="flex items-start gap-5">
                   <div className="flex-shrink-0 p-3 bg-blue/10 text-blue-text rounded-lg group-hover:bg-blue-solid group-hover:text-white transition-all duration-300">
-                    {iconMap[service.icon] || <Zap className="h-7 w-7" />}
+                    <ServiceIcon name={service.icon} className="h-7 w-7" />
                   </div>
                   <div className="flex-1">
                     <span className="font-mono text-xs text-blue-text/90">

@@ -3,24 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --navy: 6 19 33;
-    --navy-light: 10 31 53;
-    --navy-lighter: 11 42 71;
-    --navy-dark: 3 11 20;
-    --blue: 8 120 249;
-    --blue-bright: 22 131 255;
-    --background: 6 19 33;
-    --surface: 10 31 53;
-    --surface-dark: 11 29 48;
-    --text: 255 255 255;
-    --text-muted: 203 213 225;
-    --text-light: 148 163 184;
-    --text-dark: 100 116 139;
-    --border: 255 255 255 0.08;
-    --border-light: 255 255 255 0.12;
-  }
-
   html {
     scroll-behavior: smooth;
   }
@@ -28,16 +10,17 @@
   body {
     @apply antialiased;
     font-feature-settings: 'cv11', 'ss01';
-    background-color: #061321;
-    color: #FFFFFF;
+    background-color: theme('colors.navy.DEFAULT');
+    color: theme('colors.white');
   }
 
+  /* Color de borde por defecto, para no repetirlo en cada utilidad. */
   * {
-    border-color: rgba(255,255,255,0.08);
+    border-color: theme('colors.line.DEFAULT');
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-blue;
+    @apply outline-2 outline-offset-2 outline-blue-text;
   }
 }
 
@@ -50,108 +33,30 @@
     @apply py-16 md:py-24 lg:py-32;
   }
 
-  .heading-primary {
-    @apply text-h2 lg:text-h1 font-bold text-white tracking-tight;
-  }
-
-  .heading-secondary {
-    @apply text-h3 lg:text-h2 font-bold text-white;
-  }
-
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .signature-line {
-    @apply relative;
-  }
-
-  .signature-line::before {
-    content: '';
-    @apply absolute left-0 top-0 h-full w-px bg-gradient-to-b from-blue via-primary to-transparent;
-  }
-
-  .data-technical {
-    @apply font-mono text-sm tracking-wide;
-  }
-
-  .label-engineering {
-    @apply font-mono text-xs uppercase tracking-widest text-white/60;
-  }
-
   .card-dark {
-    background: #0b253f;
-    border: 1px solid rgba(255,255,255,0.08);
-    @apply rounded-[14px] transition-all duration-300;
+    @apply rounded-[14px] border border-line bg-surface-card transition-all duration-300;
   }
 
   .card-dark:hover {
-    border-color: rgba(8,120,249,0.45);
+    border-color: theme('colors.blue.DEFAULT / 45%');
     transform: translateY(-4px);
-    box-shadow: 0 8px 25px -5px rgba(0,0,0,0.3), 0 0 40px 8px rgba(8,120,249,0.08);
-  }
-
-  .card-industrial {
-    background: #0B1D30;
-    border: 1px solid rgba(255,255,255,0.08);
-    @apply rounded-[14px] shadow-card transition-all duration-300;
-  }
-
-  .card-industrial:hover {
-    border-color: rgba(8,120,249,0.45);
-    box-shadow: 0 8px 25px -5px rgba(0,0,0,0.3);
-  }
-
-  .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-blue text-white font-medium rounded-md transition-all duration-200 hover:bg-blue-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2;
-  }
-
-  .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-navy-light text-white font-medium rounded-md transition-all duration-200 hover:bg-navy-lighter focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2;
-  }
-
-  .btn-outline {
-    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-white/25 text-white font-medium rounded-md transition-all duration-200 hover:bg-white hover:text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2;
+    box-shadow:
+      0 8px 25px -5px rgb(0 0 0 / 0.3),
+      0 0 40px 8px theme('colors.blue.DEFAULT / 8%');
   }
 
   .trust-indicator {
-    @apply flex flex-col items-center text-center p-4;
+    @apply flex flex-col items-center p-4 text-center;
   }
 
   .trust-indicator-value {
-    @apply text-stat font-bold text-blue-text;
+    @apply font-bold text-blue-text;
   }
 
   .trust-indicator-label {
-    @apply label-engineering mt-1 text-white/60;
-  }
-
-  .scroll-reveal {
-    @apply opacity-0;
-    animation: slideUp 0.6s ease-out forwards;
-  }
-
-  .scroll-reveal-delay-1 {
-    animation-delay: 0.1s;
-  }
-
-  .scroll-reveal-delay-2 {
-    animation-delay: 0.2s;
-  }
-
-  .scroll-reveal-delay-3 {
-    animation-delay: 0.3s;
-  }
-
-  .scroll-reveal-delay-4 {
-    animation-delay: 0.4s;
+    @apply mt-1 font-mono text-xs uppercase tracking-widest text-white/60;
   }
 }
-
-/* Todas estas utilidades ya las genera Tailwind desde el tema (tailwind.config.ts).
-   Redefinirlas aquí las duplicaba y, al ir después en la misma capa, pisaba a los
-   tokens: por eso .text-blue-text servía el azul antiguo y fallaba el contraste.
-   Si hace falta un color nuevo, se añade al tema, no aquí. */
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -161,10 +66,5 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-
-  .scroll-reveal {
-    @apply opacity-100;
-    animation: none;
   }
 }

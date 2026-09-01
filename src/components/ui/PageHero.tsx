@@ -10,7 +10,7 @@ export function PageHero({ title, subtitle, className }: PageHeroProps) {
   return (
     <section
       className={cn(
-        'bg-[#071827] py-16 md:py-24 relative overflow-hidden',
+        'bg-surface py-16 md:py-24 relative overflow-hidden',
         className
       )}
     >
@@ -27,7 +27,7 @@ export function PageHero({ title, subtitle, className }: PageHeroProps) {
       </div>
 
       {/* Gradiente inferior */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#061321] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-navy to-transparent" />
 
       <div className="container-custom relative z-10">
         <h1 className="text-h1 md:text-display text-white text-balance">{title}</h1>

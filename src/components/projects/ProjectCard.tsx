@@ -13,8 +13,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
       className="card-dark overflow-hidden block group h-full"
     >
       {/* Placeholder para imagen */}
-      <div className="h-48 bg-gradient-to-br from-[#0A1F35] to-[#0B2A47] flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D30] to-transparent opacity-60" />
+      <div className="h-48 bg-gradient-to-br from-navy-light to-navy-lighter flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-surface-muted to-transparent opacity-60" />
         <div className="relative text-center">
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-blue-text/90">PROYECTO</span>
           <p className="mt-2 text-lg font-semibold text-white/80">{project.title}</p>

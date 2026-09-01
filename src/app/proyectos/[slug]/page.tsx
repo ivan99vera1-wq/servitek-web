@@ -53,7 +53,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         ]}
       />
 
-      <section className="section-padding bg-[#061321]">
+      <section className="section-padding bg-navy">
         <div className="container-custom">
           {/* Nota sobre proyecto demo */}
           <div className="card-dark p-6 mb-8">
@@ -86,8 +86,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 </p>
 
                 {/* Placeholder para imagen */}
-                <div className="mt-8 h-64 bg-gradient-to-br from-[#0A1F35] to-[#0B2A47] rounded-[14px] flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D30] to-transparent opacity-60" />
+                <div className="mt-8 h-64 bg-gradient-to-br from-navy-light to-navy-lighter rounded-[14px] flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface-muted to-transparent opacity-60" />
                   <div className="relative text-center">
                     <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-blue-text/90">IMAGEN DEL PROYECTO</span>
                     <p className="mt-2 text-sm font-semibold text-white/80">{project.title}</p>
@@ -133,7 +133,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     </div>
                   </div>
 
-                  <div className="mt-6 pt-6 border-t border-white/[0.06]">
+                  <div className="mt-6 pt-6 border-t border-line">
                     <Button href="/contacto" className="w-full">
                       SOLICITAR EVALUACIÓN
                     </Button>
@@ -145,7 +145,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
           {/* Proyectos relacionados */}
           <ScrollReveal>
-            <div className="mt-16 pt-12 border-t border-white/[0.06]">
+            <div className="mt-16 pt-12 border-t border-line">
               <h3 className="text-h4 font-semibold text-white mb-8">
                 Otros proyectos
               </h3>

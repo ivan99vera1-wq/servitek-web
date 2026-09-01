@@ -7,7 +7,7 @@ export function SectorsPreview() {
   const featuredSectors = sectors.slice(0, 4);
 
   return (
-    <section className="section-padding bg-[#0A1F35]">
+    <section className="section-padding bg-navy-light">
       <div className="container-custom">
         <ScrollReveal>
           <div className="mb-12 md:mb-16 text-center">
@@ -27,7 +27,7 @@ export function SectorsPreview() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {featuredSectors.map((sector, index) => (
-            <ScrollReveal key={sector.id} delay={index * 100}>
+            <ScrollReveal key={sector.id} delay={index * 100} fullHeight>
               <Link
                 href={`/sectores/${sector.slug}`}
                 className="card-dark block p-6 h-full group relative overflow-hidden"
