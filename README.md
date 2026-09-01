@@ -123,7 +123,6 @@ Antes de subir cambios, `npm run check`.
 │   │   ├── equipo/             Fotos del equipo — ver LEEME.txt
 │   │   ├── hero/               Imagen principal
 │   │   ├── logo/               Logotipos
-│   │   ├── sectors/            Una imagen por sector (fondo de tarjeta y cabecera)
 │   │   ├── services/           Una imagen por unidad de negocio (fondo de tarjeta y cabecera)
 │   │   └── projects/           Una imagen de portada por proyecto (fondo de tarjeta y cabecera)
 │   └── favicon.ico, og-image.jpg, site.webmanifest
@@ -243,18 +242,24 @@ mano antes de subirlas**:
 | Uso | Formato | Tamaño | Peso objetivo |
 |---|---|---|---|
 | Hero | WebP | 1600 px de ancho | < 200 kB |
-| Sectores y servicios | WebP | 800 × 600 | < 80 kB |
+| Servicios y proyectos | WebP | 800 × 600 | < 80 kB |
 | Fundador | WebP | 900 × 1200 (3:4) | < 150 kB |
 | Compartir en redes | JPEG | 1200 × 630 | < 150 kB |
 
-Las imágenes de servicios, sectores y proyectos que no son fotografías son
-marcadores generados: ilustraciones técnicas sobre fondo navy, pensadas para
-sustituirse por fotos reales de SERVITEK. Se usan como fondo de las tarjetas
-(`SectorCard`, `ServiceCard`, `ProjectCard` y las tarjetas de portada) y de la
-cabecera (`PageHero`) de cada ficha de detalle. Para reemplazar una,
-solo hace falta subir la foto real con el mismo nombre de archivo (o cambiar
-la ruta en `image` dentro de `src/data/sectors.ts`, `services.ts` o
-`projects.ts`) — ningún componente necesita tocarse.
+Las imágenes de servicios y proyectos que no son fotografías son marcadores
+generados: ilustraciones técnicas sobre fondo navy, pensadas para sustituirse
+por fotos reales de SERVITEK. Se usan como fondo de las tarjetas
+(`ServiceCard`, `ProjectCard` y las tarjetas de portada) y de la cabecera
+(`PageHero`) de cada ficha de detalle. Para reemplazar una, solo hace falta
+subir la foto real con el mismo nombre de archivo (o cambiar la ruta en
+`image` dentro de `services.ts` o `projects.ts`) — ningún componente
+necesita tocarse.
+
+Los sectores no llevan foto ni marcador de imagen: usan
+`CircuitBackground` (`src/components/ui/CircuitBackground.tsx`), un fondo
+animado de circuito impreso en CSS/SVG con cuatro variantes, coherente con
+la identidad técnica de la marca y sin peso de imagen. Respeta
+`prefers-reduced-motion` mediante la regla global en `globals.css`.
 </details>
 
 ## Sistema de diseño

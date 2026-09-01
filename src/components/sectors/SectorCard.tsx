@@ -1,28 +1,24 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Sector } from '@/types/sector';
+import { CircuitBackground } from '@/components/ui/CircuitBackground';
 
 interface SectorCardProps {
   sector: Sector;
+  /** Índice dentro de la lista, para variar la traza animada entre tarjetas. */
+  index?: number;
 }
 
-export function SectorCard({ sector }: SectorCardProps) {
+export function SectorCard({ sector, index = 0 }: SectorCardProps) {
   return (
     <Link
       href={`/sectores/${sector.slug}`}
       className="card-dark relative block p-8 h-full group overflow-hidden"
     >
-      {/* Imagen de fondo: reemplazable en src/data/sectors.ts (campo `image`) */}
+      {/* Fondo animado de circuito (sustituye a las fotografías de sector) */}
       <div className="absolute inset-0">
-        <Image
-          src={sector.image}
-          alt=""
-          fill
-          className="object-cover opacity-[0.18] transition-opacity duration-300 group-hover:opacity-25"
-          sizes="(min-width: 1024px) 25vw, 50vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-surface-card via-surface-card/90 to-surface-card/70" />
+        <CircuitBackground variant={index} className="opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
+        <div className="absolute inset-0 bg-gradient-to-t from-surface-card via-surface-card/85 to-surface-card/65" />
       </div>
 
       <div className="relative">

@@ -23,8 +23,8 @@ export default function SectoresPage() {
         <div className="container-custom">
           <h2 className="sr-only">Sectores que atendemos</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {sectors.map((sector) => (
-              <SectorCard key={sector.id} sector={sector} />
+            {sectors.map((sector, index) => (
+              <SectorCard key={sector.id} sector={sector} index={index} />
             ))}
           </div>
         </div>

@@ -39,13 +39,14 @@ export default function SectorPage({ params }: SectorPageProps) {
   }
 
   const relatedServices = services.slice(0, 3);
+  const sectorIndex = sectors.findIndex((s) => s.id === sector.id);
 
   return (
     <>
       <PageHero
         title={sector.shortTitle}
         subtitle={sector.description}
-        image={sector.image}
+        animatedVariant={sectorIndex}
       />
 
       <Breadcrumbs

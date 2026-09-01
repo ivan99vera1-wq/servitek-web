@@ -75,11 +75,29 @@ const config: Config = {
       },
       animation: {
         'pulse-green': 'pulseGreen 2s ease-in-out infinite',
+        'circuit-flow': 'circuitFlow 4s linear infinite',
+        'circuit-pulse': 'circuitPulse 2.6s ease-in-out infinite',
+        'circuit-sweep': 'circuitSweep 10s ease-in-out infinite',
       },
       keyframes: {
         pulseGreen: {
           '0%, 100%': { boxShadow: '0 0 0 0 rgb(37 211 102 / 0.4)' },
           '50%': { boxShadow: '0 0 0 12px rgb(37 211 102 / 0)' },
+        },
+        // Fondo animado de sector: "corriente" recorriendo una traza de
+        // circuito impreso. El desfase se mueve un múltiplo exacto del
+        // patrón de guiones (18 = 4 + 14) para que el bucle no salte.
+        circuitFlow: {
+          to: { strokeDashoffset: '-180' },
+        },
+        circuitPulse: {
+          '0%, 100%': { opacity: '0.25', transform: 'scale(0.85)' },
+          '50%': { opacity: '1', transform: 'scale(1.2)' },
+        },
+        circuitSweep: {
+          '0%': { transform: 'translateX(-40%) translateY(-8%) rotate(8deg)' },
+          '50%': { transform: 'translateX(60%) translateY(4%) rotate(8deg)' },
+          '100%': { transform: 'translateX(-40%) translateY(-8%) rotate(8deg)' },
         },
       },
     },

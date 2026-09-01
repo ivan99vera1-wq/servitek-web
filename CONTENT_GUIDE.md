@@ -193,11 +193,17 @@ export const sectors = [
     description: "Soluciones eléctricas...",
     problems: ["Problema 1", "Problema 2"],
     solutions: ["Solución SERVITEK 1", "Solución SERVITEK 2"],
-    image: "/images/sectors/agroindustria.webp",
     // ...
   }
 ]
 ```
+
+Los sectores ya no llevan campo `image`: en vez de una fotografía, cada
+tarjeta y cabecera de sector usa `CircuitBackground`
+(`src/components/ui/CircuitBackground.tsx`), un fondo animado de circuito
+en CSS/SVG con cuatro variantes. La variante se elige por posición en la
+lista (`index % 4`), no por dato del sector, así que no hace falta tocar
+nada al agregar o reordenar sectores.
 
 ### Agregar un sector
 
@@ -211,7 +217,6 @@ Agregar un nuevo objeto al array `sectors`:
   description: "Descripción del sector...",
   problems: ["Problema común 1", "Problema común 2"],
   solutions: ["Solución SERVITEK 1", "Solución SERVITEK 2"],
-  image: "/images/sectors/nuevo-sector.webp",
   cta: "Conocer soluciones"
 }
 ```
@@ -294,10 +299,12 @@ export const whatsappMessageTemplate = (data: FormData) => {
 ├── logo/          # logo-principal.webp (logo horizontal)
 ├── hero/          # Imágenes del hero principal
 ├── services/      # Imágenes por servicio
-├── sectors/       # Imágenes por sector
 ├── projects/      # Imágenes por proyecto
 └── company/       # Imágenes institucionales
 ```
+
+Los sectores no tienen carpeta de imágenes: usan el fondo animado
+`CircuitBackground` en vez de una fotografía (ver sección 4).
 
 ### Cambiar imagen del hero
 
@@ -309,10 +316,11 @@ export const whatsappMessageTemplate = (data: FormData) => {
 1. Colocar imagen en `/public/images/services/`
 2. Actualizar el campo `image` en `src/data/services.ts`
 
-### Cambiar imagen de un sector
+### Cambiar el fondo animado de un sector
 
-1. Colocar imagen en `/public/images/sectors/`
-2. Actualizar el campo `image` en `src/data/sectors.ts`
+Los sectores usan `CircuitBackground` (ver sección 4), no una fotografía.
+Para variar el diseño, editar las composiciones en
+`src/components/ui/CircuitBackground.tsx` (array `VARIANTS`).
 
 ### Formatos recomendados
 

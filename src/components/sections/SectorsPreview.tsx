@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { CircuitBackground } from '@/components/ui/CircuitBackground';
 import { sectors } from '@/data/sectors';
 
 export function SectorsPreview() {
@@ -33,14 +33,8 @@ export function SectorsPreview() {
                 href={`/sectores/${sector.slug}`}
                 className="card-dark block p-6 h-full group relative overflow-hidden"
               >
-                {/* Imagen de fondo: reemplazable en src/data/sectors.ts (campo `image`) */}
-                <Image
-                  src={sector.image}
-                  alt=""
-                  fill
-                  className="object-cover opacity-[0.15] transition-opacity duration-300 group-hover:opacity-25"
-                  sizes="(min-width: 1024px) 25vw, 50vw"
-                />
+                {/* Fondo animado de circuito (sustituye a las fotografías de sector) */}
+                <CircuitBackground variant={index} className="opacity-60 transition-opacity duration-300 group-hover:opacity-90" />
                 <div className="absolute inset-0 bg-gradient-to-t from-surface-card via-surface-card/90 to-surface-card/75" />
 
                 {/* Número de fondo */}

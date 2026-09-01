@@ -8,6 +8,5 @@ export interface Sector {
   fullDescription?: string;
   problems: string[];
   solutions: string[];
-  image: string;
   cta: string;
 }

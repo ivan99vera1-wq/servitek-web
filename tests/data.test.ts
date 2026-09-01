@@ -19,7 +19,6 @@ const slugify = (s: string) => s.toLowerCase();
 describe('rutas de imagen', () => {
   const rutas = [
     ...services.map((s) => s.image),
-    ...sectors.map((s) => s.image),
     ...projects.flatMap((p) => p.images),
   ].filter(Boolean);
 
