@@ -9,7 +9,9 @@ export function Footer() {
 
   return (
     <footer className="bg-navy-dark text-white">
-      <div className="container-custom py-12 md:py-16">
+      {/* pb-28 en móvil: deja hueco para que el botón flotante de WhatsApp
+          (fixed, h-14 + bottom-6 = 80px) no tape "Términos y Condiciones". */}
+      <div className="container-custom pt-12 pb-28 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Logo and Description */}
           <div className="lg:col-span-2">
