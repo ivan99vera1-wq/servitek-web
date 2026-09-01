@@ -5,7 +5,8 @@ export const navigation: NavigationItem[] = [
   { label: "Servicios", href: "/servicios" },
   { label: "Sectores", href: "/sectores" },
   { label: "Nosotros", href: "/nosotros" },
-  { label: "Proyectos", href: "/proyectos" },
+  // PENDIENTE (empresa): reactivar cuando haya proyectos reales que mostrar.
+  // { label: "Proyectos", href: "/proyectos" },
   { label: "Contacto", href: "/contacto" }
 ];
 
