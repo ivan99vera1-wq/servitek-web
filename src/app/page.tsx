@@ -4,7 +4,8 @@ import { ValueProposition } from '@/components/sections/ValueProposition';
 import { BusinessUnits } from '@/components/sections/BusinessUnits';
 import { WhyServitek } from '@/components/sections/WhyServitek';
 import { SectorsPreview } from '@/components/sections/SectorsPreview';
-import { ProjectsPreview } from '@/components/sections/ProjectsPreview';
+// PENDIENTE (empresa): reactivar junto con <ProjectsPreview /> más abajo.
+// import { ProjectsPreview } from '@/components/sections/ProjectsPreview';
 import { CTASection } from '@/components/sections/CTASection';
 
 export default function Home() {
@@ -16,7 +17,8 @@ export default function Home() {
       <BusinessUnits />
       <WhyServitek />
       <SectorsPreview />
-      <ProjectsPreview />
+      {/* PENDIENTE (empresa): reactivar cuando haya proyectos reales que mostrar. */}
+      {/* <ProjectsPreview /> */}
       <CTASection />
     </>
   );
