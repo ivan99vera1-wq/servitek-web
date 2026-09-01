@@ -17,7 +17,7 @@ export function Footer() {
               <Image
                 src="/images/logo/logo-principal.webp"
                 alt="SERVITEK"
-                width={321}
+                width={181}
                 height={60}
                 className="h-12 w-auto"
               />

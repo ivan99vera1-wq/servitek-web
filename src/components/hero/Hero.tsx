@@ -112,7 +112,7 @@ export function Hero() {
                   src="/images/logo/logo-principal.webp"
                   alt="SERVITEK"
                   width={400}
-                  height={75}
+                  height={133}
                   className="w-full max-w-[340px] h-auto drop-shadow-[0_0_40px_rgb(8_120_249_/_0.15)]"
                   priority
                 />
