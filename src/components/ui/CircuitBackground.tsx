@@ -88,12 +88,20 @@ interface CircuitBackgroundProps {
  * prefers-reduced-motion vía la regla global en globals.css.
  */
 export function CircuitBackground({ variant = 0, className }: CircuitBackgroundProps) {
-  const { traces, nodes } = VARIANTS[((variant % VARIANTS.length) + VARIANTS.length) % VARIANTS.length];
+  const { traces, nodes } =
+    VARIANTS[((variant % VARIANTS.length) + VARIANTS.length) % VARIANTS.length];
 
   return (
-    <div className={cn('pointer-events-none absolute inset-0 overflow-hidden', className)} aria-hidden="true">
+    <div
+      className={cn('pointer-events-none absolute inset-0 overflow-hidden', className)}
+      aria-hidden="true"
+    >
       {/* Grid técnico sutil, igual al usado en el resto del sitio */}
-      <svg className="absolute inset-0 h-full w-full opacity-[0.07]" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <svg
+        className="absolute inset-0 h-full w-full opacity-[0.07]"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
         <defs>
           <pattern id="circuit-grid" width="8" height="8" patternUnits="userSpaceOnUse">
             <path d="M 8 0 L 0 0 0 8" fill="none" stroke="white" strokeWidth="0.3" />
@@ -104,18 +112,25 @@ export function CircuitBackground({ variant = 0, className }: CircuitBackgroundP
 
       {/* Barrido de luz lento, en diagonal */}
       <div
-        className="animate-circuit-sweep absolute -inset-y-1/2 left-0 w-2/3 bg-gradient-to-r from-transparent via-blue/[0.12] to-transparent blur-md"
+        className="absolute -inset-y-1/2 left-0 w-2/3 animate-circuit-sweep bg-gradient-to-r from-transparent via-blue/[0.12] to-transparent blur-md transition-opacity duration-slow group-hover:via-blue/20"
         style={{ animationDelay: '-3s' }}
       />
 
-      {/* Trazas de circuito con corriente animada */}
-      <svg className="absolute inset-0 h-full w-full" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+      {/* Trazas de circuito con corriente animada.
+          Al pasar por encima de la tarjeta contenedora (`.group`) la placa
+          "se enciende": las trazas ganan opacidad y grosor, y el primer nodo
+          de cada variante pasa al rojo de acento. Es la reacción al hover que
+          diferencia una tarjeta de sector de una imagen estática. */}
+      <svg
+        className="absolute inset-0 h-full w-full"
+        viewBox="0 0 400 300"
+        preserveAspectRatio="xMidYMid slice"
+      >
         {traces.map((trace, i) => (
           <path
             key={i}
             d={trace.d}
-            className="animate-circuit-flow fill-none stroke-blue-text/40"
-            strokeWidth="1.5"
+            className="animate-circuit-flow fill-none stroke-blue-text/40 transition-[stroke-opacity,stroke-width] duration-slow ease-out-expo [stroke-width:1.5] group-hover:stroke-blue-text/80 group-hover:[stroke-width:2]"
             strokeLinecap="round"
             strokeDasharray="4 14"
             style={{ animationDuration: `${trace.duration}s`, animationDelay: `${trace.delay}s` }}
@@ -127,8 +142,14 @@ export function CircuitBackground({ variant = 0, className }: CircuitBackgroundP
             cx={node.cx}
             cy={node.cy}
             r="3"
-            className="animate-circuit-pulse fill-blue-text"
-            style={{ transformOrigin: `${node.cx}px ${node.cy}px`, animationDelay: `${node.delay}s` }}
+            className={cn(
+              'animate-circuit-pulse transition-[fill,r] duration-slow ease-out-expo group-hover:[r:4]',
+              i === 0 ? 'fill-blue-text group-hover:fill-accent' : 'fill-blue-text'
+            )}
+            style={{
+              transformOrigin: `${node.cx}px ${node.cy}px`,
+              animationDelay: `${node.delay}s`,
+            }}
           />
         ))}
       </svg>

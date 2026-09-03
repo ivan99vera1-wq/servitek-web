@@ -2,57 +2,78 @@ import Link from 'next/link';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { ArrowRight, Phone } from 'lucide-react';
 import { generateWhatsAppUrl } from '@/lib/whatsapp';
+import { company } from '@/data/company';
 
+/**
+ * Cierre de conversión. Se repite al final de portada, sectores, proyectos y
+ * nosotros, así que es la pieza que más veces ve el visitante: va sobre
+ * navy-deep para que se lea como un bloque aparte y no como una sección más.
+ */
 export function CTASection() {
   return (
-    <section className="relative section-padding bg-navy overflow-hidden">
-      {/* Glow azul */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue/5 rounded-full blur-[120px]" />
+    <section className="section-padding relative overflow-hidden bg-navy-deep">
+      <div className="rule-accent absolute inset-x-0 top-0" aria-hidden="true" />
 
-      {/* Líneas decorativas sutiles */}
-      <div className="absolute inset-0 opacity-[0.02]">
-        <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-          <defs>
-            <pattern id="cta-grid" width="8" height="8" patternUnits="userSpaceOnUse">
-              <path d="M 8 0 L 0 0 0 8" fill="none" stroke="white" strokeWidth="0.3"/>
-            </pattern>
-          </defs>
-          <rect width="100" height="100" fill="url(#cta-grid)" />
-        </svg>
-      </div>
+      {/* Halo azul y rejilla técnica */}
+      <div
+        aria-hidden="true"
+        className="absolute left-1/2 top-1/2 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue/[0.07] blur-[120px]"
+      />
+      <div className="tech-grid" aria-hidden="true" />
 
       <div className="container-custom relative z-10">
         <ScrollReveal>
-          <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
-              <span className="w-8 h-[1px] bg-blue" />
-              CONTACTO
-              <span className="w-8 h-[1px] bg-blue" />
+          <div className="mx-auto max-w-4xl text-center">
+            <span className="inline-flex items-center gap-3">
+              <span className="status-dot animate-accent-blink" aria-hidden="true" />
+              <span className="eyebrow">CONTACTO</span>
             </span>
-            <h2 className="mt-6 text-h2 lg:text-h1 font-bold text-white text-balance">
+
+            <h2 className="mt-6 text-balance text-h1 text-white">
               ¿Necesita una solución técnica?
             </h2>
-            <p className="mt-6 text-lg text-white/65 max-w-2xl mx-auto leading-relaxed">
-              Cuéntenos qué necesita su operación y nuestro equipo podrá evaluar
-              la solución adecuada. Respuesta garantizada en menos de 24 horas.
+
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/65">
+              Cuéntenos qué necesita su operación y nuestro equipo podrá evaluar la solución
+              adecuada. Respuesta garantizada en menos de 24 horas.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+
+            <div className="mt-11 flex flex-col justify-center gap-4 sm:flex-row">
               <Link
                 href="/contacto"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-md bg-blue-solid text-white transition-all duration-200 hover:bg-blue-solid-hover hover:shadow-glow"
+                className="btn btn-primary px-8 py-4 text-sm tracking-[0.06em]"
               >
                 SOLICITAR PRESUPUESTO
-                <ArrowRight className="h-5 w-5" />
+                <ArrowRight className="btn-icon h-4 w-4" aria-hidden="true" />
               </Link>
               <a
                 href={generateWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-md border border-white/25 text-white hover:bg-white hover:text-navy transition-all duration-200"
+                className="btn btn-outline px-8 py-4 text-sm tracking-[0.06em]"
               >
-                <Phone className="h-5 w-5" />
-                WhatsApp directo
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                WHATSAPP DIRECTO
               </a>
+            </div>
+
+            {/* Datos de contacto reales, en clave de ficha técnica. */}
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-line pt-8 font-mono text-xs text-white/55">
+              <a
+                href={`tel:${company.contact.phone}`}
+                className="link-underline transition-colors duration-base hover:text-accent"
+              >
+                {company.contact.phoneFormatted}
+              </a>
+              <span aria-hidden="true" className="h-3 w-px bg-line-strong" />
+              <a
+                href={`mailto:${company.contact.email}`}
+                className="link-underline break-all transition-colors duration-base hover:text-accent"
+              >
+                {company.contact.email}
+              </a>
+              <span aria-hidden="true" className="hidden h-3 w-px bg-line-strong sm:block" />
+              <span className="uppercase tracking-[0.14em]">RUC {company.ruc}</span>
             </div>
           </div>
         </ScrollReveal>

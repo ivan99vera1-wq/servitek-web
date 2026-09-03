@@ -5,6 +5,20 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* La cabecera es fija: sin este margen, al saltar a un ancla el título
+       queda debajo de la barra. */
+    scroll-padding-top: 6rem;
+    /* `clip`, no `hidden`.
+       Varias capas decorativas (barridos, marcas de agua) y los revelados
+       direccionales del scroll se desplazan a propósito fuera de su caja, y
+       dejaban ~8 px de scroll horizontal. `overflow-x: hidden` aquí sí lo
+       quitaría, pero convierte a <html> en contenedor de scroll y rompe
+       `position: sticky` en toda la web — comprobado: la ficha de contacto
+       deja de fijarse. `clip` recorta sin crear contenedor de scroll, así
+       que no hay barra horizontal y sticky sigue funcionando.
+       Navegadores sin soporte de `clip` (Safari < 16) lo ignoran y se
+       quedan como antes: el recorte de <body> y, como mucho, esos 8 px. */
+    overflow-x: clip;
   }
 
   body {
@@ -12,6 +26,12 @@
     font-feature-settings: 'cv11', 'ss01';
     background-color: theme('colors.navy.DEFAULT');
     color: theme('colors.white');
+    /* Ninguna sección debe generar barra horizontal: varias capas
+       decorativas (barridos, glows, marcas de agua) sobresalen a propósito
+       de su contenedor. `hidden` primero como respaldo para navegadores sin
+       `clip`; en <body> no rompe sticky. */
+    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   /* Color de borde por defecto, para no repetirlo en cada utilidad. */
@@ -22,6 +42,12 @@
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-blue-text;
   }
+
+  /* Cifras de ancho fijo en todo lo monoespaciado: los índices 01..05 y las
+     estadísticas no cambian de ancho al animarse ni al cambiar de valor. */
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+  }
 }
 
 @layer components {
@@ -30,31 +56,235 @@
   }
 
   .section-padding {
-    @apply py-16 md:py-24 lg:py-32;
+    @apply py-20 md:py-28 lg:py-36;
   }
+
+  /* ------------------------------------------------------------------ *
+   * Tarjeta base
+   * ------------------------------------------------------------------ */
 
   .card-dark {
-    @apply rounded-[14px] border border-line bg-surface-card transition-all duration-300;
+    @apply relative rounded-[14px] border border-line bg-surface-card;
+    @apply transition-[transform,border-color,box-shadow] duration-base ease-out-expo;
   }
 
-  .card-dark:hover {
-    border-color: theme('colors.blue.DEFAULT / 45%');
+  /* Filete de acento que se dibuja sobre el borde superior al pasar por
+     encima. Es el "indicador rojo" del sistema: 2 px, nunca más. */
+  .card-dark::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 13px 13px 0 0;
+    z-index: 2;
+    background: linear-gradient(
+      90deg,
+      theme('colors.accent.deep') 0%,
+      theme('colors.accent.deep') 34%,
+      theme('colors.blue.DEFAULT') 100%
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform theme('transitionDuration.base')
+      theme('transitionTimingFunction.out-expo');
+    pointer-events: none;
+  }
+
+  .card-dark:hover,
+  .card-dark:focus-visible,
+  .group:hover .card-dark {
+    border-color: theme('colors.blue.DEFAULT / 40%');
     transform: translateY(-4px);
-    box-shadow:
-      0 8px 25px -5px rgb(0 0 0 / 0.3),
-      0 0 40px 8px theme('colors.blue.DEFAULT / 8%');
+    box-shadow: theme('boxShadow.lift');
   }
 
-  .trust-indicator {
-    @apply flex flex-col items-center p-4 text-center;
+  .card-dark:hover::after,
+  .card-dark:focus-visible::after,
+  .group:hover .card-dark::after {
+    transform: scaleX(1);
   }
 
-  .trust-indicator-value {
-    @apply font-bold text-blue-text;
+  /* ------------------------------------------------------------------ *
+   * Marco técnico: dos escuadras opuestas, como la mira de un plano de
+   * ingeniería. Se aplica a un <div> vacío superpuesto sobre la tarjeta y
+   * aparece al hacer hover sobre el contenedor `.group`.
+   * ------------------------------------------------------------------ */
+
+  .tech-frame {
+    @apply pointer-events-none absolute inset-0 z-[2];
   }
 
-  .trust-indicator-label {
-    @apply mt-1 font-mono text-xs uppercase tracking-widest text-white/60;
+  .tech-frame::before,
+  .tech-frame::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    opacity: 0;
+    pointer-events: none;
+    border-color: theme('colors.accent.DEFAULT');
+    transition:
+      opacity theme('transitionDuration.base') theme('transitionTimingFunction.out-expo'),
+      transform theme('transitionDuration.base') theme('transitionTimingFunction.out-expo');
+  }
+
+  .tech-frame::before {
+    top: 10px;
+    left: 10px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    transform: translate(4px, 4px);
+  }
+
+  .tech-frame::after {
+    bottom: 10px;
+    right: 10px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    transform: translate(-4px, -4px);
+  }
+
+  .group:hover .tech-frame::before,
+  .group:hover .tech-frame::after,
+  .group:focus-visible .tech-frame::before,
+  .group:focus-visible .tech-frame::after {
+    opacity: 0.85;
+    transform: translate(0, 0);
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Etiquetas y numeración
+   * ------------------------------------------------------------------ */
+
+  /* Eyebrow del sistema: rótulo monoespaciado versal. */
+  .eyebrow {
+    @apply font-mono text-eyebrow uppercase text-blue-text;
+  }
+
+  /* Índice de ingeniería: 01 / 02 / 03. Rojo, monoespaciado, tabular. */
+  .index-number {
+    @apply font-mono text-index tabular-nums text-accent;
+  }
+
+  /* Marca de agua: el mismo número, gigante y casi invisible, detrás del
+     contenido de la tarjeta. */
+  .index-watermark {
+    @apply pointer-events-none absolute select-none font-mono font-bold leading-none text-white/[0.025];
+    @apply transition-colors duration-base ease-out-expo;
+  }
+
+  .group:hover .index-watermark {
+    color: rgb(255 77 94 / 0.06);
+  }
+
+  /* Piloto de estado: punto rojo con halo. Marca lo que está "activo". */
+  .status-dot {
+    @apply relative inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent;
+  }
+
+  .status-dot::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 9999px;
+    border: 1px solid theme('colors.accent.DEFAULT / 35%');
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Botones
+   * ------------------------------------------------------------------ */
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md font-semibold;
+    @apply transition-[background-color,color,box-shadow,transform,border-color] duration-base ease-out-expo;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-text;
+    @apply focus-visible:ring-offset-2 focus-visible:ring-offset-navy;
+  }
+
+  .btn-primary {
+    @apply bg-blue-solid text-white hover:bg-blue-solid-hover hover:shadow-glow;
+  }
+
+  .btn-outline {
+    @apply border border-white/25 text-white hover:border-white hover:bg-white hover:text-navy;
+  }
+
+  /* El icono del botón avanza un par de píxeles al pasar por encima. */
+  .btn .btn-icon {
+    @apply transition-transform duration-base ease-out-expo;
+  }
+
+  .btn:hover .btn-icon {
+    transform: translateX(3px);
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Enlaces con subrayado animado
+   * ------------------------------------------------------------------ */
+
+  .link-underline {
+    @apply relative inline-flex items-center;
+  }
+
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 1px;
+    width: 100%;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform theme('transitionDuration.base')
+      theme('transitionTimingFunction.out-expo');
+  }
+
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Rejilla técnica de fondo. Reemplaza los siete <svg> con <pattern>
+   * repetidos por el sitio: mismo dibujo, cero nodos en el DOM.
+   * ------------------------------------------------------------------ */
+
+  .tech-grid {
+    @apply pointer-events-none absolute inset-0;
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+    /* La rejilla se desvanece hacia los bordes: sin esto parece papel
+       milimetrado y compite con el contenido. */
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, black 20%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, black 20%, transparent 78%);
+  }
+
+  /* Separador entre secciones: filete que nace en el acento rojo. */
+  .rule-accent {
+    @apply h-px w-full;
+    background: linear-gradient(
+      90deg,
+      theme('colors.accent.deep / 55%') 0%,
+      theme('colors.blue.DEFAULT / 30%') 18%,
+      transparent 60%
+    );
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Campos de formulario
+   * ------------------------------------------------------------------ */
+
+  .field {
+    @apply w-full rounded-md border bg-white/[0.04] px-4 py-3 text-white placeholder-white/40;
+    @apply transition-[border-color,background-color,box-shadow] duration-fast ease-out;
+    @apply focus:border-blue-text focus:bg-white/[0.07] focus:outline-none;
+    @apply focus:ring-2 focus:ring-blue-text/45;
   }
 }
 

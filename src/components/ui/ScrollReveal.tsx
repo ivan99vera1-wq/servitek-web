@@ -3,10 +3,26 @@
 import { useEffect, useRef, useState, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
+/**
+ * Origen del revelado. `up` es el comportamiento histórico y sigue siendo el
+ * predeterminado: se usa en la inmensa mayoría de rejillas. Los demás existen
+ * para romper la monotonía en bloques de dos columnas (`left`/`right`) y en
+ * piezas centradas (`scale`), no para aplicarlos en todas partes.
+ */
+type RevealDirection = 'up' | 'left' | 'right' | 'scale';
+
+const hiddenTransform: Record<RevealDirection, string> = {
+  up: 'translate-y-6',
+  left: '-translate-x-8',
+  right: 'translate-x-8',
+  scale: 'scale-[0.96]',
+};
+
 interface ScrollRevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
+  direction?: RevealDirection;
   /**
    * El wrapper pasa a ocupar toda la altura de su celda de grid. Necesario
    * cuando el hijo usa `h-full`: sin esto resuelve contra el wrapper, que
@@ -27,6 +43,7 @@ export function ScrollReveal({
   children,
   className,
   delay = 0,
+  direction = 'up',
   fullHeight = false,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -77,9 +94,11 @@ export function ScrollReveal({
     <div
       ref={ref}
       className={cn(
-        'transition-all duration-500 ease-out motion-reduce:transition-none',
+        'transition-[opacity,transform] duration-slow ease-out-expo motion-reduce:transition-none',
         fullHeight && 'h-full',
-        hidden ? 'translate-y-6 opacity-0' : 'translate-y-0 opacity-100',
+        hidden
+          ? `${hiddenTransform[direction]} opacity-0`
+          : 'translate-x-0 translate-y-0 scale-100 opacity-100',
         className
       )}
       style={hidden ? undefined : { transitionDelay: `${delay}ms` }}

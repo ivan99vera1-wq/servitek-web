@@ -1,85 +1,58 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { SectionHeading } from '@/components/ui/SectionHeading';
+import { ServiceCard } from '@/components/services/ServiceCard';
 import { services } from '@/data/services';
-import { ServiceIcon } from '@/lib/icons';
 
+/**
+ * Unidades de negocio.
+ *
+ * Antes duplicaba, con otro tamaño, el mismo marcado que ServiceCard: dos
+ * tarjetas de servicio distintas en dos páginas del mismo sitio. Ahora usa el
+ * componente compartido y rompe la rejilla haciendo que la primera unidad
+ * ocupe las dos columnas — la jerarquía la marca la composición, no un estilo
+ * paralelo.
+ */
 export function BusinessUnits() {
   return (
-    <section className="section-padding bg-navy-light relative overflow-hidden">
-      {/* Patrón de fondo sutil */}
-      <div className="absolute inset-0 opacity-[0.015]">
-        <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-          <defs>
-            <pattern id="bus-grid" width="8" height="8" patternUnits="userSpaceOnUse">
-              <path d="M 8 0 L 0 0 0 8" fill="none" stroke="white" strokeWidth="0.3"/>
-            </pattern>
-          </defs>
-          <rect width="100" height="100" fill="url(#bus-grid)" />
-        </svg>
-      </div>
+    <section className="section-padding relative overflow-hidden bg-navy-light">
+      <div className="tech-grid opacity-70" aria-hidden="true" />
 
       <div className="container-custom relative z-10">
         <ScrollReveal>
-          <div className="mb-12 md:mb-16 text-center">
-            <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
-              <span className="w-8 h-[1px] bg-blue" />
-              ÁREAS DE SERVICIO
-              <span className="w-8 h-[1px] bg-blue" />
-            </span>
-            <h2 className="mt-6 text-h2 lg:text-h1 font-bold text-white text-balance">
-              Cinco unidades de negocio
-            </h2>
-            <p className="mt-4 text-lg text-white/65 max-w-3xl mx-auto">
-              Del diagnóstico y el montaje al mantenimiento y la provisión de materiales certificados.
-            </p>
-          </div>
+          <SectionHeading
+            eyebrow="ÁREAS DE SERVICIO"
+            title="Cinco unidades de negocio"
+            description="Del diagnóstico y el montaje al mantenimiento y la provisión de materiales certificados."
+            className="mb-14 md:mb-20"
+          />
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {services.map((service, index) => (
-            <ScrollReveal key={service.id} delay={index * 100} fullHeight>
-              <Link
-                href={`/servicios/${service.slug}`}
-                className="relative block p-6 h-full group card-dark overflow-hidden"
-              >
-                {/* Imagen de fondo: reemplazable en src/data/services.ts (campo `image`) */}
-                <div className="absolute inset-0">
-                  <Image
-                    src={service.image}
-                    alt=""
-                    fill
-                    className="object-cover opacity-40 transition-opacity duration-300 group-hover:opacity-55"
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-surface-card via-surface-card/80 to-surface-card/40" />
-                </div>
-
-                <div className="relative flex items-start gap-5">
-                  <div className="flex-shrink-0 p-3 bg-blue/10 text-blue-text rounded-lg group-hover:bg-blue-solid group-hover:text-white transition-all duration-300">
-                    <ServiceIcon name={service.icon} className="h-7 w-7" />
-                  </div>
-                  <div className="flex-1">
-                    <span className="font-mono text-xs text-blue-text/90">
-                      0{index + 1}
-                    </span>
-                    <h3 className="mt-1 text-lg font-semibold text-white group-hover:text-blue-text transition-colors duration-300">
-                      {service.shortTitle}
-                    </h3>
-                    <p className="mt-2 text-white/60 text-sm line-clamp-2 leading-relaxed">
-                      {service.description}
-                    </p>
-                    <div className="mt-4 inline-flex items-center text-sm font-medium text-white/70 group-hover:text-blue-text transition-colors duration-300">
-                      Conocer servicio
-                      <ArrowRight className="ml-1.5 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                    </div>
-                  </div>
-                </div>
-              </Link>
+            <ScrollReveal
+              key={service.id}
+              delay={index * 90}
+              fullHeight
+              className={index === 0 ? 'md:col-span-2' : undefined}
+            >
+              <ServiceCard service={service} index={index} />
             </ScrollReveal>
           ))}
         </div>
+
+        <ScrollReveal>
+          <div className="mt-12 flex justify-center">
+            <Link
+              href="/servicios"
+              className="link-underline py-2 text-sm font-medium text-white/75 transition-colors duration-base hover:text-blue-text"
+            >
+              Ver todos los servicios
+              <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

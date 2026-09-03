@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Link from 'next/link';
-import { CheckCircle2, AlertCircle, Mail } from 'lucide-react';
+import { CheckCircle2, AlertCircle, Mail, ArrowRight } from 'lucide-react';
 import { serviceOptions, whatsappMessageTemplate } from '@/data/contact';
 import { generateWhatsAppUrl } from '@/lib/whatsapp';
 import { company } from '@/data/company';
@@ -14,10 +14,14 @@ import { trackFormSubmit, trackWhatsAppClick } from '@/lib/analytics';
 const contactFormSchema = z.object({
   name: z.string().min(2, 'Escriba su nombre completo'),
   company: z.string().min(2, 'Escriba el nombre de su empresa'),
-  phone: z.string().regex(/^[\d\s()+-]{7,20}$/, 'Escriba un teléfono válido, por ejemplo 0981 118743'),
+  phone: z
+    .string()
+    .regex(/^[\d\s()+-]{7,20}$/, 'Escriba un teléfono válido, por ejemplo 0981 118743'),
   city: z.string().min(2, 'Escriba su ciudad'),
   serviceType: z.string().min(1, 'Elija el servicio que necesita'),
-  message: z.string().min(10, 'Describa su necesidad con algo más de detalle (mínimo 10 caracteres)'),
+  message: z
+    .string()
+    .min(10, 'Describa su necesidad con algo más de detalle (mínimo 10 caracteres)'),
   privacy: z.literal(true, {
     errorMap: () => ({ message: 'Debe aceptar la Política de Privacidad para continuar' }),
   }),
@@ -26,9 +30,12 @@ const contactFormSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
-const inputBase =
-  'w-full px-4 py-3 bg-white/5 border rounded-md text-white placeholder-white/40 ' +
-  'focus:outline-none focus:ring-2 focus:ring-blue-text focus:border-transparent transition-colors';
+/**
+ * `.field` vive en globals.css junto al resto de tokens de superficie: fondo,
+ * radio, foco y transición son los mismos en todos los campos del sitio.
+ * Aquí solo se decide el color del borde según haya error o no.
+ */
+const inputBase = 'field';
 
 /** Rojo accesible sobre los fondos oscuros del sitio (6,1:1 sobre #0b253f). */
 const errorText = 'mt-1.5 flex items-start gap-1.5 text-sm text-danger';
@@ -67,7 +74,7 @@ export function ContactForm() {
   const fieldProps = (name: keyof ContactFormData) => ({
     'aria-invalid': errors[name] ? ('true' as const) : ('false' as const),
     'aria-describedby': errors[name] ? `${name}-error` : undefined,
-    className: `${inputBase} ${errors[name] ? 'border-danger' : 'border-white/10'}`,
+    className: `${inputBase} ${errors[name] ? 'border-danger' : 'border-line-strong'}`,
   });
 
   return (
@@ -75,7 +82,7 @@ export function ContactForm() {
       {sent && (
         <div
           role="status"
-          className="mb-6 flex items-start gap-3 rounded-md border border-success/40 bg-success/10 p-4"
+          className="mb-8 flex animate-fade-up items-start gap-3 rounded-md border border-success/40 bg-success/10 p-5"
         >
           <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-success" aria-hidden="true" />
           <div className="text-sm text-white/80">
@@ -95,9 +102,12 @@ export function ContactForm() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate className="space-y-6">
+      <form onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate className="space-y-7">
         <div>
-          <label htmlFor="name" className="mb-2 block text-sm font-medium text-white/80">
+          <label
+            htmlFor="name"
+            className="mb-2 block font-mono text-eyebrow uppercase text-white/60"
+          >
             Nombre completo <span aria-hidden="true">*</span>
           </label>
           <input
@@ -117,7 +127,10 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="company" className="mb-2 block text-sm font-medium text-white/80">
+          <label
+            htmlFor="company"
+            className="mb-2 block font-mono text-eyebrow uppercase text-white/60"
+          >
             Empresa <span aria-hidden="true">*</span>
           </label>
           <input
@@ -138,7 +151,10 @@ export function ContactForm() {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div>
-            <label htmlFor="phone" className="mb-2 block text-sm font-medium text-white/80">
+            <label
+              htmlFor="phone"
+              className="mb-2 block font-mono text-eyebrow uppercase text-white/60"
+            >
               Teléfono <span aria-hidden="true">*</span>
             </label>
             <input
@@ -159,7 +175,10 @@ export function ContactForm() {
           </div>
 
           <div>
-            <label htmlFor="city" className="mb-2 block text-sm font-medium text-white/80">
+            <label
+              htmlFor="city"
+              className="mb-2 block font-mono text-eyebrow uppercase text-white/60"
+            >
               Ciudad <span aria-hidden="true">*</span>
             </label>
             <input
@@ -180,7 +199,10 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="serviceType" className="mb-2 block text-sm font-medium text-white/80">
+          <label
+            htmlFor="serviceType"
+            className="mb-2 block font-mono text-eyebrow uppercase text-white/60"
+          >
             Tipo de servicio <span aria-hidden="true">*</span>
           </label>
           <select id="serviceType" {...register('serviceType')} {...fieldProps('serviceType')}>
@@ -202,7 +224,10 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="message" className="mb-2 block text-sm font-medium text-white/80">
+          <label
+            htmlFor="message"
+            className="mb-2 block font-mono text-eyebrow uppercase text-white/60"
+          >
             Mensaje <span aria-hidden="true">*</span>
           </label>
           <textarea
@@ -238,9 +263,9 @@ export function ContactForm() {
               {...register('privacy')}
               aria-invalid={errors.privacy ? 'true' : 'false'}
               aria-describedby={errors.privacy ? 'privacy-error' : undefined}
-              className="mt-0.5 h-5 w-5 shrink-0 accent-blue-solid"
+              className="mt-px h-6 w-6 shrink-0 cursor-pointer accent-blue-solid"
             />
-            <label htmlFor="privacy" className="text-sm text-white/70">
+            <label htmlFor="privacy" className="cursor-pointer py-1 text-sm text-white/70">
               He leído y acepto la Política de Privacidad <span aria-hidden="true">*</span>
             </label>
           </div>
@@ -263,9 +288,23 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex w-full items-center justify-center rounded-md bg-blue-solid px-8 py-4 text-lg font-medium text-white transition-all duration-200 hover:bg-blue-solid-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-text focus-visible:ring-offset-2 focus-visible:ring-offset-navy disabled:cursor-not-allowed disabled:opacity-50"
+          className="btn btn-primary w-full px-8 py-4 text-sm tracking-[0.08em] disabled:cursor-not-allowed disabled:opacity-50"
         >
-          {isSubmitting ? 'Enviando...' : 'ENVIAR POR WHATSAPP'}
+          {isSubmitting ? (
+            <>
+              {/* Indicador de envío: anillo girando, no un cambio de texto seco. */}
+              <span
+                aria-hidden="true"
+                className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"
+              />
+              ENVIANDO
+            </>
+          ) : (
+            <>
+              ENVIAR POR WHATSAPP
+              <ArrowRight className="btn-icon h-4 w-4" aria-hidden="true" />
+            </>
+          )}
         </button>
 
         <p className="text-center text-xs text-white/60">

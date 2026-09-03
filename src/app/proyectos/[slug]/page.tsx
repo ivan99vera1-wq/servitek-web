@@ -43,6 +43,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   return (
     <>
       <PageHero
+        eyebrow="PROYECTO"
         title={project.title}
         subtitle={`${project.sector} — ${project.location}`}
         image={project.image}
@@ -58,18 +59,20 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       <section className="section-padding bg-navy">
         <div className="container-custom">
           {/* Nota sobre proyecto demo */}
-          <div className="card-dark p-6 mb-8">
+          <div className="card-dark mb-8 p-6">
             <p className="text-sm text-white/60">
               <strong className="text-white/70">Nota:</strong> Este es un proyecto de ejemplo.
               SERVITEK está preparando su portafolio de proyectos reales.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
             {/* Contenido principal */}
             <div className="lg:col-span-2">
               <ScrollReveal>
-                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">PROYECTO</span>
+                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue-text">
+                  PROYECTO
+                </span>
                 <h2 className="mt-2 text-h3 font-bold text-white">Alcance del proyecto</h2>
 
                 <div className="mt-4 flex flex-wrap gap-4 text-sm text-white/60">
@@ -83,12 +86,10 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                   </div>
                 </div>
 
-                <p className="mt-6 text-lg text-white/65 leading-relaxed">
-                  {project.description}
-                </p>
+                <p className="mt-6 text-lg leading-relaxed text-white/65">{project.description}</p>
 
                 {/* Imagen de portada: marcador generado, reemplazable en src/data/projects.ts (campo `image`) */}
-                <div className="mt-8 h-64 bg-gradient-to-br from-navy-light to-navy-lighter rounded-[14px] flex items-center justify-center relative overflow-hidden">
+                <div className="relative mt-8 flex h-64 items-center justify-center overflow-hidden rounded-[14px] bg-gradient-to-br from-navy-light to-navy-lighter">
                   <Image
                     src={project.image}
                     alt=""
@@ -97,8 +98,10 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     sizes="(min-width: 1024px) 66vw, 100vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-surface-muted via-surface-muted/30 to-transparent" />
-                  <div className="relative text-center px-4">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-blue-text/90">IMAGEN DEL PROYECTO</span>
+                  <div className="relative px-4 text-center">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-blue-text/90">
+                      IMAGEN DEL PROYECTO
+                    </span>
                     <p className="mt-2 text-sm font-semibold text-white/80">{project.title}</p>
                   </div>
                 </div>
@@ -107,11 +110,11 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
             {/* Sidebar */}
             <div>
-              <ScrollReveal delay={200}>
-                <div className="card-dark p-6 sticky top-24">
-                  <h3 className="text-h4 font-semibold text-white mb-4">
-                    Detalles del proyecto
-                  </h3>
+              {/* fullHeight: el envoltorio del revelado debe ocupar la columna
+                  entera, si no `sticky` no tiene recorrido y no se fija. */}
+              <ScrollReveal delay={200} fullHeight>
+                <div className="card-dark sticky top-24 p-6">
+                  <h3 className="mb-4 text-h4 font-semibold text-white">Detalles del proyecto</h3>
 
                   <div className="space-y-4">
                     <div>
@@ -132,7 +135,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                         {project.services.map((service) => (
                           <span
                             key={service}
-                            className="inline-flex items-center gap-1 px-3 py-1 bg-white/5 text-white/65 rounded-full text-xs"
+                            className="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 text-xs text-white/65"
                           >
                             <Tag className="h-3 w-3" />
                             {service}
@@ -142,7 +145,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     </div>
                   </div>
 
-                  <div className="mt-6 pt-6 border-t border-line">
+                  <div className="mt-6 border-t border-line pt-6">
                     <Button href="/contacto" className="w-full">
                       SOLICITAR EVALUACIÓN
                     </Button>
@@ -154,11 +157,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
           {/* Proyectos relacionados */}
           <ScrollReveal>
-            <div className="mt-16 pt-12 border-t border-line">
-              <h3 className="text-h4 font-semibold text-white mb-8">
-                Otros proyectos
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="mt-16 border-t border-line pt-12">
+              <h3 className="mb-8 text-h4 font-semibold text-white">Otros proyectos</h3>
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                 {projects
                   .filter((p) => p.id !== project.id)
                   .slice(0, 3)
@@ -166,9 +167,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     <Link
                       key={p.id}
                       href={`/proyectos/${p.id}`}
-                      className="card-dark block p-6 group"
+                      className="card-dark group relative block overflow-hidden p-6"
                     >
-                      <h4 className="text-lg font-semibold text-white group-hover:text-blue-text transition-colors">
+                      <h4 className="text-lg font-semibold text-white transition-colors group-hover:text-blue-text">
                         {p.title}
                       </h4>
                       <div className="mt-2 flex items-center gap-2 text-xs text-white/55">
@@ -178,12 +179,10 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                         <Calendar className="h-3 w-3" />
                         {p.year}
                       </div>
-                      <p className="mt-2 text-sm text-white/60 line-clamp-2">
-                        {p.description}
-                      </p>
-                      <div className="mt-4 inline-flex items-center text-sm font-medium text-white/70 group-hover:text-blue-text transition-colors">
+                      <p className="mt-2 line-clamp-2 text-sm text-white/60">{p.description}</p>
+                      <div className="mt-4 inline-flex items-center text-sm font-medium text-white/70 transition-colors group-hover:text-blue-text">
                         Ver proyecto
-                        <ArrowRight className="ml-1.5 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </div>
                     </Link>
                   ))}

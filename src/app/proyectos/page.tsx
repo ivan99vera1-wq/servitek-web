@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { PageHero } from '@/components/ui/PageHero';
 import { ProjectCard } from '@/components/projects/ProjectCard';
 import { projects } from '@/data/projects';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { CTASection } from '@/components/sections/CTASection';
 import { generatePageMetadata } from '@/lib/seo';
 
@@ -17,6 +18,7 @@ export default function ProyectosPage() {
   return (
     <>
       <PageHero
+        eyebrow="PROYECTOS"
         title="Nuestros Proyectos"
         subtitle="Soluciones ejecutadas para la industria paraguaya."
       />
@@ -25,16 +27,18 @@ export default function ProyectosPage() {
         <div className="container-custom">
           <h2 className="sr-only">Listado de proyectos</h2>
           {/* Nota sobre proyectos demo */}
-          <div className="card-dark p-6 mb-8">
+          <div className="card-dark mb-8 p-6">
             <p className="text-sm text-white/60">
-              <strong className="text-white/70">Nota:</strong> Los proyectos mostrados son de ejemplo.
-              SERVITEK está preparando su portafolio de proyectos reales.
+              <strong className="text-white/70">Nota:</strong> Los proyectos mostrados son de
+              ejemplo. SERVITEK está preparando su portafolio de proyectos reales.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {projects.map((project, index) => (
+              <ScrollReveal key={project.id} delay={index * 90} fullHeight>
+                <ProjectCard project={project} index={index} />
+              </ScrollReveal>
             ))}
           </div>
         </div>

@@ -6,63 +6,102 @@ interface PageHeroProps {
   title: string;
   subtitle?: string;
   className?: string;
+  /** Rótulo monoespaciado sobre el título (SERVICIOS, SECTOR 03...). */
+  eyebrow?: string;
   /** Imagen de fondo opcional (portada de servicio o proyecto). */
   image?: string;
   /** Fondo animado de circuito opcional (portada de sector), 0-3. Tiene prioridad sobre `image`. */
   animatedVariant?: number;
 }
 
-export function PageHero({ title, subtitle, className, image, animatedVariant }: PageHeroProps) {
+/**
+ * Cabecera compartida por todas las páginas internas.
+ *
+ * Hereda la coreografía del hero de portada — rótulo, titular y bajada entran
+ * escalonados — pero en versión corta (sin parallax ni retardos largos): es
+ * una cabecera de sección, no una portada, y el visitante ya viene navegando.
+ */
+export function PageHero({
+  title,
+  subtitle,
+  className,
+  eyebrow,
+  image,
+  animatedVariant,
+}: PageHeroProps) {
   return (
     <section
       className={cn(
-        'bg-surface py-16 md:py-24 relative overflow-hidden',
+        'relative overflow-hidden border-b border-line bg-surface',
+        'pb-16 pt-14 md:pb-24 md:pt-20',
         className
       )}
     >
       {/* Fondo animado de circuito opcional */}
       {animatedVariant !== undefined && (
-        <div className="absolute inset-0">
+        <div className="absolute inset-0" aria-hidden="true">
           <CircuitBackground variant={animatedVariant} className="opacity-70" />
-          <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/85 to-surface/60" />
+          <div className="via-surface/88 absolute inset-0 bg-gradient-to-r from-surface to-surface/55" />
         </div>
       )}
 
       {/* Imagen de fondo opcional */}
       {animatedVariant === undefined && image && (
-        <div className="absolute inset-0">
+        <div className="absolute inset-0" aria-hidden="true">
           <Image
             src={image}
             alt=""
             fill
-            className="object-cover opacity-25"
+            className="animate-fade-in object-cover opacity-30"
             sizes="100vw"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/90 to-surface/70" />
+          <div className="via-surface/92 absolute inset-0 bg-gradient-to-r from-surface to-surface/70" />
         </div>
       )}
 
-      {/* Grid pattern sutil */}
-      <div className="absolute inset-0 opacity-[0.02]">
-        <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-          <defs>
-            <pattern id="page-grid" width="8" height="8" patternUnits="userSpaceOnUse">
-              <path d="M 8 0 L 0 0 0 8" fill="none" stroke="white" strokeWidth="0.3"/>
-            </pattern>
-          </defs>
-          <rect width="100" height="100" fill="url(#page-grid)" />
-        </svg>
-      </div>
+      <div className="tech-grid opacity-70" aria-hidden="true" />
 
-      {/* Gradiente inferior */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-navy to-transparent" />
+      {/* Filete vertical de acento, alineado con el margen del contenido */}
+      <div
+        aria-hidden="true"
+        className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-accent-deep/50 via-blue/25 to-transparent"
+      />
 
       <div className="container-custom relative z-10">
-        <h1 className="text-h1 md:text-display text-white text-balance">{title}</h1>
-        {subtitle && (
-          <p className="mt-4 text-lg text-white/65 max-w-3xl leading-relaxed">{subtitle}</p>
+        {eyebrow && (
+          <div className="mb-6 flex animate-fade-up items-center gap-3">
+            <span className="status-dot" aria-hidden="true" />
+            <span className="eyebrow">{eyebrow}</span>
+            <span
+              aria-hidden="true"
+              className="h-px w-12 bg-gradient-to-r from-blue/60 to-transparent"
+            />
+          </div>
         )}
+
+        <h1
+          className="max-w-4xl animate-fade-up text-balance text-display text-white"
+          style={{ animationDelay: '70ms' }}
+        >
+          {title}
+        </h1>
+
+        {subtitle && (
+          <p
+            className="mt-6 max-w-3xl animate-fade-up text-lg leading-relaxed text-white/70"
+            style={{ animationDelay: '180ms' }}
+          >
+            {subtitle}
+          </p>
+        )}
+
+        {/* Filete de cierre: se dibuja de izquierda a derecha al cargar. */}
+        <div
+          aria-hidden="true"
+          className="rule-accent mt-10 origin-left animate-line-grow"
+          style={{ animationDelay: '280ms' }}
+        />
       </div>
     </section>
   );
