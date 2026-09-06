@@ -6,6 +6,7 @@ import { WhyServitek } from '@/components/sections/WhyServitek';
 import { SectorsPreview } from '@/components/sections/SectorsPreview';
 // PENDIENTE (empresa): reactivar junto con <ProjectsPreview /> más abajo.
 // import { ProjectsPreview } from '@/components/sections/ProjectsPreview';
+import { OfficialDistributor } from '@/components/sections/OfficialDistributor';
 import { CTASection } from '@/components/sections/CTASection';
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <SectorsPreview />
       {/* PENDIENTE (empresa): reactivar cuando haya proyectos reales que mostrar. */}
       {/* <ProjectsPreview /> */}
+      <OfficialDistributor />
       <CTASection />
     </>
   );
