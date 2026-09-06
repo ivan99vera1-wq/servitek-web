@@ -15,7 +15,7 @@ const icons = [Shield, Clock, Zap];
  */
 export function ValueProposition() {
   return (
-    <section className="section-padding relative bg-navy">
+    <section className="section-padding relative bg-navy/92">
       <div className="container-custom">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
           {/* Columna izquierda: titular */}

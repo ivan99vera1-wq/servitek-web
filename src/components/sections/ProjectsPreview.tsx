@@ -19,7 +19,7 @@ export function ProjectsPreview() {
   if (featuredProjects.length === 0) return null;
 
   return (
-    <section className="section-padding bg-navy">
+    <section className="section-padding bg-navy/92">
       <div className="container-custom">
         <ScrollReveal>
           <SectionHeading

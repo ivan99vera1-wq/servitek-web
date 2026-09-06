@@ -16,7 +16,7 @@ import { services } from '@/data/services';
  */
 export function BusinessUnits() {
   return (
-    <section className="section-padding relative overflow-hidden bg-navy-light">
+    <section className="section-padding relative overflow-hidden bg-navy-light/92">
       <div className="tech-grid opacity-70" aria-hidden="true" />
 
       <div className="container-custom relative z-10">

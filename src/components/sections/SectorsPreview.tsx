@@ -17,7 +17,7 @@ export function SectorsPreview() {
   const featuredSectors = sectors.slice(0, 4);
 
   return (
-    <section className="section-padding bg-navy-light">
+    <section className="section-padding bg-navy-light/92">
       <div className="container-custom">
         <ScrollReveal>
           <SectionHeading

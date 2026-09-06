@@ -13,7 +13,7 @@ const icons: Record<string, LucideIcon> = { CheckCircle, Target, Settings, Clock
  */
 export function TrustBar() {
   return (
-    <section className="relative overflow-hidden border-b border-line bg-surface">
+    <section className="relative overflow-hidden border-b border-line bg-surface/92">
       {/* Filete superior: arranca en el rojo de acento y se disuelve en azul */}
       <div className="rule-accent absolute inset-x-0 top-0" aria-hidden="true" />
 

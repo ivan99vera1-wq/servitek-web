@@ -64,7 +64,16 @@
    * ------------------------------------------------------------------ */
 
   .card-dark {
-    @apply relative rounded-[14px] border border-line bg-surface-card;
+    /* background-color en vez de bg-surface-card vía @apply: Tailwind no
+       resuelve el modificador de opacidad (/92) dentro de @apply para esta
+       versión. rgb(11 37 63) es surface.card de tailwind.config.ts; el 92%
+       deja dos puntos libres para que se entrevea el fondo GhostFibers (ver
+       Providers.tsx) detrás de cada tarjeta. El contraste documentado en
+       tailwind.config.ts se calculó sobre el color sólido y no cambia de
+       forma perceptible con un 8% de transparencia sobre un fondo igual de
+       oscuro. */
+    @apply relative rounded-[14px] border border-line;
+    background-color: rgb(11 37 63 / 92%);
     @apply transition-[transform,border-color,box-shadow] duration-base ease-out-expo;
   }
 

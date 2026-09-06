@@ -11,7 +11,7 @@ import { company } from '@/data/company';
  */
 export function CTASection() {
   return (
-    <section className="section-padding relative overflow-hidden bg-navy-deep">
+    <section className="section-padding relative overflow-hidden bg-navy-deep/92">
       <div className="rule-accent absolute inset-x-0 top-0" aria-hidden="true" />
 
       {/* Halo azul y rejilla técnica */}

@@ -13,7 +13,7 @@ import { distributors } from '@/data/distributors';
  */
 export function OfficialDistributor() {
   return (
-    <section className="section-padding relative overflow-hidden bg-navy">
+    <section className="section-padding relative overflow-hidden bg-navy/92">
       <div className="tech-grid opacity-60" aria-hidden="true" />
 
       <div className="container-custom relative z-10">

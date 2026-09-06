@@ -12,7 +12,7 @@ import { whyServitek } from '@/data/company-content';
  */
 export function WhyServitek() {
   return (
-    <section className="section-padding relative bg-navy">
+    <section className="section-padding relative bg-navy/92">
       <div className="rule-accent absolute inset-x-0 top-0" aria-hidden="true" />
 
       <div className="container-custom">
