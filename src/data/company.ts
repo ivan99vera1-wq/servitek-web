@@ -48,7 +48,7 @@ export const company: Company = {
 
   social: {
     facebook: "https://facebook.com/servitek",
-    instagram: "https://instagram.com/servitek",
+    instagram: "https://instagram.com/servitek.py",
     linkedin: "https://linkedin.com/company/servitek"
   }
 };

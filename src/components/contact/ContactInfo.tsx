@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Clock, type LucideIcon } from 'lucide-react';
+import { Phone, Mail, Instagram, MapPin, Clock, type LucideIcon } from 'lucide-react';
 import { company } from '@/data/company';
 import { businessHours } from '@/data/company-content';
 
@@ -76,11 +76,24 @@ export function ContactInfo() {
           </a>
         </InfoRow>
 
-        <InfoRow icon={MapPin} label="UBICACIÓN" index={2}>
+        {/* Va junto al teléfono y el correo: es otro canal de contacto, no un
+            dato de ubicación. */}
+        <InfoRow icon={Instagram} label="INSTAGRAM" index={2}>
+          <a
+            href={company.social.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-underline transition-colors duration-base hover:text-accent"
+          >
+            @servitek.py
+          </a>
+        </InfoRow>
+
+        <InfoRow icon={MapPin} label="UBICACIÓN" index={3}>
           <p className="text-white/65">{company.contact.address}</p>
         </InfoRow>
 
-        <InfoRow icon={Clock} label="HORARIO" index={3}>
+        <InfoRow icon={Clock} label="HORARIO" index={4}>
           <dl className="space-y-1 text-sm text-white/65">
             <div className="flex flex-wrap gap-x-2">
               <dt className="text-white/60">{businessHours.weekdays.label}:</dt>

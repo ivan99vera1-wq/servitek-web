@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import { ParallaxLayer } from '@/components/hero/ParallaxLayer';
+import { SocialLinks } from '@/components/hero/SocialLinks';
 
 /**
  * Coreografía de entrada del hero.
@@ -22,14 +23,12 @@ const STEP = {
   headline: '0ms',
   description: '200ms',
   ctas: '320ms',
-  indicators: '440ms',
+  contact: '440ms',
   panel: '260ms',
 } as const;
 
 /** Entrada abreviada solo para el titular, por LCP. */
 const HEADLINE_DURATION = '420ms';
-
-const indicators = ['RUC: 80176311-8', 'Respuesta en menos de 24h', 'Equipo especializado'];
 
 export function Hero() {
   return (
@@ -133,22 +132,12 @@ export function Hero() {
               </Link>
             </div>
 
-            {/* Indicadores. Numerados como el resto del sistema. */}
+            {/* Contacto directo. Cierra la cascada. */}
             <div
               className="mt-14 animate-fade-up border-t border-line pt-8"
-              style={{ animationDelay: STEP.indicators }}
+              style={{ animationDelay: STEP.contact }}
             >
-              <ul className="flex flex-wrap gap-x-10 gap-y-4">
-                {indicators.map((text, index) => (
-                  <li key={text} className="flex items-center gap-3">
-                    <span className="index-number text-white/25" aria-hidden="true">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span className="h-3 w-px bg-line-strong" aria-hidden="true" />
-                    <span className="text-sm text-white/70">{text}</span>
-                  </li>
-                ))}
-              </ul>
+              <SocialLinks />
             </div>
           </div>
 

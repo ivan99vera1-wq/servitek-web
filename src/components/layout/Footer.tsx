@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram } from 'lucide-react';
 import { navigation, footerNavigation } from '@/data/navigation';
 import { company } from '@/data/company';
 
@@ -83,6 +83,17 @@ export function Footer() {
                   className="link-underline break-all transition-colors duration-fast hover:text-accent"
                 >
                   {company.contact.email}
+                </a>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-white/60">
+                <Instagram className="mt-0.5 h-4 w-4 shrink-0 text-accent/70" aria-hidden="true" />
+                <a
+                  href={company.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline transition-colors duration-fast hover:text-accent"
+                >
+                  @servitek.py
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-white/60">
