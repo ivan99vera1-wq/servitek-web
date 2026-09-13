@@ -15,10 +15,16 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
+/**
+ * Se apoya en las clases `.btn` de globals.css para que estos botones lleven
+ * la misma luz recorriendo el borde que el resto del sitio. `secondary`
+ * comparte el tratamiento de `outline`: son los dos niveles no principales y
+ * mantener un tercer estilo solo abría una variante más que sostener.
+ */
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: 'bg-blue-solid text-white hover:bg-blue-solid-hover hover:shadow-glow-sm',
-  secondary: 'bg-navy-light text-white hover:bg-navy-lighter',
-  outline: 'border-2 border-white/25 text-white hover:bg-white hover:text-navy',
+  primary: 'btn btn-primary',
+  secondary: 'btn btn-outline',
+  outline: 'btn btn-outline',
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -41,15 +47,14 @@ export function Button({
   type = 'button',
   disabled,
 }: ButtonProps) {
-  const classes = cn(
-    'inline-flex items-center justify-center rounded-md font-medium transition-all duration-200',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-text',
-    'focus-visible:ring-offset-2 focus-visible:ring-offset-navy',
+  /* Las clases de variante van primero y sin pasar por twMerge: `.btn` y
+     `.btn-primary` no son utilidades de Tailwind y tailwind-merge no las
+     conoce, pero sí reconocería un choque entre ellas y `className`. */
+  const classes = `${variantStyles[variant]} ${cn(
     'disabled:cursor-not-allowed disabled:opacity-50',
-    variantStyles[variant],
     sizeStyles[size],
     className
-  );
+  )}`;
 
   if (href) {
     return (

@@ -246,19 +246,107 @@
    * Botones
    * ------------------------------------------------------------------ */
 
+  /* Botón con luz que recorre el borde, adaptado de Uiverse
+     (MuhammadHasann / mean-bird-62) a la paleta de SERVITEK.
+     El original monta la luz sobre un <div class="dots_border"> extra y un
+     <span> para el texto. Aquí se resuelve con los dos pseudo-elementos, sin
+     marcado adicional: así el estilo entra en los botones que ya existen sin
+     tocar una sola página.
+     Ambos pseudo-elementos van en z-index negativo dentro de un `isolate`:
+     el texto de nuestros botones es un nodo suelto, no un <span> posicionado,
+     y en el orden de pintado de CSS un pseudo-elemento con z-index 0 le
+     pasaría por encima. */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-md font-semibold;
+    --btn-glow: theme('colors.blue.DEFAULT');
+    @apply relative isolate inline-flex items-center justify-center gap-2 font-semibold;
+    border-radius: var(--btn-radius, 9999px);
     @apply transition-[background-color,color,box-shadow,transform,border-color] duration-base ease-out-expo;
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-text;
     @apply focus-visible:ring-offset-2 focus-visible:ring-offset-navy;
   }
 
+  /* Luz que da la vuelta al borde. Mismo recurso que el borde de las
+     tarjetas -cónico enmascarado- en vez del barrido rotado del original:
+     una sola capa, y `transform` en lugar de repintar la caja entera. */
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+      from var(--card-angle),
+      transparent 0deg,
+      theme('colors.accent.DEFAULT') 30deg,
+      #ffffff 60deg,
+      theme('colors.blue.DEFAULT') 90deg,
+      transparent 140deg,
+      transparent 360deg
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: card-border-spin 3s linear infinite;
+  }
+
+  /* Relleno que se enciende al pasar por encima. */
+  .btn::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    z-index: -2;
+    border-radius: inherit;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity theme('transitionDuration.base')
+      theme('transitionTimingFunction.out-expo');
+  }
+
+  .btn:is(:hover, :focus-visible)::after {
+    opacity: 1;
+  }
+
+  /* El original crece un 10%; a este ancho de botón eso se lee como un salto,
+     así que el aumento es la mitad. */
+  .btn:is(:hover, :focus-visible) {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 5px rgb(8 120 249 / 0.18);
+  }
+
+  .btn:active {
+    transform: scale(1);
+  }
+
   .btn-primary {
-    @apply bg-blue-solid text-white hover:bg-blue-solid-hover hover:shadow-glow;
+    @apply text-white;
+    background-color: theme('colors.blue.solid');
+    box-shadow:
+      inset 0 0.5px rgb(255 255 255 / 0.35),
+      inset 0 -1px 2px 0 rgb(0 0 0 / 0.45);
+  }
+
+  .btn-primary::after {
+    background-color: theme('colors.blue.solid-hover');
+    background-image:
+      radial-gradient(at 51% 89%, rgb(61 155 255 / 0.9) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgb(8 120 249 / 0.9) 0px, transparent 50%),
+      radial-gradient(at 22% 91%, rgb(8 120 249 / 0.85) 0px, transparent 50%);
   }
 
   .btn-outline {
-    @apply border border-white/25 text-white hover:border-white hover:bg-white hover:text-navy;
+    @apply text-white;
+    background-color: rgb(255 255 255 / 0.04);
+  }
+
+  .btn-outline::after {
+    background-color: rgb(255 255 255 / 0.12);
   }
 
   /* El icono del botón avanza un par de píxeles al pasar por encima. */
