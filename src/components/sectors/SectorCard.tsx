@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { Sector } from '@/types/sector';
-import { CircuitBackground } from '@/components/ui/CircuitBackground';
 
 interface SectorCardProps {
   sector: Sector;
-  /** Índice dentro de la lista, para variar la traza animada entre tarjetas. */
+  /** Posición en la lista. Alimenta la numeración 01, 02, 03... */
   index?: number;
 }
 
@@ -17,16 +16,6 @@ export function SectorCard({ sector, index = 0 }: SectorCardProps) {
       href={`/sectores/${sector.slug}`}
       className="card-dark group relative flex h-full flex-col overflow-hidden p-6 sm:p-8"
     >
-      {/* Fondo animado de circuito (sustituye a las fotografías de sector).
-          Reacciona al hover desde el propio CircuitBackground. */}
-      <div className="absolute inset-0" aria-hidden="true">
-        <CircuitBackground
-          variant={index}
-          className="opacity-70 transition-opacity duration-slow ease-out-expo group-hover:opacity-100"
-        />
-        <div className="via-surface-card/88 to-surface-card/68 absolute inset-0 bg-gradient-to-t from-surface-card" />
-      </div>
-
       <span aria-hidden="true" className="index-watermark -top-4 right-1 text-[110px]">
         {number}
       </span>

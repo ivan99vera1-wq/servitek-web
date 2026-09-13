@@ -255,11 +255,10 @@ subir la foto real con el mismo nombre de archivo (o cambiar la ruta en
 `image` dentro de `services.ts` o `projects.ts`) — ningún componente
 necesita tocarse.
 
-Los sectores no llevan foto ni marcador de imagen: usan
-`CircuitBackground` (`src/components/ui/CircuitBackground.tsx`), un fondo
-animado de circuito impreso en CSS/SVG con cuatro variantes, coherente con
-la identidad técnica de la marca y sin peso de imagen. Respeta
-`prefers-reduced-motion` mediante la regla global en `globals.css`.
+Los sectores no llevan foto ni marcador de imagen: sus tarjetas y cabeceras
+van sin fondo propio, sobre el fondo ambiental del sitio (`Aurora`, ver
+`src/components/layout/Providers.tsx`). Así no suman peso de imagen y dejan
+ver el fondo, igual que el resto de las páginas internas.
 </details>
 
 ## Sistema de diseño

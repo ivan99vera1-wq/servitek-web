@@ -59,7 +59,6 @@ export default function ServicePage({ params }: ServicePageProps) {
         eyebrow={`UNIDAD ${String(serviceIndex + 1).padStart(2, '0')}`}
         title={service.shortTitle}
         subtitle={service.description}
-        animatedVariant={serviceIndex}
       />
 
       <Breadcrumbs

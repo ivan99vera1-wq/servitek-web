@@ -86,7 +86,7 @@ servitek-web/
 │   │   ├── services/           # Imágenes de servicios
 │   │   ├── projects/           # Imágenes de proyectos
 │   │   └── company/            # Imágenes institucionales
-│   │   # Sectores: sin imágenes — fondo animado CircuitBackground
+│   │   # Sectores: sin imágenes — tarjetas y cabeceras sin fondo propio
 │   ├── favicon.ico
 │   ├── apple-touch-icon.png    # 180x180
 │   ├── icon-192x192.png        # PWA 192x192

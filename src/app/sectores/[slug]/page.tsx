@@ -48,7 +48,6 @@ export default function SectorPage({ params }: SectorPageProps) {
         eyebrow={`SECTOR ${String(sectorIndex + 1).padStart(2, '0')}`}
         title={sector.shortTitle}
         subtitle={sector.description}
-        animatedVariant={sectorIndex}
       />
 
       <Breadcrumbs

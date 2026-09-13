@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { CircuitBackground } from '@/components/ui/CircuitBackground';
 
 interface PageHeroProps {
   title: string;
@@ -10,8 +9,6 @@ interface PageHeroProps {
   eyebrow?: string;
   /** Imagen de fondo opcional (portada de servicio o proyecto). */
   image?: string;
-  /** Fondo animado de circuito opcional (portada de sector), 0-3. Tiene prioridad sobre `image`. */
-  animatedVariant?: number;
 }
 
 /**
@@ -21,14 +18,7 @@ interface PageHeroProps {
  * escalonados — pero en versión corta (sin parallax ni retardos largos): es
  * una cabecera de sección, no una portada, y el visitante ya viene navegando.
  */
-export function PageHero({
-  title,
-  subtitle,
-  className,
-  eyebrow,
-  image,
-  animatedVariant,
-}: PageHeroProps) {
+export function PageHero({ title, subtitle, className, eyebrow, image }: PageHeroProps) {
   return (
     <section
       className={cn(
@@ -37,16 +27,8 @@ export function PageHero({
         className
       )}
     >
-      {/* Fondo animado de circuito opcional */}
-      {animatedVariant !== undefined && (
-        <div className="absolute inset-0" aria-hidden="true">
-          <CircuitBackground variant={animatedVariant} className="opacity-70" />
-          <div className="via-surface/88 absolute inset-0 bg-gradient-to-r from-surface to-surface/55" />
-        </div>
-      )}
-
       {/* Imagen de fondo opcional */}
-      {animatedVariant === undefined && image && (
+      {image && (
         <div className="absolute inset-0" aria-hidden="true">
           <Image
             src={image}

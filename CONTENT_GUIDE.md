@@ -198,12 +198,9 @@ export const sectors = [
 ]
 ```
 
-Los sectores ya no llevan campo `image`: en vez de una fotografía, cada
-tarjeta y cabecera de sector usa `CircuitBackground`
-(`src/components/ui/CircuitBackground.tsx`), un fondo animado de circuito
-en CSS/SVG con cuatro variantes. La variante se elige por posición en la
-lista (`index % 4`), no por dato del sector, así que no hace falta tocar
-nada al agregar o reordenar sectores.
+Los sectores ya no llevan campo `image`: sus tarjetas y cabeceras no tienen
+fondo propio y se ven sobre el fondo ambiental del sitio. No hace falta
+tocar ni subir nada al agregar o reordenar sectores.
 
 ### Agregar un sector
 
@@ -303,8 +300,8 @@ export const whatsappMessageTemplate = (data: FormData) => {
 └── company/       # Imágenes institucionales
 ```
 
-Los sectores no tienen carpeta de imágenes: usan el fondo animado
-`CircuitBackground` en vez de una fotografía (ver sección 4).
+Los sectores no tienen carpeta de imágenes: no usan fotografía
+(ver sección 4).
 
 ### Cambiar imagen del hero
 
@@ -316,11 +313,10 @@ Los sectores no tienen carpeta de imágenes: usan el fondo animado
 1. Colocar imagen en `/public/images/services/`
 2. Actualizar el campo `image` en `src/data/services.ts`
 
-### Cambiar el fondo animado de un sector
+### Fondo de un sector
 
-Los sectores usan `CircuitBackground` (ver sección 4), no una fotografía.
-Para variar el diseño, editar las composiciones en
-`src/components/ui/CircuitBackground.tsx` (array `VARIANTS`).
+Los sectores no usan fotografía ni fondo propio (ver sección 4): se ven
+sobre el fondo ambiental del sitio, igual que el resto de las páginas.
 
 ### Formatos recomendados
 

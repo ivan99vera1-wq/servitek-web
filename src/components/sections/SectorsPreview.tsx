@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { CircuitBackground } from '@/components/ui/CircuitBackground';
 import { sectors } from '@/data/sectors';
 
 /**
@@ -10,8 +9,7 @@ import { sectors } from '@/data/sectors';
  *
  * Versión compacta de SectorCard: cuatro columnas no admiten la lista de
  * problemas sin apelmazarse, así que aquí solo van índice, título y resumen.
- * El lenguaje visual (numeración, marca de agua, filete rojo, reacción del
- * circuito al hover) es el mismo.
+ * El lenguaje visual (numeración, marca de agua, filete rojo) es el mismo.
  */
 export function SectorsPreview() {
   const featuredSectors = sectors.slice(0, 4);
@@ -37,14 +35,6 @@ export function SectorsPreview() {
                   href={`/sectores/${sector.slug}`}
                   className="card-dark group relative flex h-full flex-col overflow-hidden p-6"
                 >
-                  <div className="absolute inset-0" aria-hidden="true">
-                    <CircuitBackground
-                      variant={index}
-                      className="opacity-60 transition-opacity duration-slow ease-out-expo group-hover:opacity-95"
-                    />
-                    <div className="via-surface-card/92 to-surface-card/78 absolute inset-0 bg-gradient-to-t from-surface-card" />
-                  </div>
-
                   <span aria-hidden="true" className="index-watermark -top-3 right-1 text-[84px]">
                     {number}
                   </span>

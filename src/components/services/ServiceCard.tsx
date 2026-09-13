@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { Service } from '@/types/service';
 import { ServiceIcon } from '@/lib/icons';
-import { CircuitBackground } from '@/components/ui/CircuitBackground';
 
 interface ServiceCardProps {
   service: Service;
@@ -18,17 +17,6 @@ export function ServiceCard({ service, index = 0 }: ServiceCardProps) {
       href={`/servicios/${service.slug}`}
       className="card-dark group relative flex h-full flex-col overflow-hidden p-6 sm:p-8"
     >
-      {/* Fondo animado de circuito, el mismo sistema que las tarjetas de
-          sector: se "enciende" al pasar por encima (las trazas brillan y los
-          nodos crecen desde el propio CircuitBackground). */}
-      <div className="absolute inset-0" aria-hidden="true">
-        <CircuitBackground
-          variant={index}
-          className="opacity-70 transition-opacity duration-slow ease-out-expo group-hover:opacity-100"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-surface-card via-surface-card/88 to-surface-card/68" />
-      </div>
-
       {/* Marca de agua con el número de unidad */}
       <span aria-hidden="true" className="index-watermark -top-4 right-1 text-[110px]">
         {number}
