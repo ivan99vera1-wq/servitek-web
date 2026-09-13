@@ -4,8 +4,8 @@ import { useEffect, useRef } from 'react';
 
 /**
  * Componente de terceros (React Bits, https://reactbits.dev). Se integra tal
- * cual publicado -sin convertir a TypeScript- por la misma razón que
- * SplashCursor: es un shader, no tiene sentido tiparlo a mano.
+ * cual publicado, sin convertir a TypeScript: es un shader, no tiene sentido
+ * tiparlo a mano.
  *
  * Diferencias respecto al original, todas dentro de este archivo:
  *   1. El CSS de una sola clase (`.aurora-container`) se aplica como clases

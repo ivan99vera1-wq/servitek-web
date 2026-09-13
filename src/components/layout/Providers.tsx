@@ -1,12 +1,11 @@
 import { Analytics } from './Analytics';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
-import SplashCursor from '@/components/ui/SplashCursor';
 import Aurora from '@/components/ui/Aurora';
 
 /**
  * Elementos comunes a todas las páginas que van fuera del flujo principal.
- * No necesita 'use client': Analytics, WhatsAppButton, SplashCursor y
- * Aurora ya declaran el suyo.
+ * No necesita 'use client': Analytics, WhatsAppButton y Aurora ya declaran
+ * el suyo.
  */
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -34,11 +33,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
       {children}
       <Analytics />
       <WhatsAppButton />
-      {/* Efecto decorativo de cursor (React Bits). RAINBOW_MODE en false y
-          COLOR en el azul de marca para no introducir tonos fuera de la
-          paleta documentada en tailwind.config.ts. pointerEvents: 'none' en
-          el propio componente: nunca bloquea clics ni el formulario. */}
-      <SplashCursor COLOR="#3D9BFF" RAINBOW_MODE={false} />
     </>
   );
 }
