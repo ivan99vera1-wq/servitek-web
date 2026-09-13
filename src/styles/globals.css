@@ -79,6 +79,29 @@
    * Tarjeta base
    * ------------------------------------------------------------------ */
 
+  /* ------------------------------------------------------------------ *
+   * Lavado tipo aurora para el interior de las tarjetas: rojo arriba a la
+   * izquierda, blanco difuso en el centro alto y azul subiendo desde abajo
+   * a la derecha.
+   *
+   * Va en gradientes CSS y no con el componente Aurora, que es WebGL: una
+   * instancia por tarjeta serían diez canvas solo en la portada, por encima
+   * del límite de contextos WebGL que mantienen los navegadores.
+   *
+   * Las opacidades son bajas a propósito. El texto de las tarjetas baja
+   * hasta blanco al 65% y el contraste documentado en tailwind.config.ts se
+   * calculó sobre el color sólido: estos velos lo mueven de forma
+   * imperceptible, pero subirlos sí se lo comería.
+   * ------------------------------------------------------------------ */
+  .card-dark,
+  .card-glow {
+    background-image:
+      radial-gradient(85% 65% at 10% -5%, rgb(226 55 68 / 0.20) 0%, transparent 62%),
+      radial-gradient(60% 45% at 52% 4%, rgb(255 255 255 / 0.07) 0%, transparent 68%),
+      radial-gradient(95% 75% at 92% 104%, rgb(8 120 249 / 0.26) 0%, transparent 64%),
+      radial-gradient(115% 75% at 50% 118%, rgb(8 120 249 / 0.16) 0%, transparent 62%);
+  }
+
   .card-dark {
     /* background-color en vez de bg-surface-card vía @apply: Tailwind no
        resuelve el modificador de opacidad (/92) dentro de @apply para esta
@@ -87,17 +110,9 @@
        Providers.tsx) detrás de cada tarjeta. El contraste documentado en
        tailwind.config.ts se calculó sobre el color sólido y no cambia de
        forma perceptible con un 8% de transparencia sobre un fondo igual de
-       oscuro.
-       El halo azul inferior es el equivalente de marca al brillo que la
-       tarjeta de referencia tiene abajo: azul decorativo, nunca detrás de
-       texto pequeño. */
+       oscuro. */
     @apply relative rounded-[14px] border border-line;
     background-color: rgb(11 37 63 / 92%);
-    background-image: radial-gradient(
-      115% 75% at 50% 118%,
-      rgb(8 120 249 / 0.22) 0%,
-      transparent 62%
-    );
     @apply transition-[transform,border-color,box-shadow] duration-base ease-out-expo;
   }
 
