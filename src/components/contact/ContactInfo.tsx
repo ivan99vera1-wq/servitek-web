@@ -35,7 +35,7 @@ export function ContactInfo() {
     /* Panel fijo al hacer scroll en escritorio. No usa `.card-dark`: esa
        clase eleva la tarjeta al pasar por encima, y un panel de este tamaño
        moviéndose bajo el cursor distrae en lugar de dar feedback. */
-    <div className="relative overflow-hidden rounded-[14px] border border-line bg-surface-card p-7 sm:p-8 lg:sticky lg:top-28">
+    <div className="card-glow relative overflow-hidden rounded-[14px] border border-line bg-surface-card p-7 sm:p-8 lg:sticky lg:top-28">
       <span
         aria-hidden="true"
         className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-accent-deep via-accent-deep/60 to-blue/50"
